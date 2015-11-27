@@ -43,3 +43,8 @@ jQuery will be used to add dynamic aspects to the page ranging from decorative
 effects like fade-ins to keeping the page updated for each 1 minute frame of
 the game. It will also be used to fetch values from the PHP component, logins,
 etc.
+
+# Other
+It might be pertinent to include like a NES game password or something so that
+users can resume their cities even if the server goes down, like a hash or
+something. Ehh.
