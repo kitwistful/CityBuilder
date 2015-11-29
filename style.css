@@ -1,1 +1,14 @@
-/*todo*/
+#login_form > input, #login_form > button
+{
+    display: block;
+}
+
+#global_header > header
+{
+    font-size: 64px;
+}
+
+article > header
+{
+    font-size: 32px;
+}
