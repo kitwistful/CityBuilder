@@ -1,5 +1,6 @@
-article > content
+content
 {
+    display: block;
     font-size: 16px;
 }
 

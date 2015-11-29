@@ -5,6 +5,16 @@
     <content>
         What's your city?
     </content>
+    <content>
+<?php
+    if($_SESSION["bLoggedIn"])
+    {
+        echo "you are logged in";
+    } else {
+        echo "you are logged out";
+    }
+?>
+    </content>
     <nav>
         <ul>
     <?php
@@ -24,14 +34,4 @@
     ?>
         </ul>
     </nav>
-    <content>
-<?php
-    if($_SESSION["bLoggedIn"])
-    {
-        echo "you are logged in";
-    } else {
-        echo "you are logged out";
-    }
-?>
-    </content>
 </div>
