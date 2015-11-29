@@ -15,6 +15,12 @@
     
     // form info
     $username = "";
+    
+    // add warning if logged in
+    if($_SESSION["citybuilder_bLoggedIn"])
+    {
+        $signup_message = "<li>You are already logged in as '".$_SESSION["citybuilder_username"]."'.</li>";
+    }
 
     // form validation
     if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -24,7 +30,8 @@
         $password = $_POST["password"];
         
         // begin listing errors
-        $signup_message = "";
+        if($signup_message == null)
+            $signup_message = "";
         
         // check username
         if($username == null)
