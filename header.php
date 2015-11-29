@@ -11,7 +11,7 @@
     function print_nav_link($name, $url)
     {
         if(CURRENT_PAGE == $url)
-            echo "<li id = 'nav_currpage'>$name</li>";
+            echo "<li><a href = '$url' class = 'current_page'>$name</a></li>";
         else
             echo "<li><a href = '$url'>$name</a></li>";
     }

@@ -30,6 +30,11 @@ nav > ul > li
     margin-right: 10px;
 }
 
+.current_page
+{
+    font-weight: bold;
+}
+
 .signup_error
 {
     border-style: dashed;
