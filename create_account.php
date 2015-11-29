@@ -12,6 +12,9 @@
     
     // message to display
     $signup_message = null;
+    
+    // form info
+    $username = "";
 
     // form validation
     if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -28,6 +31,7 @@
         if($username == null)
         {
             $signup_message = $signup_message."<li>username is required</li>";
+            $username = "";
         }
         
         // check password
@@ -46,7 +50,7 @@
         {
             $signup_message = "<content>Found the following errors:</content><ul>".$signup_message."</ul>";
         } else {
-            // do not display message
+            // obviously nothing is wrong
             $signup_message = "successful";
         }
     }
@@ -64,7 +68,7 @@
 ?>
         <form id = "create_account_form" method = "POST" action = "create_account.php">
             <label>Username:</label>
-            <input id = "create_account_username" name = "username" type = "text"></input>
+            <input id = "create_account_username" name = "username" type = "text" value = <?php echo "\"$username\"" ?>></input>
             <label>Password:</label>
             <input id = "create_account_password" name = "password" type = "password"></input>
             <label>Re-enter your password:</label>
