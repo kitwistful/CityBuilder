@@ -1,3 +1,14 @@
+article > content
+{
+    font-size: 16px
+}
+
+article
+{
+    margin-bottom: 32px;
+    width: 512px;
+}
+
 form >input, form > button
 {
     display: block;
@@ -11,4 +22,10 @@ form >input, form > button
 article > header
 {
     font-size: 32px;
+}
+
+nav > ul > li
+{
+    display: inline-block;
+    margin-right: 10px;
 }
