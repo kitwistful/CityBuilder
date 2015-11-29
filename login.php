@@ -9,9 +9,6 @@
 </head>
 <body>
 <?php
-    // header
-    define("CURRENT_PAGE", "login.php");
-    include "header.php";
     
     // message to display
     $signup_message = null;
@@ -57,6 +54,11 @@
             $_SESSION["citybuilder_username"] = $username;
         }
     }
+    
+    
+    // header
+    define("CURRENT_PAGE", "login.php");
+    include "header.php";
 ?>
     <article>
         <header>Login</header>
