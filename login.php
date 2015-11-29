@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<?php include "include.php"; ?>
     <title>Login to City Builder</title>
 </head>
 <body>
