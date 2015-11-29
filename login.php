@@ -51,7 +51,10 @@
             $signup_message = "successful";
             
             // consider yourself logged in
-            $_SESSION["bLoggedIn"] = true;
+            $_SESSION["citybuilder_bLoggedIn"] = true;
+            
+            // let's remember your name
+            $_SESSION["citybuilder_username"] = $username;
         }
     }
 ?>

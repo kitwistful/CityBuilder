@@ -1,12 +1,20 @@
 <?php
 
-    $bLoggedIn = "bLoggedIn";
-
+    // session key list
+    $seshkeys = array(
+      "citybuilder_bLoggedIn",
+      "citybuilder_username"
+    );
     
-    if(!array_key_exists($bLoggedIn, $_SESSION))
+    // init session keys
+    foreach($seshkeys as $keykey => $key)
     {
-        $_SESSION[$bLoggedIn] = false;
+        if(!array_key_exists($key, $_SESSION))
+        {
+            $_SESSION[$key] = null;
+        }
     }
+    
     
 ?>
 

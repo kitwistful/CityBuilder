@@ -7,11 +7,11 @@
     </content>
     <content>
 <?php
-    if($_SESSION["bLoggedIn"])
+    if($_SESSION["citybuilder_bLoggedIn"])
     {
-        echo "you are logged in";
+        echo "Welcome, ".$_SESSION["citybuilder_username"].".";
     } else {
-        echo "you are logged out";
+        echo "You are logged out";
     }
 ?>
     </content>
