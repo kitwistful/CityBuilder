@@ -55,6 +55,9 @@
         } else {
             // obviously nothing is wrong
             $signup_message = "successful";
+            
+            // actually, this isn't implemented yet sooo
+            $signup_message = "Account creation is currently unsupported. Sorry";
         }
     }
 ?>
