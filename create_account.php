@@ -6,28 +6,56 @@
 </head>
 <body>
 <?php
+    // header
     define("CURRENT_PAGE", "create_account.php");
     include "header.php";
-?>
-<?php
     
-    
-    $signup_message = "";
+    // message to display
+    $signup_message = null;
 
+    // form validation
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        define("SIGNUP_SHOW_MESSAGE", true);
+        // get form info
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $password_again = $_POST["password_again"];
         
-        $signup_message = "test";
-    } else{
-        define("SIGNUP_SHOW_MESSAGE", false);
+        // begin listing errors
+        $signup_message = "";
+        
+        // check username
+        if($username == null)
+        {
+            $signup_message = $signup_message."<li>username is required</li>";
+        }
+        
+        // check password
+        if($password == null)
+        {
+            $signup_message = $signup_message."<li>password is required</li>";
+        }
+        else
+        {
+            if($password_again != $password)
+                $signup_message = $signup_message."<li>passwords do not match</li>";
+        }
+        
+        // compile list
+        if($signup_message != "")
+        {
+            $signup_message = "<content>Found the following errors:</content><ul>".$signup_message."</ul>";
+        } else {
+            // do not display message
+            $signup_message = "successful";
+        }
     }
 ?>
 
     <article>
         <header>Sign up for City Builder</header>
 <?php
-    if(SIGNUP_SHOW_MESSAGE)
+    if($signup_message != null)
     {
         echo "<content><div class = 'signup_error'><header>Information</header><content>$signup_message</content></div></content>";
     } else {
