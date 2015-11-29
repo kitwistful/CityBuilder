@@ -19,6 +19,7 @@
     print_nav_link("Home", "index.php");
     print_nav_link("Login", "login.php");
     print_nav_link("Dashboard", "dashboard.php");
+    print_nav_link("Signup", "create_account.php");
     print_nav_link("Recover Account", "recover_account.php");
     ?>
     </ul>
