@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+    session_start();
+?>
 <html>
 <head>
 <?php include "include.php"; ?>

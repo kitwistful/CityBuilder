@@ -1,4 +1,7 @@
 <!DOCTYPE HTML>
+<?php
+    session_start();
+?>
 <html>
 <head>
 <?php include "include.php"; ?>
@@ -46,6 +49,9 @@
         } else {
             // obviously nothing is wrong
             $signup_message = "successful";
+            
+            // consider yourself logged in
+            $_SESSION["bLoggedIn"] = true;
         }
     }
 ?>
