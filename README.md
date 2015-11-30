@@ -10,7 +10,7 @@ will be given a description based on how the user has chosen to develop it.
 
 # Game rules
 The game progresses in 1 minute intervals, but can also be advanced through
-mouseclicks. It operates on currencies of 'blocks' and 'dollars. Each city
+mouseclicks. It operates on currencies of 'blocks' and 'dollars'. Each city
 starts with a certain number of blocks, which are consumed to expand sectors.
 Dollars are used to buy more blocks, and are earned over time depending on the
 size of the sectors. The selected sector grows by 1 block for each mouseclick,
@@ -41,8 +41,7 @@ contained in the database. It will encompass behaviours such as:
 # jQuery/Javascript Component
 jQuery will be used to add dynamic aspects to the page ranging from decorative
 effects like fade-ins to keeping the page updated for each 1 minute frame of
-the game. It will also be used to fetch values from the PHP component, logins,
-etc.
+the game.
 
 # Other
 It might be pertinent to include like a NES game password or something so that
