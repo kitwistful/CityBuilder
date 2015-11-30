@@ -36,6 +36,9 @@
     // funds
     $n_coins = 0;
     
+    // sectors
+    $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational");
+    
     // selected
     $sector_display_class = array(SECTOR_RESIDENTIAL=>null, SECTOR_EDUCATIONAL=>null, SECTOR_BUSINESS=>null, SECTOR_RECREATIONAL=>null);
     foreach($sector_display_class as $k=>$v)
@@ -69,10 +72,29 @@
         <li>Blocks:  <?php echo $n_blocks?></li>
         <li>Unused Blocks: <?php echo $n_blocks_unused?></li>
         <li>Coins: <?php echo $n_coins?></li>
-        <li>Current Sector: <?php echo $curr_sector?></li>
+        <li>Current Sector: <?php echo $sector_names[$curr_sector]?></li>
     </ul>
 </article>
-
+<article>
+    <header>Select a Sector</header>
+    <form method = "GET" action = "dashboard.php">
+<?php
+    foreach($sector_names as $k=>$name)
+    {
+        // print radio button
+        echo "<input class = 'radio_input' type = 'radio' name = 'sector' value = $k ";
+        
+        // preselect the current entry
+        if($k == $curr_sector)
+            echo "checked";
+        
+        // print the city name
+        echo "></input>$name<br />";
+    }
+?>
+    <button>Select</button>
+    </form>
+</article>
 <article>
     <header>Your Cities</header>
     <form method = "POST" action = "dashboard.php">
