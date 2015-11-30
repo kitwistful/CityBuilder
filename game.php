@@ -11,14 +11,20 @@
     // city to change
     $curr_city = 0;
     
+    // sector to grow
+    $curr_sector = SECTOR_RESIDENTIAL;
+    
     // select new city
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $curr_city = $_POST["city"];
     }
     
-    // sector to grow
-    $curr_sector = SECTOR_RESIDENTIAL;
+    // select new sector
+    if($_SERVER["REQUEST_METHOD"] == "GET")
+    {
+        $curr_sector = $_GET["sector"];
+    }
     
     // blocks allocated to each sector
     $sector_blocks = array(SECTOR_RESIDENTIAL=>100, SECTOR_EDUCATIONAL=>200, SECTOR_BUSINESS=>300, SECTOR_RECREATIONAL=>400);
