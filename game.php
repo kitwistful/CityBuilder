@@ -23,7 +23,7 @@
     // select new sector
     if($_SERVER["REQUEST_METHOD"] == "GET")
     {
-        $curr_sector = $_GET["sector"];
+        $curr_sector = $_REQUEST["sector"];
     }
     
     // blocks allocated to each sector
@@ -80,9 +80,21 @@
         <li>Coins: <?php echo $n_coins?></li>
         <li>Current Sector: <?php echo $sector_names[$curr_sector]?></li>
     </ul>
+    <button>Build</button>
 </article>
 <article>
-    <header>Select a Sector</header>
+    <header>How to Play</header>
+    <content>
+        <p>
+            To grow '<?php echo $cities[$curr_city]?>', select a sector to focus on. It'll grow by one block right away, and keep growing in size as long as it is selected. You can make it grow faster by pressing the "build" button. Be careful, though! If your sector takes up too many blocks, all construction will cease. Your city has only so much space!
+        </p>
+        <p>
+            If you want to make your city even bigger, you're going to need coins. Purchase more blocks under 'City Expansion'.
+        </p>
+    </content>
+</article>
+<article>
+    <header>Sectors</header>
     <form method = "GET" action = "dashboard.php">
 <?php
     foreach($sector_names as $k=>$name)
@@ -102,7 +114,7 @@
     </form>
 </article>
 <article>
-    <header>Your Cities</header>
+    <header>Cities</header>
     <form method = "POST" action = "dashboard.php">
 <?php
     foreach($cities as $k=>$city)
@@ -120,4 +132,11 @@
 ?>
     <button>Select</button>
     </form>
+</article>
+<article>
+    <header>City Expansion</header>
+    <content>
+        Purchase more blocks for your city here! Current coin count: <b><?php echo $n_coins?></b>
+    </content>
+    <button>1000 blocks for 100 coins</button>
 </article>
