@@ -40,7 +40,7 @@
     $sector_display_class = array(SECTOR_RESIDENTIAL=>null, SECTOR_EDUCATIONAL=>null, SECTOR_BUSINESS=>null, SECTOR_RECREATIONAL=>null);
     foreach($sector_display_class as $k=>$v)
     {
-        $sector_display_class[$k] = $k == $curr_city ? "selected_sector" : "unselected_sector";
+        $sector_display_class[$k] = $k == $curr_sector ? "selected_sector" : "unselected_sector";
     }
     
     
@@ -52,13 +52,13 @@
     <div id = "game_sector_display_q1" class = <?php echo $sector_display_class[SECTOR_RESIDENTIAL]?> >
         Residential: <?php echo $sector_blocks[SECTOR_RESIDENTIAL]?>
     </div>
-    <div id = "game_sector_display_q2" class = <?php echo $sector_display_class[SECTOR_RESIDENTIAL]?> >
+    <div id = "game_sector_display_q2" class = <?php echo $sector_display_class[SECTOR_EDUCATIONAL]?> >
         Educational: <?php echo $sector_blocks[SECTOR_EDUCATIONAL]?>
     </div>
-    <div id = "game_sector_display_q3" class = <?php echo $sector_display_class[SECTOR_RESIDENTIAL]?> >
+    <div id = "game_sector_display_q3" class = <?php echo $sector_display_class[SECTOR_BUSINESS]?> >
         Business: <?php echo $sector_blocks[SECTOR_BUSINESS]?>
     </div>
-    <div id = "game_sector_display_q4" class = <?php echo $sector_display_class[SECTOR_RESIDENTIAL]?> >
+    <div id = "game_sector_display_q4" class = <?php echo $sector_display_class[SECTOR_RECREATIONAL]?> >
         Recreational: <?php echo $sector_blocks[SECTOR_RECREATIONAL]?>
     </div>
 </div>

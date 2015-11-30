@@ -55,3 +55,13 @@ nav > ul > li
     font-size: 16px;
     font-weight: bold;
 }
+
+.selected_sector
+{
+    font-weight: bold;
+}
+
+#city_description
+{
+    font-style: italic;
+}
