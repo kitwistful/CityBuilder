@@ -15,6 +15,11 @@ form >input, form > button
     display: block;
 }
 
+.radio_input
+{
+    display: inline;
+}
+
 #global_header > header
 {
     font-size: 64px;

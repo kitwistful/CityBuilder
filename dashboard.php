@@ -9,22 +9,28 @@
 </head>
 <body>
 <?php
+    // get session values
+    $bLoggedIn = $_SESSION["citybuilder_bLoggedIn"];
+    $username = $_SESSION["citybuilder_username"];
+
+    // header
     define("CURRENT_PAGE", "dashboard.php");
     include "header.php";
+    
 ?>
-    <article>
-        <header>Your Cities</header>
-        <content>
-            <ul>
-                <li><a class = "dashboard_city_link" href = "#">First City</a></li>
-                <li><a class = "dashboard_city_link" href = "#">Someburb</a></li>
-                <li><a class = "dashboard_city_link" href = "#">Polispolis</a></li>
-            </ul>
-        </content>
-    </article>
-    <article>
-        <div id = "dashboard_city_content"></div>
-    </article>
+<?php
+    $dashboard_title = ($username ? ($username."'s") : "Your")." Dashboard";
+    
+    echo "<article><header>$dashboard_title</header><content>";
+    if(!$bLoggedIn)
+    {
+        echo "Please <a href = 'login.php'>log in</a> or <a href = 'create_account.php'>sign up</a> to start playing the game.</content></article>";
+        
+    } else {
+        echo "Hey, ".$username.", let's get rolling!</content></article>";
+        include 'game.php';
+    }
+?>
     
 </body>
 </html>
