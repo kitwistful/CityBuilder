@@ -4,6 +4,7 @@
     define("SECTOR_EDUCATIONAL", "educational");
     define("SECTOR_BUSINESS", "business");
     define("SECTOR_RECREATIONAL", "recreational");
+    define("SECTOR_NONE", "none");
 
     // city names
     $cities = array("First City", "Someburb", "Polispolis");
@@ -14,15 +15,10 @@
     // sector to grow
     $curr_sector = SECTOR_RESIDENTIAL;
     
-    // select new city
+    // update stuff
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $curr_city = $_POST["city"];
-    }
-    
-    // select new sector
-    if($_SERVER["REQUEST_METHOD"] == "GET")
-    {
         $curr_sector = $_REQUEST["sector"];
     }
     
@@ -43,7 +39,7 @@
     $n_coins = 0;
     
     // sectors
-    $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational");
+    $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
     
     // selected
     $sector_display_class = array(SECTOR_RESIDENTIAL=>null, SECTOR_EDUCATIONAL=>null, SECTOR_BUSINESS=>null, SECTOR_RECREATIONAL=>null);
@@ -89,14 +85,15 @@
             To grow '<?php echo $cities[$curr_city]?>', select a sector to focus on. It'll grow by one block right away, and keep growing in size as long as it is selected. You can make it grow faster by pressing the "build" button. Be careful, though! If your sector takes up too many blocks, all construction will cease. Your city has only so much space!
         </p>
         <p>
-            If you want to make your city even bigger, you're going to need coins. Purchase more blocks under 'City Expansion'.
+            If you want to make your city even bigger, you're going to need coins. You can purchase more blocks under 'City Expansion'.
         </p>
     </content>
 </article>
-<article>
-    <header>Sectors</header>
-    <form method = "GET" action = "dashboard.php">
+<form method = "POST" action = "dashboard.php">
+    <article>
+        <header>Sectors</header>
 <?php
+    // print sector options
     foreach($sector_names as $k=>$name)
     {
         // print radio button
@@ -110,13 +107,11 @@
         echo "></input>$name<br />";
     }
 ?>
-    <button>Select</button>
-    </form>
-</article>
-<article>
-    <header>Cities</header>
-    <form method = "POST" action = "dashboard.php">
+    </article>
+    <article>
+        <header>Cities</header>
 <?php
+    // print city options
     foreach($cities as $k=>$city)
     {
         // print radio button
@@ -130,13 +125,29 @@
         echo "></input>$city<br />";
     }
 ?>
-    <button>Select</button>
-    </form>
-</article>
-<article>
-    <header>City Expansion</header>
-    <content>
-        Purchase more blocks for your city here! Current coin count: <b><?php echo $n_coins?></b>
-    </content>
-    <button>1000 blocks for 100 coins</button>
-</article>
+    </article>
+    <article>
+        <header>City Expansion</header>
+        <content>
+            Purchase more blocks for your city here! Current coin count: <b><?php echo $n_coins?></b>
+        </content>
+<?php
+    // print expansion options
+    for($i = 0; $i <= 3; $i++)
+    {
+        // print radio button
+        echo "<input class = 'radio_input' type = 'radio' name = 'expansion' value = $i ";
+        
+        // print none or some
+        if($i == 0)
+            echo "checked></input>None<br />";
+        else
+            echo sprintf("></input>%d blocks for %d coins<br />", $i*1000, $i*100);
+    }
+?>
+    </article>
+    <article>
+        <header>Update City</header>
+        <button>Build</button>
+    </article>
+</form>
