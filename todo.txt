@@ -24,3 +24,8 @@ TODO:
         - all kinds of images
     - Dynamic content
         - maybe some fades and stuff could look pretty?
+    - Security
+        - add measures to prevent injection of text fields
+            - create_account.php
+            - login.php
+            - city creation dialog, whenever that comes up
