@@ -76,7 +76,6 @@
         <li>Coins: <?php echo $n_coins?></li>
         <li>Current Sector: <?php echo $sector_names[$curr_sector]?></li>
     </ul>
-    <button>Build</button>
 </article>
 <article>
     <header>How to Play</header>
