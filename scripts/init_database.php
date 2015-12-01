@@ -8,5 +8,9 @@
 * This script initializes the tables used throughout the site.
 *
 **/
-    // todo
+
+    function init_database($servername, $username, $password, $dbname)
+    {
+        //todo
+    }
 ?>

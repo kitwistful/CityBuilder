@@ -6,13 +6,30 @@
 * Year: 2015
 *
 * This page initializes the database.
-* Change the "defines" to change the login information.... after I put it in.
 *
-**/    
-   
-    // create the database
-    include "create_database.php";
+**/ 
+    function createDatabase($servername, $username, $password, $dbname)
+    {
+        // includes
+        include "create_database.php";
+        include "init_database.php";
+        
+        // doings
+        create_database($servername, $username, $password, $dbname);
+        init_database($servername, $username, $password, $dbname);
+    }
+
+    // login info
+    $servername = $_SERVER["SERVER_NAME"];
+    $username = "root";
+    $password = "";
+    $dbname  = "citybdb";
     
-    // initialize the created database
-    include "init_database.php";
+    // todo
+    
+    // create database
+    createDatabase($servername, $username, $password, $dbname);
+    
+    
+    
 ?>
