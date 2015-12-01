@@ -32,20 +32,31 @@
     {
         //todo
     }
+    
+    
+    // here's what you do
+    if($_SERVER["REQUEST_METHOD"] == "POST")
+    {
+        
 
-    // login info
-    $servername = $_SERVER["SERVER_NAME"];
-    $username = "root";
-    $password = "";
-    $dbname  = "citybdb";
+        // login info
+        $servername = $_SERVER["SERVER_NAME"];
+        $username = "root";
+        $password = $_POST["username"];
+        $dbname  = "citybdb";
+        
+        // create database
+        createDatabase($servername, $username, $password, $dbname);
+        
+        // initialize database
+        initDatabase($servername, $username, $password, $dbname);
     
-    // todo
-    
-    // create database
-    createDatabase($servername, $username, $password, $dbname);
-    
-    // initialize database
-    initDatabase($servername, $username, $password, $dbname);
+    }
     
     
 ?>
+
+<script>
+    var password = prompt("Enter password for username 'root': ", "");
+</script>
+
