@@ -41,8 +41,8 @@
 
         // login info
         $servername = $_SERVER["SERVER_NAME"];
-        $username = "root";
-        $password = $_POST["username"];
+        $username = $_POST["username"];
+        $password = $_POST["password"];
         $dbname  = "citybdb";
         
         // create database
@@ -56,7 +56,10 @@
     
 ?>
 
-<script>
-    var password = prompt("Enter password for username 'root': ", "");
-</script>
-
+<form action = "database.php" method = "post">
+Username:
+<input type = "text" name = "username" value = "root"></input><br />
+Password:
+<input type = "password" name = "password"></input><br />
+<button>Create database</button>
+</form>
