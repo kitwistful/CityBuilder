@@ -58,51 +58,45 @@
 
             // create sector table
             $sql = "CREATE TABLE IF NOT EXISTS Sectors(
-            sector VARCHAR NOT NULL UNIQUE,
-            PRIMARY KEY (sector)
-            )
-            ;
-
-            CREATE TABLE IF NOT EXISTS Cities(
-            cityID BIGINT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY, 
+            sector VARCHAR(255) NOT NULL UNIQUE KEY PRIMARY KEY
+            )";
+            $conn->exec($sql);
+            
+            // create cities table
+            $sql = "CREATE TABLE IF NOT EXISTS Cities(
+            cityID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY, 
             userID BIGINT NOT NULL,
-            name VARCHAR NOT NULL, 
+            name VARCHAR(255) NOT NULL, 
             nBlocks BIGINT NOT NULL,
             created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             timestamp TIMESTAMP, 
-            currSector VARCHAR,
+            currSector VARCHAR(255),
             FOREIGN KEY (userID) REFERENCES Users(userID),
-            FOREIGN KEY (currSector) REFERENCES Sectors(sectorID)
-            )
-            ;
+            FOREIGN KEY (currSector) REFERENCES Sectors(sector)
+            )";
+            $conn->exec($sql);
 
-            CREATE TABLE IF NOT EXISTS CityBlocks(
+            // create city-sector relationship
+            $sql = "CREATE TABLE IF NOT EXISTS CityBlocks(
             cityID BIGINT NOT NULL,
-            sector VARCHAR NOT NULL, 
+            sector VARCHAR(255) NOT NULL, 
             nBlocks BIGINT NOT NULL,
             FOREIGN KEY(cityID) REFERENCES Cities(cityID),
             FOREIGN KEY(sector) REFERENCES Sectors(sector)
-            )
-            ;
+            )";
+            $conn->exec($sql);
 
-            INSERT INTO Sectors VALUES(
+            // initialize sectors
+            $sql = "INSERT INTO Sectors(
             'Recreational',
             'Educational',
             'Residential',
             'Business'
-            )
-            ;
-
-                
-            )
-            ;";
-            
-            
-            
+            )";
             $conn->exec($sql);
         
         } catch (PDOException $e) {
-            echo $sql."<br />".$e->getMessage()."<br />".$e->getTraceAsString()."<br />";
+            echo $sql."<br />".$e->getMessage()."<br />";
         }
         
         
