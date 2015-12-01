@@ -32,8 +32,7 @@
     // has different content depending on whether or not user is logged in
     if(!$bLoggedIn)
     {
-        echo "<article><header>Dashboard</header><content>Please <a href = 'login.php'>log in</a> or <a href = 'create_account.php'>sign up</a> to start playing the game.</content></article>";
-        
+        echo "<article><header>Welcome to City Builder!</header><content>To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. <!--You can also <a href = 'recover_account.php'>recover an account</a> if you have a code.--> Have fun!</content></article>";
     } else {
         include 'game.php';
     }
