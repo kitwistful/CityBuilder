@@ -39,8 +39,6 @@
             else
                 echo "<li><a href = '$url'>$name</a></li>";
         }
-        
-        print_nav_link("Home", "../index.php");
         print_nav_link("Dashboard", "../pages/dashboard.php");
         print_nav_link("Signup", "../pages/signup.php");
         /*print_nav_link("Recover Account", "recover_account.php");*/
