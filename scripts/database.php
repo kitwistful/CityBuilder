@@ -22,7 +22,7 @@
         }   
         catch (PDOException $e)
         {
-            echo $sql."<br />".$e->getMessage();
+            echo $sql."<br />".$e->getMessage()."<br />";
         }
         
         $conn = null;
@@ -30,7 +30,83 @@
 
     function initDatabase($servername, $username, $password, $dbname)
     {
-        //todo
+        
+        
+        
+        
+        // reference current query here
+        $sql = "...";
+        
+        // do queries
+        try {
+            // init connection
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;", $username, $password);
+            
+            // set to exception mode
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            // create user table
+            $sql = "CREATE TABLE IF NOT EXISTS Users(
+            userID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY,
+            name VARCHAR(255) NOT NULL UNIQUE KEY,
+            password VARCHAR(255) NOT NULL,
+            ncoins BIGINT DEFAULT 0 NOT NULL, 
+            description VARCHAR(255),
+            email VARCHAR(255)
+            )";
+            $conn->exec($sql);
+
+            // create sector table
+            $sql = "CREATE TABLE IF NOT EXISTS Sectors(
+            sector VARCHAR NOT NULL UNIQUE,
+            PRIMARY KEY (sector)
+            )
+            ;
+
+            CREATE TABLE IF NOT EXISTS Cities(
+            cityID BIGINT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY, 
+            userID BIGINT NOT NULL,
+            name VARCHAR NOT NULL, 
+            nBlocks BIGINT NOT NULL,
+            created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            timestamp TIMESTAMP, 
+            currSector VARCHAR,
+            FOREIGN KEY (userID) REFERENCES Users(userID),
+            FOREIGN KEY (currSector) REFERENCES Sectors(sectorID)
+            )
+            ;
+
+            CREATE TABLE IF NOT EXISTS CityBlocks(
+            cityID BIGINT NOT NULL,
+            sector VARCHAR NOT NULL, 
+            nBlocks BIGINT NOT NULL,
+            FOREIGN KEY(cityID) REFERENCES Cities(cityID),
+            FOREIGN KEY(sector) REFERENCES Sectors(sector)
+            )
+            ;
+
+            INSERT INTO Sectors VALUES(
+            'Recreational',
+            'Educational',
+            'Residential',
+            'Business'
+            )
+            ;
+
+                
+            )
+            ;";
+            
+            
+            
+            $conn->exec($sql);
+        
+        } catch (PDOException $e) {
+            echo $sql."<br />".$e->getMessage()."<br />".$e->getTraceAsString()."<br />";
+        }
+        
+        
+        
     }
     
     
@@ -46,9 +122,11 @@
         $dbname  = "citybdb";
         
         // create database
+        echo "Create Database:<br />";
         createDatabase($servername, $username, $password, $dbname);
         
         // initialize database
+        echo "Initialize Database:<br />";
         initDatabase($servername, $username, $password, $dbname);
     
     }
