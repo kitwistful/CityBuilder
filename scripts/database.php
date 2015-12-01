@@ -10,13 +10,27 @@
 **/ 
     function createDatabase($servername, $username, $password, $dbname)
     {
-        // includes
-        include "create_database.php";
-        include "init_database.php";
+        $sql = "CREATE DATABASE $dbname";
+
+        try {
+            $conn = new PDO("mysql:host=$servername;", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $conn->exec($sql);
+            
+            echo "Database created successfully<br />";
+        }   
+        catch (PDOException $e)
+        {
+            echo $sql."<br />".$e->getMessage();
+        }
         
-        // doings
-        create_database($servername, $username, $password, $dbname);
-        init_database($servername, $username, $password, $dbname);
+        $conn = null;
+    }
+
+    function initDatabase($servername, $username, $password, $dbname)
+    {
+        //todo
     }
 
     // login info
@@ -30,6 +44,8 @@
     // create database
     createDatabase($servername, $username, $password, $dbname);
     
+    // initialize database
+    initDatabase($servername, $username, $password, $dbname);
     
     
 ?>
