@@ -1,5 +1,15 @@
 <!DOCTYPE HTML>
 <?php
+/**
+* dashboard.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This page is where the game can be found, provided the player is logged in.
+*
+**/
+    // initialize session
     session_start();
 ?>
 <html>

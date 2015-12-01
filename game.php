@@ -1,4 +1,14 @@
 <?php
+/**
+* game.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This contains the game logic & view.
+*
+**/
+
     // sector enums
     define("SECTOR_RESIDENTIAL", "residential");
     define("SECTOR_EDUCATIONAL", "educational");

@@ -1,5 +1,15 @@
 <!DOCTYPE HTML>
 <?php
+/**
+* create_account.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This page is where players can create their accounts.
+*
+**/
+    // initialize session
     session_start();
 ?>
 <html>

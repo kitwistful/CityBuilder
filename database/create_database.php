@@ -1,4 +1,13 @@
 <?php
+/**
+* database/create_database.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This script creates the new empty database.
+*
+**/
     $servername = "localhost";
     $dbname = "citybdb";
     $username = "root";

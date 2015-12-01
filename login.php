@@ -1,5 +1,15 @@
 <!DOCTYPE HTML>
 <?php
+/**
+* login.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This page has a form in it that enables a player to sign in.
+*
+**/
+    // initialize session
     session_start();
 ?>
 <html>

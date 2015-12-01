@@ -1,3 +1,17 @@
+<?php
+/**
+* header.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This header should be inserted above content in the <body> section of a page.
+* It displays the title of the application, links to each page, and anything
+* else that should be visible and accessible on each page.
+*
+**/
+?>
+
 <div id = "global_header">
     <header>
         City Builder

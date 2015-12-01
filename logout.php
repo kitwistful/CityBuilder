@@ -1,6 +1,18 @@
 <!DOCTYPE HTML>
 <?php
+/**
+* logout.php
+* Project: CityBuilder Application
+* Author(s): Kathryn McKay
+* Year: 2015
+*
+* This page causes the user to be logged out.
+*
+**/
+    // initialize session
     session_start();
+    
+    // clear all session data
     session_unset();
 ?>
 <html>
