@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 /**
-* dashboard.php
+* pages/dashboard.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
@@ -14,7 +14,7 @@
 ?>
 <html>
 <head>
-<?php include "include.php"; ?>
+<?php include "../scripts/include.php"; ?>
     <title>Play City Builder</title>
 </head>
 <body>
@@ -24,8 +24,8 @@
     $username = $_SESSION["citybuilder_username"];
 
     // header
-    define("CURRENT_PAGE", "dashboard.php");
-    include "header.php";
+    define("CURRENT_PAGE", "../pages/dashboard.php");
+    include "../scripts/header.php";
     
 ?>
 <?php

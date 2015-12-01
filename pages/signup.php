@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <?php
 /**
-* login.php
+* pages/signup.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
 *
-* This page has a form in it that enables a player to sign in.
+* This page is where players can create their accounts.
 *
 **/
     // initialize session
@@ -14,11 +14,14 @@
 ?>
 <html>
 <head>
-<?php include "include.php"; ?>
-    <title>Login to City Builder</title>
+<?php include "../scripts/include.php"; ?>
+    <title>Join City Builder</title>
 </head>
 <body>
 <?php
+    // header
+    define("CURRENT_PAGE", "../pages/signup.php");
+    include "../scripts/header.php";
     
     // message to display
     $signup_message = null;
@@ -38,6 +41,7 @@
         // get form info
         $username = $_POST["username"];
         $password = $_POST["password"];
+        $password_again = $_POST["password_again"];
         
         // begin listing errors
         if($signup_message == null)
@@ -55,6 +59,11 @@
         {
             $signup_message = $signup_message."<li>password is required</li>";
         }
+        else
+        {
+            if($password_again != $password)
+                $signup_message = $signup_message."<li>passwords do not match</li>";
+        }
         
         // compile list
         if($signup_message != "")
@@ -64,36 +73,30 @@
             // obviously nothing is wrong
             $signup_message = "successful";
             
-            // consider yourself logged in
-            $_SESSION["citybuilder_bLoggedIn"] = true;
-            
-            // let's remember your name
-            $_SESSION["citybuilder_username"] = $username;
-            
-            // actually something is wrong
-            $signup_message = "You are now 'logged in' (Quotes for debug behaviour).";
+            // actually, this isn't implemented yet sooo
+            $signup_message = "Account creation is currently unsupported. Sorry";
         }
     }
-    
-    
-    // header
-    define("CURRENT_PAGE", "login.php");
-    include "header.php";
 ?>
+
     <article>
-        <header>Login</header>
+        <header>Sign up for City Builder</header>
 <?php
     if($signup_message != null)
     {
         echo "<content><div class = 'signup_error'><header>Information</header><content>$signup_message</content></div></content>";
+    } else {
+        echo "<content>To continue, choose your username and password.</content>";
     }
 ?>
-        <form id = "login_form" method = "POST" action = "login.php">
+        <form id = "create_account_form" method = "POST" action = "create_account.php">
             <label>Username:</label>
-            <input id = "username" type = "text" name = "username" value = <?php echo "\"$username\""?>></input>
+            <input id = "create_account_username" name = "username" type = "text" value = <?php echo "\"$username\"" ?>></input>
             <label>Password:</label>
-            <input id = "password" type = "password" name = "password"></input>
-            <button id = "login_button">Go</input>
+            <input id = "create_account_password" name = "password" type = "password"></input>
+            <label>Re-enter your password:</label>
+            <input id = "create_account_password_again" name = "password_again" type = "password"></input>
+            <button id = "create_account_confirm">Signup</button>
         </form>
     </article>
 </body>

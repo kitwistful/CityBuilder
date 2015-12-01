@@ -9,7 +9,7 @@ mouseclick or allowed to expand in real time. As the user's city improves it
 will be given a description based on how the user has chosen to develop it.
 
 # Setup
-To initialize the database, please run 'database.php'.
+To initialize the database, please run scripts/database.php.
 
 # Game rules
 The game progresses in 1 minute intervals, but can also be advanced through

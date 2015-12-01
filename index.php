@@ -14,13 +14,13 @@
 ?>
 <html>
 <head>
-<?php include "include.php"; ?>
+<?php include "scripts/include.php"; ?>
     <title>City Builder</title>
 </head>
 <body>
 <?php
-    define("CURRENT_PAGE", "index.php");
-    include "header.php";
+    define("CURRENT_PAGE", "../index.php");
+    include "scripts/header.php";
 ?>
 
     <article>

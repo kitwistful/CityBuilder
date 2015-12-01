@@ -1,6 +1,6 @@
 <?php
 /**
-* header.php
+* scripts/header.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
@@ -40,20 +40,20 @@
                 echo "<li><a href = '$url'>$name</a></li>";
         }
         
-        print_nav_link("Home", "index.php");
-        print_nav_link("Dashboard", "dashboard.php");
-        print_nav_link("Signup", "create_account.php");
+        print_nav_link("Home", "../index.php");
+        print_nav_link("Dashboard", "../pages/dashboard.php");
+        print_nav_link("Signup", "../pages/signup.php");
         /*print_nav_link("Recover Account", "recover_account.php");*/
         
         // change links depending on whether or not you're logged in
         if($_SESSION["citybuilder_bLoggedIn"])
         {
             // you're logged in so maybe you wanna log out
-            print_nav_link("Logout", "logout.php");
+            print_nav_link("Logout", "../pages/logout.php");
             
         } else{
             // you aren't login so...log in. 
-            print_nav_link("Login", "login.php");
+            print_nav_link("Login", "../pages/login.php");
         }
         
     ?>

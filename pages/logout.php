@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <?php
 /**
-* logout.php
+* pages/logout.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
@@ -17,13 +17,13 @@
 ?>
 <html>
 <head>
-<?php include "include.php"; ?>
+<?php include "../scripts/include.php"; ?>
     <title>Logged out of City Builder</title>
 </head>
 <body>
 <?php
-    define("CURRENT_PAGE", "logout.php");
-    include "header.php";
+    define("CURRENT_PAGE", "../pages/logout.php");
+    include "../scripts/header.php";
 ?>
 
     <article>

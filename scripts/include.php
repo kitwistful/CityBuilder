@@ -1,6 +1,6 @@
 <?php
 /**
-* include.php
+* scripts/include.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
@@ -30,4 +30,4 @@
 ?>
 
 <!-- Stylesheet-->
-<link rel = "stylesheet" type = "text/css" href = "style.css" />
+<link rel = "stylesheet" type = "text/css" href = "../styles/style.css" />

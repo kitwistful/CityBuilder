@@ -1,6 +1,6 @@
 <?php
 /**
-* game.php
+* scripts/game.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015

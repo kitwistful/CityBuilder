@@ -1,6 +1,6 @@
 <?php
 /**
-* database.php
+* scripts/database.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
@@ -11,8 +11,8 @@
 **/    
    
     // create the database
-    include "database/create_database.php";
+    include "create_database.php";
     
     // initialize the created database
-    include "database/init_database.php";
+    include "init_database.php";
 ?>

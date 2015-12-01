@@ -1,6 +1,6 @@
 <?php
 /**
-* database/init_database.php
+* scripts/init_database.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
