@@ -87,12 +87,12 @@
             $conn->exec($sql);
 
             // initialize sectors
-            $sql = "INSERT INTO Sectors(
-            'Recreational',
-            'Educational',
-            'Residential',
-            'Business'
-            )";
+            $sql = "INSERT INTO Sectors(sector) VALUES
+            ('Recreational'),
+            ('Educational'),
+            ('Residential'),
+            ('Business')
+            ";
             $conn->exec($sql);
         
         } catch (PDOException $e) {
