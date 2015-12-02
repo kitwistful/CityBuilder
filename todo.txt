@@ -1,11 +1,5 @@
 TODO:
 - database
-    - initialize database
-    - user table
-        - create new
-        - login
-    - city table
-        - create new
     - update data through gameplay
 - gameplay
     - implement sector growth
