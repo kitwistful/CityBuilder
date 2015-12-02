@@ -5,29 +5,15 @@
 * Author(s): Kathryn McKay
 * Year: 2015
 *
-* This contains the game logic & view.
+* This contains the game view.
 *
 **/
-
-include "CityData.php";
-
-
-    
-// citynames
-define("CITY_NAMES", "citybuilder_citynames");
 
 // sectors
 $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
 
-
-// fetch city names
-$cities = null;
-if(!array_key_exists(CITY_NAMES, $_SESSION))
-{
-    $_SESSION[CITY_NAMES] = CityData::getUserCities($_SESSION["citybuilder_username"]);
-} else {
-    $cities = $_SESSION[CITY_NAMES];
-}
+// get cities
+$cities = $_SESSION[CITY_NAMES];
 
 //todo
 if($cities == null)

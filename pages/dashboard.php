@@ -19,13 +19,22 @@
 </head>
 <body>
 <?php
-    // get session values
-    $bLoggedIn = $_SESSION["citybuilder_bLoggedIn"];
-    $username = $_SESSION["citybuilder_username"];
+include "../scripts/CityData.php";
 
-    // header
-    define("CURRENT_PAGE", "../pages/dashboard.php");
-    include "../scripts/header.php";
+// fetch city names
+define("CITY_NAMES", "citybuilder_citynames");
+if(!array_key_exists(CITY_NAMES, $_SESSION))
+{
+    $_SESSION[CITY_NAMES] = CityData::getUserCities($_SESSION["citybuilder_username"]);
+}
+
+// get session values
+$bLoggedIn = $_SESSION["citybuilder_bLoggedIn"];
+$username = $_SESSION["citybuilder_username"];
+
+// header
+define("CURRENT_PAGE", "../pages/dashboard.php");
+include "../scripts/header.php";
     
 ?>
 <?php
