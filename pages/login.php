@@ -23,6 +23,20 @@
 // function to validate login
 function validateLogin($username, $password)
 {
+    // connect to database
+    $conn = getDatabaseConnection();
+    if($conn == null)
+    {
+        return false;
+    }
+    
+    // check pair
+    $sql = "SELECT * FROM Users WHERE username=$username AND password=$password";
+    //todo
+    
+    // disconnect from database
+    $conn = null;
+    
     //todo
     return false;
 }
@@ -63,10 +77,22 @@ function validateLogin($username, $password)
             $signup_message = $signup_message."<li>password is required</li>";
         }
         
-        // validate login
-        else if($username != null && !validateLogin($username, $password))
+        // check username/password pair
+        else if($username != null)
         {
-            $signup_message = $signup_message."<li>Login failed; username or password was not found</li>";
+            // validate login
+            $bValidatedLogin = false;
+            try {
+                $bValidatedLogin = validateLogin($username, $password);
+            } catch (PDOException $e) {
+                echo $e->getMessage()."<br />";
+                $bValidatedLogin = false;
+            }
+            
+            if(!$bValidatedLogin)
+            {
+                $signup_message = $signup_message."<li>Login failed; username or password was not found</li>";
+            }
         }
         
         // compile list

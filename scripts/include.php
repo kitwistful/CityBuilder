@@ -11,6 +11,21 @@
 *
 **/
 
+// connect to database
+function getDatabaseConnection()
+{
+    // infos
+    $servername = $_SERVER["SERVER_NAME"];
+    $username = "root";
+    $password = "";
+    $dbname = "citybdb";
+    
+    // return connection
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname;", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    return $conn;    
+}
+
     // session key list
     $seshkeys = array(
       "citybuilder_bLoggedIn",
