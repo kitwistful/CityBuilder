@@ -112,7 +112,7 @@ function addUser($username, $password)
         echo "<content>To continue, choose your username and password.</content>";
     }
 ?>
-        <form id = "create_account_form" method = "POST" action = "create_account.php">
+        <form id = "create_account_form" method = "POST" action = "signup.php">
             <label>Username:</label>
             <input id = "create_account_username" name = "username" type = "text" value = <?php echo "\"$username\"" ?>></input>
             <label>Password:</label>
