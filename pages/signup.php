@@ -19,6 +19,23 @@
 </head>
 <body>
 <?php
+// signup
+function addUser($username, $password)
+{
+    // make connection
+    $conn = getDatabaseConnection();
+    
+    // todo
+    
+    // break connection
+    $conn = null;
+    
+    // return success
+    // todo
+    return false;
+    
+}
+
     // header
     define("CURRENT_PAGE", "../pages/signup.php");
     include "../scripts/header.php";
@@ -61,9 +78,15 @@
         }
         else
         {
+            // check if passwords match
             if($password_again != $password)
                 $signup_message = $signup_message."<li>passwords do not match</li>";
+            // finally try to add user
+            else if($username != null && !addUser($username, $password)){
+                $signup_message = $signup_message."<li>database error</li>";
+            }
         }
+        
         
         // compile list
         if($signup_message != "")
