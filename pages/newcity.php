@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $cityname = $_POST["cityname"];
     
     // create city
-    $message = CityData::addCity($cityname, $username);
+    $message = CityData::addCity($cityname, $username, 2000, 0);
     if($message != null)
     {
         echo "ERROR: $message<br />";

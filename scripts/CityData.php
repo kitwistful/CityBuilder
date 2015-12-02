@@ -71,7 +71,7 @@ class CityData
     }
     
     // create city
-    function addCity($cityname, $username)
+    function addCity($cityname, $username, $nBlocks, $nCoins)
     {
         // message
         $message = "unknown error";
@@ -79,7 +79,45 @@ class CityData
         //make connection
         $conn = getDatabaseConnection();
         
-        //todo
+        // query that checks city's existence
+        $sql_check = "";//todo
+        
+        // query that inserts city into table
+        $sql_insert_city = "";//todo
+        
+        // query that inserts sectors into table
+        $sql_init_sector_blocks = "";//todo
+        
+        // those queries
+        $sql_queries = array($sql_insert_city, $sql_init_sector_blocks);
+        
+        // do queries
+        try {
+            // check for existing city
+            $stmt = $conn->prepare($sql_check);
+            $stmt->execute();
+            $cityExists = $stmt->rowCount() > 0;
+            
+            // add city
+            if($cityExists)
+            {
+                // don't add city
+                $message = "city '$cityname' already exists";
+            } else {
+                // do the stuff
+                foreach($sql_queries as $i=>$sql)
+                {
+                    $conn->exec($sql);
+                }
+                
+                // you did it
+                $message = null;
+            }
+            
+            
+        } catch (PDOException $e) {
+            $message = $e->getMessage();
+        }
         
         // break connection
         $conn = null;
