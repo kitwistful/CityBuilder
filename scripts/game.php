@@ -8,6 +8,23 @@
 * This contains the game logic & view.
 *
 **/
+function findUserCities($username)
+{
+    // cities
+    $cities = null;
+    
+    // connect to database
+    $conn = getDatabaseConnection();
+    
+    //todo
+    
+    // unconnect
+    $conn = null;
+    
+    // return cities
+    return $cities;
+}
+
 
     // sector enums
     define("SECTOR_RESIDENTIAL", "residential");
@@ -15,9 +32,24 @@
     define("SECTOR_BUSINESS", "business");
     define("SECTOR_RECREATIONAL", "recreational");
     define("SECTOR_NONE", "none");
+    
+    // citynames
+    define("CITY_NAMES", "citybuilder_citynames");
 
-    // city names
-    $cities = array("First City", "Someburb", "Polispolis");
+    // fetch city names
+    $cities = null;
+    if(!array_key_exists(CITY_NAMES, $_SESSION))
+    {
+        $_SESSION[CITY_NAMES] = findUserCities($_SESSION["citybuilder_username"]);
+    } else {
+        $cities = $_SESSION[CITY_NAMES];
+    }
+    
+    //todo
+    if($cities == null)
+    {
+        $cities = array("Needs Implementation");
+    }
     
     // city to change
     $curr_city = 0;
