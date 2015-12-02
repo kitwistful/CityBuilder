@@ -9,126 +9,69 @@
 *
 **/
 
-include "CityInfo.php";
+include "CityData.php";
 
-function findUserCities($username)
+
+    
+// citynames
+define("CITY_NAMES", "citybuilder_citynames");
+
+// sectors
+$sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
+
+
+// fetch city names
+$cities = null;
+if(!array_key_exists(CITY_NAMES, $_SESSION))
 {
-    // cities
-    $cities = null;
-    
-    // connect to database
-    $conn = getDatabaseConnection();
-    
-    //todo
-    
-    // unconnect
-    $conn = null;
-    
-    // return cities
-    return $cities;
+    $_SESSION[CITY_NAMES] = CityData::getUserCities($_SESSION["citybuilder_username"]);
+} else {
+    $cities = $_SESSION[CITY_NAMES];
 }
 
-// sector enums
-define("SECTOR_RESIDENTIAL", "residential");
-define("SECTOR_EDUCATIONAL", "educational");
-define("SECTOR_BUSINESS", "business");
-define("SECTOR_RECREATIONAL", "recreational");
-define("SECTOR_NONE", "none");
-
-function getCityInfo($cityname, $username)
+//todo
+if($cities == null)
 {
-    // data
-    $currSector = SECTOR_NONE;
-    $nBlocks = 0;
-    $sectorBlocks = array(SECTOR_RESIDENTIAL=>0, SECTOR_EDUCATIONAL=>0,
-        SECTOR_BUSINESS=>0, SECTOR_RECREATIONAL=>0);
-    $nCoins = 0;
-    
-    // have you found the city?
-    $isCityFound = false;
-    
-    // make connection
-    $conn = getDatabaseConnection();
-    
-    // do some sql
-    //todo
-    
-    // unmake connection
-    $conn = null;
-    
-    // info object
-    $cityInfo = null;
-    
-    // make the object if the search didn't fail
-    if($isCityFound)
-        $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
-    
-    // return info
-    return $cityInfo;
+    $cities = array("Needs Implementation");
+}
+
+// city to change
+$curr_city = 0;
+
+// update stuff
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    $curr_city = $_POST["city"];
+    $curr_sector = $_REQUEST["sector"];
 }
 
 
-    
-    
-    // citynames
-    define("CITY_NAMES", "citybuilder_citynames");
-    
-    // sectors
-    $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
-    
 
-    // fetch city names
-    $cities = null;
-    if(!array_key_exists(CITY_NAMES, $_SESSION))
+// initialize current city info
+$currCityInfo = CityData::getCityInfo($cities[$curr_city], $_SESSION["citybuilder_username"]);
+
+// calculate interesting information
+$nUnusedBlocks = null;
+$sector_display_class = array(SECTOR_RESIDENTIAL=>false, SECTOR_EDUCATIONAL=>false, SECTOR_BUSINESS=>false, SECTOR_RECREATIONAL=>false);
+if($currCityInfo == null)
+{
+    // error
+    echo sprintf("ERROR: failure loading city '%s'<br />", $cities[$curr_city]);
+} else {
+    // calculate unused blocks
+    $nUnusedBlocks = $currCityInfo->nBlocks;
+    foreach($currCityInfo->sectorBlocks as $k=>$n)
     {
-        $_SESSION[CITY_NAMES] = findUserCities($_SESSION["citybuilder_username"]);
-    } else {
-        $cities = $_SESSION[CITY_NAMES];
-    }
-    
-    //todo
-    if($cities == null)
-    {
-        $cities = array("Needs Implementation");
-    }
-    
-    // city to change
-    $curr_city = 0;
-    
-    // update stuff
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        $curr_city = $_POST["city"];
-        $curr_sector = $_REQUEST["sector"];
+        $nUnusedBlocks = $nUnusedBlocks - $n;
     }
     
     
-    
-    // initialize current city info
-    $currCityInfo = getCityInfo($cities[$curr_city], $_SESSION["citybuilder_username"]);
-    
-    // calculate interesting information
-    $nUnusedBlocks = null;
-    $sector_display_class = array(SECTOR_RESIDENTIAL=>false, SECTOR_EDUCATIONAL=>false, SECTOR_BUSINESS=>false, SECTOR_RECREATIONAL=>false);
-    if($currCityInfo == null)
+    // selected
+    foreach($sector_display_class as $k=>$v)
     {
-        // error
-        echo sprintf("ERROR: failure loading city '%s'<br />", $cities[$curr_city]);
-    } else {
-        // calculate unused blocks
-        $nUnusedBlocks = $currCityInfo->nBlocks;
-        foreach($currCityInfo->sectorBlocks as $k=>$n)
-        {
-            $nUnusedBlocks = $nUnusedBlocks - $n;
-        }
-        
-        
-        // selected
-        foreach($sector_display_class as $k=>$v)
-        {
-            $sector_display_class[$k] = $k == $currCityInfo->currSector ? "selected_sector" : "unselected_sector";
-        }
+        $sector_display_class[$k] = $k == $currCityInfo->currSector ? "selected_sector" : "unselected_sector";
     }
+}
     
     
     

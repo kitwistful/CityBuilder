@@ -1,6 +1,6 @@
 <?php
 /**
-* scripts/cityInfo.php
+* scripts/CityInfo.php
 * Project: CityBuilder Application
 * Author(s): Kathryn McKay
 * Year: 2015
