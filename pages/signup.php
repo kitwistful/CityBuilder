@@ -49,7 +49,7 @@ function addUser($username, $password)
         } else {
             $sql = $sql_add;
             $conn->exec($sql);
-            $message = "success";
+            $message = null;
         }
         
     } catch (PDOException $e) {
@@ -112,7 +112,8 @@ function addUser($username, $password)
             // finally try to add user
             else if($username != null) {
                 $message = addUser($username, $password);
-                $signup_message = $signup_message."<li>$message</li>";
+                if($message != null)
+                    $signup_message = $signup_message."<li>$message</li>";
             }
         }
         
