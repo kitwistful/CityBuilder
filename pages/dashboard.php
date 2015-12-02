@@ -56,7 +56,7 @@ include "../scripts/header.php";
     {
         echo "<article><header>Welcome to City Builder!</header><content>To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. <!--You can also <a href = 'recover_account.php'>recover an account</a> if you have a code.--> Have fun!</content></article>";
     } else if(!$userOwnsCities) {
-        echo "<article><header>No Cities Yet</header><content>It's time to make your first city! Click <a href = '#'>here</a> to create your city.</content></article>";
+        echo "<article><header>No Cities Yet</header><content>It's time to make your first city! Click <a href = 'newcity.php'>here</a> to create your city.</content></article>";
     } else{
         include '../scripts/game.php';
     }

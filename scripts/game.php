@@ -162,4 +162,10 @@ if($currCityInfo == null)
         <header>Update City</header>
         <button>Build</button>
     </article>
+    <article>
+        <header>Create New City</header>
+        <content>
+            Go <a href = "../pages/newcity.php">here</a> to create a new city.
+        </content>
+    </article>
 </form>
