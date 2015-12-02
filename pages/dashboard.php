@@ -21,16 +21,29 @@
 <?php
 include "../scripts/CityData.php";
 
-// fetch city names
+
 define("CITY_NAMES", "citybuilder_citynames");
-if(!array_key_exists(CITY_NAMES, $_SESSION))
-{
-    $_SESSION[CITY_NAMES] = CityData::getUserCities($_SESSION["citybuilder_username"]);
-}
 
 // get session values
 $bLoggedIn = $_SESSION["citybuilder_bLoggedIn"];
 $username = $_SESSION["citybuilder_username"];
+
+// consider whether or not the user has any cities
+$userOwnsCities = false;
+
+// check user's cities
+if($bLoggedIn)
+{
+    if(!array_key_exists(CITY_NAMES, $_SESSION))
+    {
+        $_SESSION[CITY_NAMES] = CityData::getUserCities($username);
+    }
+    
+    $cities = $_SESSION[CITY_NAMES];
+    $userOwnsCities = count($cities) > 0;
+    
+    
+}
 
 // header
 define("CURRENT_PAGE", "../pages/dashboard.php");
@@ -42,7 +55,9 @@ include "../scripts/header.php";
     if(!$bLoggedIn)
     {
         echo "<article><header>Welcome to City Builder!</header><content>To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. <!--You can also <a href = 'recover_account.php'>recover an account</a> if you have a code.--> Have fun!</content></article>";
-    } else {
+    } else if(!$userOwnsCities) {
+        echo "<article><header>No Cities Yet</header><content>It's time to make your first city! Click <a href = '#'>here</a> to create your city.</content></article>";
+    } else{
         include '../scripts/game.php';
     }
 ?>
