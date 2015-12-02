@@ -10,7 +10,7 @@
 **/ 
     function createDatabase($servername, $username, $password, $dbname)
     {
-        $sql = "CREATE DATABASE $dbname";
+        $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 
         try {
             $conn = new PDO("mysql:host=$servername;", $username, $password);
