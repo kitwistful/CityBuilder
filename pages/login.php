@@ -25,20 +25,26 @@ function validateLogin($username, $password)
 {
     // connect to database
     $conn = getDatabaseConnection();
-    if($conn == null)
-    {
-        return false;
-    }
     
-    // check pair
-    $sql = "SELECT * FROM Users WHERE username=$username AND password=$password";
-    //todo
+    // search for pair
+    $sql = "SELECT * FROM Users WHERE name='$username' AND password='$password'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    
+    // inspect results
+    $result = $stmt->rowCount() > 0;
+    
+    // retrieve row key
+    if($result)
+    {
+        //todo
+    }
     
     // disconnect from database
     $conn = null;
     
-    //todo
-    return false;
+    // return result
+    return $result;
 }
     
     // message to display
