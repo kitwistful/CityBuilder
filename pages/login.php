@@ -19,6 +19,13 @@
 </head>
 <body>
 <?php
+
+// function to validate login
+function validateLogin($username, $password)
+{
+    //todo
+    return false;
+}
     
     // message to display
     $signup_message = null;
@@ -54,6 +61,12 @@
         if($password == null)
         {
             $signup_message = $signup_message."<li>password is required</li>";
+        }
+        
+        // validate login
+        else if($username != null && !validateLogin($username, $password))
+        {
+            $signup_message = $signup_message."<li>Login failed; username or password was not found</li>";
         }
         
         // compile list
