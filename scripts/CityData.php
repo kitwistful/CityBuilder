@@ -80,7 +80,7 @@ class CityData
         $conn = getDatabaseConnection();
         
         // query that checks city's existence
-        $sql_check = "";//todo
+        $sql_check = "SELECT Cities.name, Users.name FROM Cities INNER JOIN Users ON Cities.userID=Users.userID WHERE Cities.name='$cityname' AND Users.name = '$username' ";//todo
         
         // query that inserts city into table
         $sql_insert_city = "";//todo
