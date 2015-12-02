@@ -25,14 +25,16 @@ function addUser($username, $password)
     // make connection
     $conn = getDatabaseConnection();
     
+    // statement
+    $sql = "INSERT INTO Users(name, password) VALUES('$username', '$password')";
+    
     // todo
     
     // break connection
     $conn = null;
     
     // return success
-    // todo
-    return false;
+    return "not implemented";
     
 }
 
@@ -82,8 +84,9 @@ function addUser($username, $password)
             if($password_again != $password)
                 $signup_message = $signup_message."<li>passwords do not match</li>";
             // finally try to add user
-            else if($username != null && !addUser($username, $password)){
-                $signup_message = $signup_message."<li>database error</li>";
+            else if($username != null) {
+                $message = addUser($username, $password);
+                $signup_message = $signup_message."<li>$message</li>";
             }
         }
         
