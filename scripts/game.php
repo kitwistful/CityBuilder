@@ -28,13 +28,39 @@ function findUserCities($username)
     return $cities;
 }
 
+// sector enums
+define("SECTOR_RESIDENTIAL", "residential");
+define("SECTOR_EDUCATIONAL", "educational");
+define("SECTOR_BUSINESS", "business");
+define("SECTOR_RECREATIONAL", "recreational");
+define("SECTOR_NONE", "none");
 
-    // sector enums
-    define("SECTOR_RESIDENTIAL", "residential");
-    define("SECTOR_EDUCATIONAL", "educational");
-    define("SECTOR_BUSINESS", "business");
-    define("SECTOR_RECREATIONAL", "recreational");
-    define("SECTOR_NONE", "none");
+function getCityInfo($cityname, $username)
+{
+    // data
+    $currSector = SECTOR_RESIDENTIAL;
+    $nBlocks = 2000;
+    $sectorBlocks = array(SECTOR_RESIDENTIAL=>100, SECTOR_EDUCATIONAL=>200,
+        SECTOR_BUSINESS=>300, SECTOR_RECREATIONAL=>400);
+    $nCoins = 0;
+    
+    // make connection
+    $conn = getDatabaseConnection();
+    
+    // todo
+    
+    // unmake connection
+    $conn = null;
+    
+    // make info object
+    $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
+    
+    // return info
+    return $cityInfo;
+}
+
+
+    
     
     // citynames
     define("CITY_NAMES", "citybuilder_citynames");
@@ -67,11 +93,7 @@ function findUserCities($username)
     
     
     // initialize current city info
-    $currCityInfo = new CityInfo(SECTOR_RESIDENTIAL, 2000,
-        array(SECTOR_RESIDENTIAL=>100,
-            SECTOR_EDUCATIONAL=>200, SECTOR_BUSINESS=>300,
-            SECTOR_RECREATIONAL=>400),
-        0);
+    $currCityInfo = getCityInfo($cities[$curr_city], $_SESSION["citybuilder_username"]);
     
     // calculate unused blocks
     $nUnusedBlocks = $currCityInfo->nBlocks;
