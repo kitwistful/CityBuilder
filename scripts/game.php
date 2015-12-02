@@ -38,22 +38,30 @@ define("SECTOR_NONE", "none");
 function getCityInfo($cityname, $username)
 {
     // data
-    $currSector = SECTOR_RESIDENTIAL;
-    $nBlocks = 2000;
-    $sectorBlocks = array(SECTOR_RESIDENTIAL=>100, SECTOR_EDUCATIONAL=>200,
-        SECTOR_BUSINESS=>300, SECTOR_RECREATIONAL=>400);
+    $currSector = SECTOR_NONE;
+    $nBlocks = 0;
+    $sectorBlocks = array(SECTOR_RESIDENTIAL=>0, SECTOR_EDUCATIONAL=>0,
+        SECTOR_BUSINESS=>0, SECTOR_RECREATIONAL=>0);
     $nCoins = 0;
+    
+    // have you found the city?
+    $isCityFound = false;
     
     // make connection
     $conn = getDatabaseConnection();
     
-    // todo
+    // do some sql
+    //todo
     
     // unmake connection
     $conn = null;
     
-    // make info object
-    $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
+    // info object
+    $cityInfo = null;
+    
+    // make the object if the search didn't fail
+    if($isCityFound)
+        $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
     
     // return info
     return $cityInfo;
@@ -64,6 +72,10 @@ function getCityInfo($cityname, $username)
     
     // citynames
     define("CITY_NAMES", "citybuilder_citynames");
+    
+    // sectors
+    $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
+    
 
     // fetch city names
     $cities = null;
@@ -95,22 +107,30 @@ function getCityInfo($cityname, $username)
     // initialize current city info
     $currCityInfo = getCityInfo($cities[$curr_city], $_SESSION["citybuilder_username"]);
     
-    // calculate unused blocks
-    $nUnusedBlocks = $currCityInfo->nBlocks;
-    foreach($currCityInfo->sectorBlocks as $k=>$n)
+    // calculate interesting information
+    $nUnusedBlocks = null;
+    $sector_display_class = array(SECTOR_RESIDENTIAL=>false, SECTOR_EDUCATIONAL=>false, SECTOR_BUSINESS=>false, SECTOR_RECREATIONAL=>false);
+    if($currCityInfo == null)
     {
-        $nUnusedBlocks = $nUnusedBlocks - $n;
+        // error
+        echo sprintf("ERROR: failure loading city '%s'<br />", $cities[$curr_city]);
+    } else {
+        // calculate unused blocks
+        $nUnusedBlocks = $currCityInfo->nBlocks;
+        foreach($currCityInfo->sectorBlocks as $k=>$n)
+        {
+            $nUnusedBlocks = $nUnusedBlocks - $n;
+        }
+        
+        
+        // selected
+        foreach($sector_display_class as $k=>$v)
+        {
+            $sector_display_class[$k] = $k == $currCityInfo->currSector ? "selected_sector" : "unselected_sector";
+        }
     }
     
-    // sectors
-    $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
     
-    // selected
-    $sector_display_class = array(SECTOR_RESIDENTIAL=>null, SECTOR_EDUCATIONAL=>null, SECTOR_BUSINESS=>null, SECTOR_RECREATIONAL=>null);
-    foreach($sector_display_class as $k=>$v)
-    {
-        $sector_display_class[$k] = $k == $currCityInfo->currSector ? "selected_sector" : "unselected_sector";
-    }
     
     
     
