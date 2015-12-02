@@ -25,16 +25,42 @@ function addUser($username, $password)
     // make connection
     $conn = getDatabaseConnection();
     
-    // statement
-    $sql = "INSERT INTO Users(name, password) VALUES('$username', '$password')";
+    // message
+    $message = "unknown error";
     
-    // todo
+    // statements
+    $sql_check = "SELECT * FROM Users WHERE name='$username'";
+    $sql_add = "INSERT INTO Users(name, password) VALUES('$username', '$password')";
+    $sql = "";
+    // access database
+    try {
+        // search for username
+        $sql = $sql_check;
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        
+        // evaluate results
+        $userExists = $stmt->rowCount() > 0;
+        
+        // try to add user
+        if($userExists)
+        {
+            $message = "username '$username' is taken";
+        } else {
+            $sql = $sql_add;
+            $conn->exec($sql);
+            $message = "success";
+        }
+        
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+    }
     
     // break connection
     $conn = null;
     
     // return success
-    return "not implemented";
+    return $message;
     
 }
 
