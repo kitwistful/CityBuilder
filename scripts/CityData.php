@@ -70,6 +70,25 @@ class CityData
         return $cityInfo;
     }
     
+    // create city
+    function addCity($cityname, $username)
+    {
+        // message
+        $message = "unknown error";
+        
+        //make connection
+        $conn = getDatabaseConnection();
+        
+        //todo
+        
+        // break connection
+        $conn = null;
+        
+        // return error message
+        return $message;
+        
+    }
+    
     
     
 }

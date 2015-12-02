@@ -9,8 +9,9 @@
 * Page that allows users to create a new city.
 *
 **/
-    // initialize session
-    session_start();
+// initialize session
+session_start();
+
 ?>
 <html>
 <head>
@@ -19,8 +20,33 @@
 </head>
 <body>
 <?php
-    define("CURRENT_PAGE", "../pages/newcity.php");
-    include "../scripts/header.php";
+include "../scripts/CityData.php";
+
+$username = $_SESSION["citybuilder_username"];
+if(!$_SESSION["citybuilder_bLoggedIn"] || $username == null)
+{
+    echo "ERROR: not logged in<br />";
+}
+
+// form validation
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+    // get form info
+    $cityname = $_POST["cityname"];
+    
+    // create city
+    $message = CityData::addCity($cityname, $username);
+    if($message != null)
+    {
+        echo "ERROR: $message<br />";
+    } else {
+        echo "Successfully created '$cityname'<br />";
+    }
+}
+
+
+define("CURRENT_PAGE", "../pages/newcity.php");
+include "../scripts/header.php";
 ?>
 
     <article>
