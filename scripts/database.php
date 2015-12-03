@@ -9,7 +9,7 @@
 *
 * Notes:
 * Some of these "auto_increment" primary key IDs, particularly for tables with
-* values that are initalized here, are meaningless. The values are initialized
+* values that are initalized here, are meaningless; The values are initialized
 * with their IDs.
 *
 **/ 

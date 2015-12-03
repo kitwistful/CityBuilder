@@ -7,7 +7,6 @@ TODO:
     - implement page refresh
     - implement descriptions based on sector composition
         - (goes where 'What is there to say about this place?' currently is)
-        - write the flavour text
 - improve production
     - CSS styling
         - font choices
