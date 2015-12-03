@@ -38,7 +38,14 @@ class CityData
             $stmt->execute();
             
             // get results
-            //todo
+            $results = $stmt->fetchAll();
+            foreach($results as $k=>$record)
+            {
+                echo $record["name"];
+            }
+            
+            echo "hello?";
+            
         } catch (PDOException $e) {
             $message = $e->getLine().": ".$e->getMessage();
         }
