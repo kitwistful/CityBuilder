@@ -140,7 +140,7 @@
             // insert block ranks
             foreach($blockRanks as $rankID=>$rankValue)
             {
-                $sql = "INSERT INTO SectorBlockRanks(nBlocks) VALUES ($rankValue)";
+                $sql = "INSERT INTO SectorBlockRanks(nBlocks) VALUES ($rankValue) ON DUPLICATE KEY UPDATE rankID=$rankID";
                 $conn->exec($sql);
             }
             
