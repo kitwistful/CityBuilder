@@ -67,6 +67,16 @@ class CityData
             SECTOR_BUSINESS=>0, SECTOR_RECREATIONAL=>0);
         $nCoins = 0;
         
+        
+        
+                
+        //sector names
+        $sectors = array(SECTOR_RESIDENTIAL=>"Residential",
+            SECTOR_EDUCATIONAL=>"Educational",
+            SECTOR_BUSINESS=>"Business",
+            SECTOR_RECREATIONAL=>"Recreational"
+            );
+            
         // have you found the city?
         $isCityFound = false;
         
@@ -101,12 +111,23 @@ class CityData
                 $nCoins = $record["nCoins"];
                 $nBlocks = $record["nBlocks"];
                 
-                // query sector info
-                $sectors = array(SECTOR_RESIDENTIAL=>"Residential",
-                    SECTOR_EDUCATIONAL=>"Educational",
-                    SECTOR_BUSINESS=>"Business",
-                    SECTOR_RECREATIONAL=>"Recreational"
-                    );
+                // fix currSector
+                if($currSector == null)
+                    $currSector = SECTOR_NONE;
+                else
+                {
+                    // convert good to key
+                    foreach($sectors as $target=>$src)
+                    {
+                        if($currSector == $src)
+                        {
+                            $currSector = $target;
+                            break;
+                        }
+                    }
+                }
+                
+                // get sector block values
                 foreach ($sectors as $k=>$name)
                 {
                     // do query
