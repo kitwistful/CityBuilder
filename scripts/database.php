@@ -100,7 +100,7 @@
             ALTER TABLE CityDescriptions DROP COLUMN upToBlockLevel;
             ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nextDescID BIGINT;
             ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;
-            ALTER TABLE CityDescrptions DROP COLUMN nextDescID;
+            ALTER TABLE CityDescriptions DROP COLUMN nextDescID;
             ALTER TABLE CityDescriptions ADD COLUMN nextDescID BIGINT FOREIGN KEY REFERENCES CityDescriptions(descID)";
             $conn->exec($sql);
             
@@ -117,7 +117,44 @@
             
             // amend city-sector relationship
             // ... no amends yet
-
+            
+            // array of descriptions
+            $descriptions = array(
+                    "Recreational"=>array(
+                        "first",
+                        "second"
+                        ),
+                    "Educational"=>array(
+                        "first",
+                        "second"
+                        ),
+                    "Residential"=>array(
+                        "first",
+                        "second"
+                        ),
+                    "Business"=>array(
+                        "first",
+                        "second"
+                        )
+                );
+                
+            // create descriptions insert query
+            $descCount = 0;
+            foreach($descriptions as $sector=>$list)
+            {
+                foreach($list as $i=>$description)
+                {
+                    //todo
+                    
+                    // increment
+                    $descCount++;
+                    
+                }
+            }
+            
+            // insert descriptions
+            //todo
+            
             // initialize sectors
             $sql = "INSERT INTO Sectors(sector) VALUES
             ('Recreational'),
@@ -126,10 +163,6 @@
             ('Business')
             ";
             $conn->exec($sql);
-            
-            
-            // initialize descriptions
-            //todo
         
         } catch (PDOException $e) {
             echo $sql."<br />".$e->getMessage()."<br />";
