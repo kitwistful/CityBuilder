@@ -78,9 +78,10 @@ class CityData
         FROM Cities INNER JOIN Users ON Cities.userID=Users.userID
         WHERE Users.name='$username' AND Cities.name='$cityname'";
         
-        echo "hello";
+        
         // query to retrieve city sector info
-        $sql_select_sector_fmt = "%d %s";//todo
+        $sql_select_sector_fmt = "SELECT nBlocks FROM CityBlocks WHERE
+            cityID=%d AND sector='%s'";
         
         // do the stuff
         try {
