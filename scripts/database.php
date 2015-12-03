@@ -135,7 +135,15 @@
             // ... no amends yet
             
             // insert sector ranks
-            //todo
+            $sql = "INSERT INTO SectorBlockRanks
+            (nBlocks)
+            VALUES
+            (0),
+            (100),
+            (1000),
+            (2000)
+            ";
+            $conn->exec($sql);
             
             // array of descriptions
             $descriptions = array(
