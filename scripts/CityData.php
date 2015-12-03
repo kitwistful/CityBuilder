@@ -95,7 +95,8 @@ class CityData
         $sql_get_cityID_fmt = "SELECT cityID FROM Cities WHERE name='$cityname' AND userID=%d";
         
         // query that inserts sectors into table
-        $sql_init_sector_blocks_fmt = "";//todo
+        $sql_init_sector_blocks_fmt = "INSERT INTO CityBlocks(cityID, sector, nBlocks)
+        VALUES (%d,'%s', 0)";
         
         // do queries
         try {
@@ -126,7 +127,11 @@ class CityData
                 $cityid = $cityrec["cityID"];
                 echo $cityid."<br />";
                 
-                
+                // insert sectors
+                $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_RESIDENTIAL));
+                $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_EDUCATIONAL));
+                $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_RECREATIONAL));
+                $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_BUSINESS));
                 
             }
             
