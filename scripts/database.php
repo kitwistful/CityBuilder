@@ -157,27 +157,27 @@
             // array of descriptions
             $descriptions = array(
                     "NULL"=>array(
-                        1=>"ghost town"
+                        1=>"There isn''t much around here."
                         ),
                     "'Recreational'"=>array(
-                        2=>"first",
-                        3=>"second",
-                        4=>"third"
+                        2=>"Has some things to do here and there.",
+                        3=>"Destination: downtown.",
+                        4=>"A great place to go and have a good time!"
                         ),
                     "'Educational'"=>array(
-                        2=>"first",
-                        3=>"second",
-                        4=>"third"
+                        2=>"A fledgeling institution.",
+                        3=>"New research opprotunities opening every day.",
+                        4=>"The premier destination for discovering new things!"
                         ),
                     "'Residential'"=>array(
-                        2=>"first",
-                        3=>"second",
-                        4=>"third"
+                        2=>"Large lots for sale.",
+                        3=>"Very lucrative subdivisions.",
+                        4=>"Population density: better get used to it!"
                         ),
                     "'Business'"=>array(
-                        2=>"first",
-                        3=>"second",
-                        4=>"third"
+                        2=>"Chains are opening new branches here.",
+                        3=>"Local businesses are beginning to emerge.",
+                        4=>"The place to be to rub shoulders with the elite!"
                         )
                 );
                 
