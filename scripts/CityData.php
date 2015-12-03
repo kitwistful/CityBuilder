@@ -89,25 +89,41 @@ class CityData
             $stmt = $conn->prepare($sql_select_city);
             $stmt->execute();
             
-            // record city info
-            //todo
-            $cityid = null;
+            // get cityID
+            $record = $stmt->fetch();
+            $cityid = $record["cityID"];
             
-            // query sector info
-            $sectors = array(SECTOR_RESIDENTIAL=>"Residential",
-                SECTOR_EDUCATIONAL=>"Educational",
-                SECTOR_BUSINESS=>"Business",
-                SECTOR_RECREATIONAL=>"Recreational"
-                );
-            foreach ($sectors as $k=>$name)
+            // record info
+            if($cityid)
             {
-                // do query
-                $stmt = $conn->prepare(sprintf($sql_select_sector_fmt, $cityid, $name));
-                $stmt->execute();
+                // record city info
+                $currSector = $record["currSector"];
+                $nCoins = $record["nCoins"];
                 
-                // record info
-                //todo
+                // query sector info
+                $sectors = array(SECTOR_RESIDENTIAL=>"Residential",
+                    SECTOR_EDUCATIONAL=>"Educational",
+                    SECTOR_BUSINESS=>"Business",
+                    SECTOR_RECREATIONAL=>"Recreational"
+                    );
+                foreach ($sectors as $k=>$name)
+                {
+                    // do query
+                    $stmt = $conn->prepare(sprintf($sql_select_sector_fmt, $cityid, $name));
+                    $stmt->execute();
+                    
+                    // record info
+                    $record = $stmt->fetch();
+                    $sectorBlocks[$k] = $record["nBlocks"];
+                }
+                
+                // success
+                $isCityFound = true;
             }
+            
+            
+            
+            
             
         } catch (PDOException $e) {
             $message = $e->getLine().": ".$e->getMessage();
