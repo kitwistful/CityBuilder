@@ -112,7 +112,9 @@
             "ALTER TABLE CityDescriptions DROP COLUMN nextDescID;",
             "ALTER TABLE CityDescriptions ADD COLUMN nextDescID BIGINT",
             "ALTER TABLE CityDescriptions ADD CONSTRAINT FOREIGN KEY(nextDescID) REFERENCES CityDescriptions(descID);",
-            "ALTER TABLE CityDescriptions DROP COLUMN blockRank BIGINT NOT NULL FOREIGN KEY REFERENCES SectorBlockRanks(rankID);",
+            "ALTER TABLE CityDescriptions DROP COLUMN nBlocks",
+            "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS blockRank BIGINT NOT NULL",
+            "ALTER TABLE CityDescriptions ADD CONSTRAINT FOREIGN KEY(blockRank) REFERENCES SectorBlockRanks(rankID);",
             );
             foreach($sqls as $k=>$sql)
                 $conn->exec($sql);
