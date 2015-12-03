@@ -136,7 +136,7 @@ class CityData
                     
                     // record info
                     $record = $stmt->fetch();
-                    $sectorBlocks[$k] = $record["nBlocks"];
+                    $sectorBlocks[$sectors[$k]] = $record["nBlocks"];
                 }
                 
                 // success
