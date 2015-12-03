@@ -116,24 +116,24 @@ class CityData
                 $stmt->execute();
                 $userrec = $stmt->fetch(PDO::FETCH_ASSOC);
                 $userid = $userrec["userID"];
-                echo $userid."<br />";
                 
                 // insert city
-                $stmt = $conn->prepare(sprintf($sql_insert_city_fmt, $userid));
-                $stmt->execute();
+                $conn->exec(sprintf($sql_insert_city_fmt, $userid));
                 
                 // get cityID
                 $stmt = $conn->prepare(sprintf($sql_get_cityID_fmt, $userid));
                 $stmt->execute();
                 $cityrec = $stmt->fetch(PDO::FETCH_ASSOC);
                 $cityid = $cityrec["cityID"];
-                echo $cityid."<br />";
                 
                 // insert sectors
                 $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_RESIDENTIAL));
                 $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_EDUCATIONAL));
                 $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_RECREATIONAL));
                 $conn->exec(sprintf($sql_init_sector_blocks_fmt, $cityid, SECTOR_BUSINESS));
+                
+                // we're good
+                $message = null;
                 
             }
             
