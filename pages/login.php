@@ -114,9 +114,6 @@ function validateLogin($username, $password)
             
             // let's remember your name
             $_SESSION["citybuilder_username"] = $username;
-            
-            // actually something is wrong
-            $signup_message = "You are now 'logged in' (Quotes for debug behaviour).";
         }
     }
     
