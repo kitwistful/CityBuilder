@@ -85,8 +85,17 @@
             // amend cities table
             // ....no amends yet
             
+            // create table of sector ranks
+            $sql = "CREATE TABLE IF NOT EXISTS SectorBlockRanks(
+            rankID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY,
+            nBlocks BIGINT NOT NULL UNIQUE KEY
+            )";
+            $conn->exec($sql);
             
-            // creates descriptions table
+            // amends for sector ranks
+            // ... no amends yet
+            
+            // create descriptions table
             $sql = "CREATE TABLE IF NOT EXISTS CityDescriptions(
             descID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY,
             content TEXT NOT NULL,
@@ -116,16 +125,6 @@
             $conn->exec($sql);
             
             // amend city-sector relationship
-            // ... no amends yet
-            
-            // create table of sector ranks
-            $sql = "CREATE TABLE IF NOT EXISTS SectorBlockRanks(
-            rankID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY,
-            nBlocks BIGINT NOT NULL UNIQUE KEY
-            )";
-            $conn->exec($sql);
-            
-            // amend sector ranks
             // ... no amends yet
             
             // insert sector ranks
