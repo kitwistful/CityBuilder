@@ -23,7 +23,7 @@ function getDatabaseConnection()
     // return connection
     $conn = new PDO("mysql:host=$servername;dbname=$dbname;", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $conn->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY);
+    $conn->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
     return $conn;    
 }
 
