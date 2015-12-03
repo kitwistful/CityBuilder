@@ -159,22 +159,22 @@
                     "NULL"=>array(
                         1=>"ghost town"
                         ),
-                    "Recreational"=>array(
+                    "'Recreational'"=>array(
                         2=>"first",
                         3=>"second",
                         4=>"third"
                         ),
-                    "Educational"=>array(
+                    "'Educational'"=>array(
                         2=>"first",
                         3=>"second",
                         4=>"third"
                         ),
-                    "Residential"=>array(
+                    "'Residential'"=>array(
                         2=>"first",
                         3=>"second",
                         4=>"third"
                         ),
-                    "Business"=>array(
+                    "'Business'"=>array(
                         2=>"first",
                         3=>"second",
                         4=>"third"
@@ -200,7 +200,7 @@
                     }
                     
                     // append
-                    $sql = "($descCount, '$sector', $rankID, '$description', $nextRank)$sql";
+                    $sql = "($descCount, $sector, $rankID, '$description', $nextRank)$sql";
                     
                     // increment
                     $descCount++;
