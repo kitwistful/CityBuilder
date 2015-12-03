@@ -134,15 +134,36 @@
             // amend city-sector relationship
             // ... no amends yet
             
-            // insert sector ranks
-            $sql = "INSERT INTO SectorBlockRanks
-            (nBlocks)
-            VALUES
-            (0),
-            (100),
-            (1000),
-            (2000)
-            ";
+            // check if block ranks are initialized
+            $sql = "SELECT * FROM SectorBlockRanks";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            
+            // array of block ranks
+            $blockRanks = array(1=>0, 2=>100, 3=>1000, 4=>2000);
+            
+            // initialize block ranks
+            if($stmt->rowCount() == 0)
+            { 
+                // insert sector ranks
+                $sql = "INSERT INTO SectorBlockRanks
+                (nBlocks)
+                VALUES ";
+                
+                // figure out values
+                foreach($blockRanks as $i=>$count)
+                    $sql = $sql."($count), ";
+                
+                // execute query
+                $conn->exec($sql); 
+            }
+            
+            // fix block ranks
+            // todo
+            
+            
+            // truncate descriptions
+            $sql = "TRUNCATE CityDescriptions";
             $conn->exec($sql);
             
             // array of descriptions
@@ -182,14 +203,25 @@
             // insert descriptions
             //todo
             
+            // check if sectors is initialized
+            $sql = "SELECT * FROM Sectors";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            
             // initialize sectors
-            $sql = "INSERT INTO Sectors(sector) VALUES
-            ('Recreational'),
-            ('Educational'),
-            ('Residential'),
-            ('Business')
-            ";
-            $conn->exec($sql);
+            if($stmt->rowCount() == 0)
+            {
+                // initialize sectors
+                $sql = "INSERT INTO Sectors(sector) VALUES
+                ('Recreational'),
+                ('Educational'),
+                ('Residential'),
+                ('Business')
+                ";
+                $conn->exec($sql);
+            }
+            
+            
         
         } catch (PDOException $e) {
             echo "<table><tr><th>SQL</th><td>$sql</td></tr><tr><th>Error</th><td>".$e->getMessage()."</td></tr><tr><th>Line</th><td>". $e->getLine()."</td></tr></table><br />";
