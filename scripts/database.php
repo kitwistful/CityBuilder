@@ -209,15 +209,9 @@
                 }
             }
             
-            // prep query
-            $sql = "INSERT INTO CityDescriptions(descID, sector, blockRank, content, nextDescID) VALUES ".$sql;
-            
-            
-            //todo
-            echo $sql;
-            
             // insert descriptions
-            //todo
+            $sql = "INSERT INTO CityDescriptions(descID, sector, blockRank, content, nextDescID) VALUES ".$sql;
+            $conn->exec($sql);
             
             // check if sectors is initialized
             $sql = "SELECT * FROM Sectors";
