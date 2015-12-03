@@ -34,11 +34,8 @@ $userOwnsCities = false;
 // check user's cities
 if($bLoggedIn)
 {
-    if(!array_key_exists(CITY_NAMES, $_SESSION))
-    {
-        $_SESSION[CITY_NAMES] = CityData::getUserCities($username);
-    }
     
+    $_SESSION[CITY_NAMES] = CityData::getUserCities($username);
     $cities = $_SESSION[CITY_NAMES];
     $userOwnsCities = count($cities) > 0;
     
