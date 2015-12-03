@@ -66,7 +66,11 @@
             $conn->exec($sql);
             
             // amend sector table
-            // ....no amends yet
+            $amend_sector_sqls = array(
+                "ALTER TABLE Sectors DROP PRIMARY KEY"
+                );
+            foreach($amend_sector_sqls as $k=>$sql)
+                $conn->exec($sql);
             
             // create cities table
             $sql = "CREATE TABLE IF NOT EXISTS Cities(
