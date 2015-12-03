@@ -134,32 +134,20 @@
             // amend city-sector relationship
             // ... no amends yet
             
-            // check if block ranks are initialized
-            $sql = "SELECT * FROM SectorBlockRanks";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            
             // array of block ranks
             $blockRanks = array(1=>0, 2=>100, 3=>1000, 4=>2000);
             
-            // initialize block ranks
-            if($stmt->rowCount() == 0)
-            { 
-                // insert sector ranks
-                $sql = "INSERT INTO SectorBlockRanks
-                (nBlocks)
-                VALUES ";
-                
-                // figure out values
-                foreach($blockRanks as $i=>$count)
-                    $sql = $sql."($count), ";
-                
-                // execute query
-                $conn->exec($sql); 
-            }
+            // insert sector ranks
+            $sql = "INSERT INTO SectorBlockRanks
+            (nBlocks)
+            VALUES ";
             
-            // fix block ranks
-            // todo
+            // figure out values
+            foreach($blockRanks as $i=>$count)
+                $sql = $sql."($count), ";
+            
+            // execute query
+            $conn->exec($sql); 
             
             
             // truncate descriptions
