@@ -80,16 +80,19 @@ class CityData
         $conn = getDatabaseConnection();
         
         // query that checks city's existence
-        $sql_check = "SELECT Cities.name, Users.name FROM Cities INNER JOIN Users ON Cities.userID=Users.userID WHERE Cities.name='$cityname' AND Users.name = '$username' ";//todo
+        $sql_check = "SELECT Cities.name, Users.name
+        FROM Cities INNER JOIN Users ON Cities.userID=Users.userID
+        WHERE Cities.name='$cityname' AND Users.name = '$username' ";
+        
+        // query that retrieves userID
+        $sql_get_userID = "SELECT userID FROM Users WHERE name='$username'";
         
         // query that inserts city into table
-        $sql_insert_city = "";//todo
+        $sql_insert_city_fmt = "INSERT INTO Cities(name, userID, nBlocks)
+        VALUES('$cityname', %d, $nBlocks)";
         
         // query that inserts sectors into table
-        $sql_init_sector_blocks = "";//todo
-        
-        // those queries
-        $sql_queries = array($sql_insert_city, $sql_init_sector_blocks);
+        $sql_init_sector_blocks_fmt = "";//todo
         
         // do queries
         try {
@@ -104,14 +107,13 @@ class CityData
                 // don't add city
                 $message = "city '$cityname' already exists";
             } else {
-                // do the stuff
-                foreach($sql_queries as $i=>$sql)
-                {
-                    $conn->exec($sql);
-                }
+                // get userID
+                $stmt = $conn->prepare($sql_get_userID);
+                $stmt->execute();
+                $userrec = $stmt->fetch(PDO::FETCH_ASSOC);
+                $userid = $userrec["userID"];
+                echo $userid."<br />";
                 
-                // you did it
-                $message = null;
             }
             
             
