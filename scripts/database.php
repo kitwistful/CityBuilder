@@ -67,7 +67,7 @@
             
             // amend sector table
             $amend_sector_sqls = array(
-                "ALTER TABLE Sectors DROP PRIMARY KEY"
+                "ALTER TABLE Sectors ADD PRIMARY KEY(sector)"
                 );
             foreach($amend_sector_sqls as $k=>$sql)
                 $conn->exec($sql);
