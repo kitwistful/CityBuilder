@@ -7,6 +7,11 @@
 *
 * This page initializes the database.
 *
+* Notes:
+* Some of these "auto_increment" primary key IDs, particularly for tables with
+* values that are initalized here, are meaningless. The values are initialized
+* with their IDs.
+*
 **/ 
     function createDatabase($servername, $username, $password, $dbname)
     {
@@ -152,36 +157,64 @@
             // array of descriptions
             $descriptions = array(
                     "Recreational"=>array(
-                        "first",
-                        "second"
+                        1=>"first",
+                        2=>"second",
+                        3=>"third",
+                        4=>"fourth"
                         ),
                     "Educational"=>array(
-                        "first",
-                        "second"
+                        1=>"first",
+                        2=>"second",
+                        3=>"third",
+                        4=>"fourth"
                         ),
                     "Residential"=>array(
-                        "first",
-                        "second"
+                        1=>"first",
+                        2=>"second",
+                        3=>"third",
+                        4=>"fourth"
                         ),
                     "Business"=>array(
-                        "first",
-                        "second"
+                        1=>"first",
+                        2=>"second",
+                        3=>"third",
+                        4=>"fourth"
                         )
                 );
                 
-            // create descriptions insert query
-            $descCount = 0;
+            // build description values
+            $sql = "";
+            $descCount = 1;
             foreach($descriptions as $sector=>$list)
             {
-                foreach($list as $i=>$description)
+                foreach($list as $rankID=>$description)
                 {
-                    //todo
+                    // delimit
+                    if($descCount != 1)
+                        $sql = ", $sql";
+                    
+                    // get next rank
+                    $nextRank = $descCount + 1;
+                    if($rankID == 4)
+                    {
+                        $nextRank = "NULL";
+                    }
+                    
+                    // append
+                    $sql = "($descCount, '$sector', $rankID, '$description', $nextRank)$sql";
                     
                     // increment
                     $descCount++;
                     
                 }
             }
+            
+            // prep query
+            $sql = "INSERT INTO CityDescriptions(descID, sector, blockRank, content, nextDescID) VALUES ".$sql;
+            
+            
+            //todo
+            echo $sql;
             
             // insert descriptions
             //todo
