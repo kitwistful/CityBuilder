@@ -26,7 +26,22 @@ class CityData
         // connect to database
         $conn = getDatabaseConnection();
         
-        //todo
+        // here is query
+        $sql = "SELECT Cities.name
+        FROM Cities INNER JOIN Users ON Cities.userID=Users.userID
+        WHERE Users.name='$username'";
+        
+        // let's do the query
+        try {
+            // execute query
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            
+            // get results
+            //todo
+        } catch (PDOException $e) {
+            $message = $e->getLine().": ".$e->getMessage();
+        }
         
         // unconnect
         $conn = null;
