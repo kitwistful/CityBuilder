@@ -74,8 +74,11 @@ class CityData
         $conn = getDatabaseConnection();
         
         // query to retrieve city info
-        $sql_select_city = "";//todo
+        $sql_select_city = "SELECT cityID, currSector, nBlocks, Users.nCoins
+        FROM Cities INNER JOIN Users ON Cities.userID=Users.userID
+        WHERE Users.name='$username' AND Cities.name='$cityname'";
         
+        echo "hello";
         // query to retrieve city sector info
         $sql_select_sector_fmt = "%d %s";//todo
         
