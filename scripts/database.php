@@ -55,12 +55,18 @@
             email VARCHAR(255)
             )";
             $conn->exec($sql);
+            
+            // amend user table
+            // ... no amends yet
 
             // create sector table
             $sql = "CREATE TABLE IF NOT EXISTS Sectors(
             sector VARCHAR(255) NOT NULL UNIQUE KEY PRIMARY KEY
             )";
             $conn->exec($sql);
+            
+            // amend sector table
+            // ....no amends yet
             
             // create cities table
             $sql = "CREATE TABLE IF NOT EXISTS Cities(
@@ -76,6 +82,9 @@
             )";
             $conn->exec($sql);
             
+            // amend cities table
+            // ....no amends yet
+            
             
             // creates descriptions table
             $sql = "CREATE TABLE IF NOT EXISTS CityDescriptions(
@@ -84,6 +93,10 @@
             sector VARCHAR(255),
             FOREIGN KEY(sector) REFERENCES Sectors(sector)
             )";
+            $conn->exec($sql);
+            
+            // amend descriptions table
+            $sql = "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS upToBlockLevel BIGINT NOT NULL";
             $conn->exec($sql);
 
             // create city-sector relationship
@@ -95,6 +108,9 @@
             FOREIGN KEY(sector) REFERENCES Sectors(sector)
             )";
             $conn->exec($sql);
+            
+            // amend city-sector relationship
+            // ... no amends yet
             
             // initialize phrases
             //todo
