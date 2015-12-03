@@ -118,7 +118,7 @@ class CityData
                 $userid = $userrec["userID"];
                 
                 // insert city
-                //todo
+                $conn->exec(sprintf($sql_get_cityID_fmt, $userid));
                 
                 // get cityID
                 $stmt = $conn->prepare(sprintf($sql_get_cityID_fmt, $userid));
@@ -137,7 +137,7 @@ class CityData
             
             
         } catch (PDOException $e) {
-            $message = $e->getMessage();
+            $message = $e->getLine().": ".$e->getMessage();
         }
         
         // break connection
