@@ -75,6 +75,16 @@
             FOREIGN KEY (currSector) REFERENCES Sectors(sector)
             )";
             $conn->exec($sql);
+            
+            
+            // creates descriptions table
+            $sql = "CREATE TABLE IF NOT EXISTS CityDescriptions(
+            descID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY,
+            content TEXT NOT NULL,
+            sector VARCHAR(255),
+            FOREIGN KEY(sector) REFERENCES Sectors(sector)
+            )";
+            $conn->exec($sql);
 
             // create city-sector relationship
             $sql = "CREATE TABLE IF NOT EXISTS CityBlocks(
@@ -85,6 +95,9 @@
             FOREIGN KEY(sector) REFERENCES Sectors(sector)
             )";
             $conn->exec($sql);
+            
+            // initialize phrases
+            //todo
 
             // initialize sectors
             $sql = "INSERT INTO Sectors(sector) VALUES
