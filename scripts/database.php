@@ -105,14 +105,16 @@
             $conn->exec($sql);
             
             // amend descriptions table
-            $sql = "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS upToBlockLevel BIGINT NOT NULL;
-            ALTER TABLE CityDescriptions DROP COLUMN upToBlockLevel;
-            ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nextDescID BIGINT;
-            ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;
-            ALTER TABLE CityDescriptions DROP COLUMN nextDescID;
-            ALTER TABLE CityDescriptions ADD COLUMN nextDescID BIGINT FOREIGN KEY REFERENCES CityDescriptions(descID);
-            ALTER TABLE CityDescriptions DROP COLUMN blockRank BIGINT NOT NULL FOREIGN KEY REFERENCES SectorBlockRanks(rankID);";
-            $conn->exec($sql);
+            $sqls = array("ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS upToBlockLevel BIGINT NOT NULL",
+            "ALTER TABLE CityDescriptions DROP COLUMN upToBlockLevel;",
+            "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nextDescID BIGINT;",
+            "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;",
+            "ALTER TABLE CityDescriptions DROP COLUMN nextDescID;",
+            "ALTER TABLE CityDescriptions ADD COLUMN nextDescID BIGINT FOREIGN KEY REFERENCES CityDescriptions(descID);",
+            "ALTER TABLE CityDescriptions DROP COLUMN blockRank BIGINT NOT NULL FOREIGN KEY REFERENCES SectorBlockRanks(rankID);",
+            );
+            foreach($sqls as $k=>$sql)
+                $conn->exec($sql);
             
             // create city-sector relationship
             $sql = "CREATE TABLE IF NOT EXISTS CityBlocks(
