@@ -156,29 +156,28 @@
             
             // array of descriptions
             $descriptions = array(
+                    "NULL"=>array(
+                        1=>"ghost town"
+                        ),
                     "Recreational"=>array(
-                        1=>"first",
-                        2=>"second",
-                        3=>"third",
-                        4=>"fourth"
+                        2=>"first",
+                        3=>"second",
+                        4=>"third"
                         ),
                     "Educational"=>array(
-                        1=>"first",
-                        2=>"second",
-                        3=>"third",
-                        4=>"fourth"
+                        2=>"first",
+                        3=>"second",
+                        4=>"third"
                         ),
                     "Residential"=>array(
-                        1=>"first",
-                        2=>"second",
-                        3=>"third",
-                        4=>"fourth"
+                        2=>"first",
+                        3=>"second",
+                        4=>"third"
                         ),
                     "Business"=>array(
-                        1=>"first",
-                        2=>"second",
-                        3=>"third",
-                        4=>"fourth"
+                        2=>"first",
+                        3=>"second",
+                        4=>"third"
                         )
                 );
                 
