@@ -99,6 +99,7 @@ class CityData
                 // record city info
                 $currSector = $record["currSector"];
                 $nCoins = $record["nCoins"];
+                $nBlocks = $record["nBlocks"];
                 
                 // query sector info
                 $sectors = array(SECTOR_RESIDENTIAL=>"Residential",
