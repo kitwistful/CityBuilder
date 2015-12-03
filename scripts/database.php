@@ -99,7 +99,9 @@
             $sql = "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS upToBlockLevel BIGINT NOT NULL;
             ALTER TABLE CityDescriptions DROP COLUMN upToBlockLevel;
             ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nextDescID BIGINT;
-            ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;";
+            ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;
+            ALTER TABLE CityDescrptions DROP COLUMN nextDescID;
+            ALTER TABLE CityDescriptions ADD COLUMN nextDescID BIGINT FOREIGN KEY REFERENCES CityDescriptions(descID)";
             $conn->exec($sql);
             
             
@@ -115,9 +117,6 @@
             
             // amend city-sector relationship
             // ... no amends yet
-            
-            // initialize phrases
-            //todo
 
             // initialize sectors
             $sql = "INSERT INTO Sectors(sector) VALUES
@@ -127,6 +126,10 @@
             ('Business')
             ";
             $conn->exec($sql);
+            
+            
+            // initialize descriptions
+            //todo
         
         } catch (PDOException $e) {
             echo $sql."<br />".$e->getMessage()."<br />";
