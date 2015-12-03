@@ -144,7 +144,12 @@
             
             // figure out values
             foreach($blockRanks as $i=>$count)
-                $sql = $sql."($count), ";
+            {
+                if($i == 1)
+                    $sql = $sql."($count)";
+                else
+                    $sql = $sql.", ($count)";
+            }
             
             // execute query
             $conn->exec($sql); 
