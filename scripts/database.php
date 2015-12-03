@@ -96,9 +96,13 @@
             $conn->exec($sql);
             
             // amend descriptions table
-            $sql = "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS upToBlockLevel BIGINT NOT NULL";
+            $sql = "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS upToBlockLevel BIGINT NOT NULL;
+            ALTER TABLE CityDescriptions DROP COLUMN upToBlockLevel;
+            ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nextDescID BIGINT;
+            ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;";
             $conn->exec($sql);
-
+            
+            
             // create city-sector relationship
             $sql = "CREATE TABLE IF NOT EXISTS CityBlocks(
             cityID BIGINT NOT NULL,
