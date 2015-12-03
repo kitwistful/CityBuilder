@@ -109,8 +109,6 @@
             "ALTER TABLE CityDescriptions DROP COLUMN upToBlockLevel;",
             "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nextDescID BIGINT;",
             "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS nBlocks BIGINT NOT NULL;",
-            "ALTER TABLE CityDescriptions DROP COLUMN nextDescID;",
-            "ALTER TABLE CityDescriptions ADD COLUMN nextDescID BIGINT",
             "ALTER TABLE CityDescriptions ADD CONSTRAINT FOREIGN KEY(nextDescID) REFERENCES CityDescriptions(descID);",
             "ALTER TABLE CityDescriptions DROP COLUMN nBlocks",
             "ALTER TABLE CityDescriptions ADD COLUMN IF NOT EXISTS blockRank BIGINT NOT NULL",
