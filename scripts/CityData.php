@@ -91,6 +91,9 @@ class CityData
         $sql_insert_city_fmt = "INSERT INTO Cities(name, userID, nBlocks)
         VALUES('$cityname', %d, $nBlocks)";
         
+        // query that retrieves cityID
+        $sql_get_cityID_fmt = "SELECT cityID FROM Cities WHERE name='$cityname' AND userID=%d";
+        
         // query that inserts sectors into table
         $sql_init_sector_blocks_fmt = "";//todo
         
@@ -112,7 +115,18 @@ class CityData
                 $stmt->execute();
                 $userrec = $stmt->fetch(PDO::FETCH_ASSOC);
                 $userid = $userrec["userID"];
-                echo $userid."<br />";
+                
+                // insert city
+                //todo
+                
+                // get cityID
+                $stmt = $conn->prepare(sprintf($sql_get_cityID_fmt, $userid));
+                $stmt->execute();
+                $cityrec = $stmt->fetch(PDO::FETCH_ASSOC);
+                $cityid = $cityrec["cityID"];
+                echo $cityid."<br />";
+                
+                
                 
             }
             
