@@ -118,6 +118,19 @@
             // amend city-sector relationship
             // ... no amends yet
             
+            // create table of sector ranks
+            $sql = "CREATE TABLE IF NOT EXISTS SectorBlockRanks(
+            rankID BIGINT NOT NULL AUTO_INCREMENT UNIQUE KEY PRIMARY KEY,
+            nBlocks BIGINT NOT NULL UNIQUE KEY
+            )";
+            $conn->exec($sql);
+            
+            // amend sector ranks
+            // ... no amends yet
+            
+            // insert sector ranks
+            //todo
+            
             // array of descriptions
             $descriptions = array(
                     "Recreational"=>array(
