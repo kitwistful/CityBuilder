@@ -47,3 +47,7 @@ function getDatabaseConnection()
 
 <!-- Stylesheet-->
 <link rel = "stylesheet" type = "text/css" href = "../styles/style.css" />
+
+<!-- JQuery -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    
