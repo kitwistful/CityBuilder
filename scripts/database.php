@@ -137,22 +137,12 @@
             // array of block ranks
             $blockRanks = array(1=>0, 2=>100, 3=>1000, 4=>2000);
             
-            // insert sector ranks
-            $sql = "INSERT INTO SectorBlockRanks
-            (nBlocks)
-            VALUES ";
-            
-            // figure out values
-            foreach($blockRanks as $i=>$count)
+            // insert block ranks
+            foreach($blockRanks as $rankID=>$rankValue)
             {
-                if($i == 1)
-                    $sql = $sql."($count)";
-                else
-                    $sql = $sql.", ($count)";
+                $sql = "INSERT INTO SectorBlockRanks(nBlocks) VALUES ($rankValue)";
+                $conn->exec($sql);
             }
-            
-            // execute query
-            $conn->exec($sql); 
             
             
             // truncate descriptions
