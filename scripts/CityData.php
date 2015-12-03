@@ -53,8 +53,42 @@ class CityData
         // make connection
         $conn = getDatabaseConnection();
         
-        // do some sql
-        //todo
+        // query to retrieve city info
+        $sql_select_city = "";//todo
+        
+        // query to retrieve city sector info
+        $sql_select_sector_fmt = "%d %s";//todo
+        
+        // do the stuff
+        try {
+            // query city info
+            $stmt = $conn->prepare($sql_select_city);
+            $stmt->execute();
+            
+            // record city info
+            //todo
+            $cityid = null;
+            
+            // query sector info
+            $sectors = array(SECTOR_RESIDENTIAL=>"Residential",
+                SECTOR_EDUCATIONAL=>"Educational",
+                SECTOR_BUSINESS=>"Business",
+                SECTOR_RECREATIONAL=>"Recreational"
+                );
+            foreach ($sectors as $k=>$name)
+            {
+                // do query
+                $stmt = $conn->prepare(sprintf($sql_select_sector_fmt, $cityid, $name));
+                $stmt->execute();
+                
+                // record info
+                //todo
+            }
+            
+        } catch (PDOException $e) {
+            $message = $e->getLine().": ".$e->getMessage();
+        }
+        
         
         // unmake connection
         $conn = null;
