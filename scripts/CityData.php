@@ -289,8 +289,17 @@ class CityData
     
     function getUsedBlocksCount($cityInfo)
     {
-        //todo
-        return $cityInfo->nBlocks;
+        // count
+        $blocksCounted = 0;
+        
+        // iterate over each sector
+        foreach($cityInfo->sectorBlocks as $k=>$sectorBlockCount)
+        {
+            $blocksCounted += $sectorBlockCount;
+        }
+        
+        // return count
+        return $blocksCounted;
     }
     
     
