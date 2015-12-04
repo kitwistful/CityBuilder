@@ -353,14 +353,30 @@ class CityData
             while($currRank != null && $currRank < 5)
             {
                 // check id hasn't already been selected
-                //todo
+                $stillOkay = true;
+                foreach($alreadyRead as $i=>$rank)
+                {
+                    if($currRank == $rank)
+                    {
+                        $stillOkay = false;
+                        break;
+                    }                        
+                }
                 
-                // add id to list
-                //todo
+                // only continue if the above check worked out
+                if(!$stillOkay)
+                {
+                   break; 
+                } else {
+                    // add id to list
+                    //todo
+                    
+                    // iterate
+                    // todo
+                    $currRank = null;
+                }
                 
-                // iterate
-                // todo
-                $currRank = null;
+                
             }
         } catch (PDOException $e) {
             return $e->getLine().": ".$e->getMessage();
