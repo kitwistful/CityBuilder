@@ -10,5 +10,5 @@
 ?>
 
 <div id = "global_footer">
-    City Builder Copyright &copy;Kathryn McKay 2015
+    City Builder - Kathryn McKay 2015
 </div>
