@@ -39,5 +39,5 @@ function CityBuilder_gameLoop(currCity, currSector)
     // wait 1 minute and then go again
     setTimeout(function(){
         CityBuilder_gameLoop(currCity, currSector);
-        }, 1000*15/**60*/);
+        }, 1000*5/**60*/);
 }
