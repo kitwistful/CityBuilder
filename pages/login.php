@@ -63,8 +63,8 @@ function validateLogin($username, $password)
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // get form info
-        $username = validateInput($_POST["username"]);
-        $password = validateInput($_POST["password"]);
+        $username = validateInput($_POST["username"], true);
+        $password = validateInput($_POST["password"], true);
         
         // begin listing errors
         if($signup_message == null)

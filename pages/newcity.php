@@ -32,7 +32,7 @@ if(!$_SESSION["citybuilder_bLoggedIn"] || $username == null)
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     // get form info
-    $cityname = validateInput($_POST["cityname"]);
+    $cityname = validateInput($_POST["cityname"], false);
     
     // create city
     $message = CityData::addCity($cityname, $username, 2000, 0);

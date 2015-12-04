@@ -29,12 +29,15 @@ function getDatabaseConnection()
 
 
 // validate form input
-function validateInput($input)
+function validateInput($input, $bNoSpaces)
 {
     // check input somehow
     // --> check length < 40
     // --> if bad, clear input.
-    // todo
+    if(strlen($input) > 40 || ($bNoSpaces && str_word_count($input) > 1) || strpos($input, "\"") != false || strpos($input, "'") != false)
+    {
+        return "";
+    }
     
     // return culled input
     return $input;

@@ -84,9 +84,9 @@ function addUser($username, $password)
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // get form info
-        $username = validateInput($_POST["username"]);
-        $password = validateInput($_POST["password"]);
-        $password_again = $_POST["password_again"];
+        $username = validateInput($_POST["username"], true);
+        $password = validateInput($_POST["password"], true);
+        $password_again = $_POST["password_again"], true;
         
         // begin listing errors
         if($signup_message == null)
