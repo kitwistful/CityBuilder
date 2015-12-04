@@ -110,13 +110,6 @@ include "../scripts/header.php";
             <div id = "SectorsContent"></div>
         </content>
     </article>
-    <article id = "CityExpansionBlock">
-        <header>City Expansion</header>
-        <content>
-            <div id = "CityExpansionContent"></div>
-        </content>
-    </article>
-    <!-- wait, where's the build button? -->
     <article id = "CreateNewCityBlock">
         <header>Create New City</header>
         <content>
