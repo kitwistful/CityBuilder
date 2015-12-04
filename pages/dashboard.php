@@ -73,8 +73,10 @@ $cities = ["error"];
 if($bLoggedIn)
 {
     
-    $cities = CityData::getUserCities($username);
-    $userOwnsCities = count($cities) > 0;
+    $the_cities = CityData::getUserCities($username);
+    $userOwnsCities = count($the_cities) > 0;
+    if($userOwnsCities)
+        $cities = $the_cities;
 }
 
 // select which content to show
@@ -140,7 +142,7 @@ function loadPage()
         var selectedCity = <?php echo $currCity == null ? "\"\"" : $currCity?>;
         
         // get description
-        var description = <?php echo "\"".CityData::getDescription($currCityInfo)."\""?>;
+        var description = <?php echo $currCityInfo ? "\"".CityData::getDescription($currCityInfo)."\"" : "\"\""?>;
        
         // description updates largest sector value in session
 <?php        
