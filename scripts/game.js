@@ -8,14 +8,14 @@
 *
 **/
 
-var CityBuilder_outputdivname = "#testReload";
+var CityBuilder_outputDivName = "#testReload";
 
 function CityBuilder_gotResult(text)
 {
-    $(CityBuilder_outputdivname).html("got: "+text+"<br />" );
+    $(CityBuilder_outputDivName).html("got: "+text+"<br />" );
 }
 
-function gameLoop(name)
+function CityBuilder_gameLoop()
 {
     // data to give database
     var data = {
@@ -23,13 +23,13 @@ function gameLoop(name)
         };
     
     // about to post
-    $(name).html("getting info from database....");
+    $(CityBuilder_outputDivName).html("getting info from database....");
     
     // ask for data
     $.post("../scripts/game_update.php",data, CityBuilder_gotResult,"text");
         
     // wait 1 minute and then go again
     setTimeout(function(){
-        gameLoop(name);
+        CityBuilder_gameLoop();
         }, 1000*60);
 }

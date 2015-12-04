@@ -72,7 +72,7 @@ if($currCityInfo == null)
 ?>
 <div id = "testReload"></div>
 <script>
-gameLoop("#testReload");
+CityBuilder_gameLoop();
 $(name).append("but does it block?");
 </script>
 <article id = "curr_city">
