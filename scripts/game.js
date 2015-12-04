@@ -15,6 +15,16 @@ function CityBuilder_gotResult(text)
     $(CityBuilder_outputDivName).html("got: "+text+"<br />" );
 }
 
+function CityBuilder_makeUnhidden(name)
+{
+    $(name).css("display", "initial");
+}
+
+function GityBuilder_makeHidden(name)
+{
+    $(name).css("display", "none");
+}
+
 function CityBuilder_gameLoop(currCity, currSector)
 {
     // data to give database
@@ -29,5 +39,5 @@ function CityBuilder_gameLoop(currCity, currSector)
     // wait 1 minute and then go again
     setTimeout(function(){
         CityBuilder_gameLoop(currCity, currSector);
-        }, 1000/**60*/);
+        }, 1000*15/**60*/);
 }
