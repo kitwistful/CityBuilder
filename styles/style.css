@@ -70,3 +70,8 @@ nav > ul > li
 {
     display: none;
 }
+
+#CurrentCityInfo > li > div
+{
+    display: inline;
+}
