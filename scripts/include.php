@@ -51,3 +51,7 @@ function getDatabaseConnection()
 <!-- JQuery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     
+    
+<!-- game script -->
+<script type="text/javascript" src="../scripts/game.js"></script>
+    
