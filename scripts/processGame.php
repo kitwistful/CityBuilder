@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         
         // proceed to calculate blocks if number of blocks allocated is less than
         // total number of blocks
-        if($nBlocks > CityData::getUsedBlocksCount($cityInfo))
+        if($cityInfo->currSector != SECTOR_NONE && $nBlocks > CityData::getUsedBlocksCount($cityInfo))
         {
             // get difference between timestamps
             $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";//todo
