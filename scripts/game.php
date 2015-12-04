@@ -69,7 +69,7 @@ if($currCityInfo == null)
     function gameLoop(name, niters)
     {
         $(name).append("prepost for iter " + niters + "<br />");
-        $.post("game_update.php", 'text', function(text){
+        $.post("../scripts/game_update.php", function(text){
            $(name).append("got: "+text+"<br />" );
         });
         if(niters > 0)
