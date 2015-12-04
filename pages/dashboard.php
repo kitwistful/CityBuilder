@@ -126,10 +126,7 @@ include "../scripts/header.php";
         $("#CurrentCityName").html("'Todo'");
         
         // sectors list
-        var sectors = ["Residential", "Educational", "Recreational", "Business"];
-
-        // currently selected sector
-        var selectedSector = 0; //todo
+        var sectors = ["Residential", "Educational", "Recreational", "Business", "None"];
         
         // cities list
         var citiesLabels = [/*todo*/];
@@ -139,16 +136,42 @@ include "../scripts/header.php";
         var expansionsLabels = ["3000 coins->blocks", "2000 coins->blocks", "1000 coins->blocks", "none"];
         var expansionsValues = [3000, 2000, 1000, 0];
         
-        // fill out current city sectors
-        $("#CurrentCitySectors").html("Sectors: todo");
+        // sector blocks
+        var sectorBlocks = [0,0,0,0];//todo
+
+        // currently selected sector
+        var selectedSector = 0; //todo
+        
+        // number of blocks
+        var nBlocks = 2000; //todo
+        
+        // figure out used blocks
+        var unusedBlocks = nBlocks;
+        
+        // get description
+        var description = "todo";
+        
+        // iterate over blocks
+        for(var i = 0; i < 4; i++)
+        {
+            // add sector info
+            var classname = "unselected_sector";
+            if(i == selectedSector)
+                classname = "selected_sector";
+            $("#CurrentCitySectors").append("<div class = '" + classname + "'>"+ sectors[i] + ": " + sectorBlocks[i] + "</div>");
+            
+            // calculate usedBlocks
+            unusedBlocks -= sectorBlocks[i];
+        }
         
         // put in description
-        $("#CurrentCityDescription").html("Description: todo");
+        $("#CurrentCityDescription").html(description);
         
         // put in stats
-        $("#CurrentCityInfoBlocks").html("todo1");
-        $("#CurrentCityInfoUnusedBlocks").html("todo2");
-        $("#CurrentCityInfoCurrentSector").html("todo3");
+        $("#CurrentCityInfoBlocks").html(nBlocks);
+        $("#CurrentCityInfoUnusedBlocks").html(unusedBlocks);
+        $("#CurrentCityInfoCurrentSector").html(sectors[selectedSector]);
+        
         
         
         // populate sectors block
