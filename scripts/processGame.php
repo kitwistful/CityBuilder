@@ -37,6 +37,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $prev_timestamp = $record["timestamp"];
         echo $prev_timestamp; //todo
         
+        // update timestamp if it's a bad value
+        if($prev_timestamp == "0000-00-00 00:00:00")
+            echo "who knew";
+        
         // update to current timestamp
         // todo
         $sql = "SELECT NOW()";
