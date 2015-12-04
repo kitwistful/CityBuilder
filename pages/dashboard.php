@@ -30,30 +30,42 @@ $username = $_SESSION["citybuilder_username"];
 // consider whether or not the user has any cities
 $userOwnsCities = false;
 
+// current city in game
+$currCityInfo = null;
+
 // check user's cities
 if($bLoggedIn)
 {
     
     $cities = CityData::getUserCities($username);
     $userOwnsCities = count($cities) > 0;
+}
+
+// select which content to show
+$elementShownName = "#GameContent";
+if(!$bLoggedIn)
+{
+    $elementShownName = "#LoggedOutContent";
+} else if(!$userOwnsCities) {
+    $elementShownName = "#NoCitiesContent";    
+} else {
+    // retrieve current city
+    define("CURRCITY", "CityBuilder_currcity");
+    $currcity = 0;
+    if(!array_key_exists(CURRCITY, $_SESSION))
+    {
+        $_SESSION[CURRCITY] = $currcity;
+    } else {
+        $currcity = $_SESSION[CURRCITY];
+    }
     
-    
+    // retrieve current city info
+    $currCityInfo = CityData::getCityInfo($cities[$currcity], $username);
 }
 
 // header
 define("CURRENT_PAGE", "../pages/dashboard.php");
 include "../scripts/header.php";
-    
-?>
-<?php
-    // select which content to show
-    $elementShownName = "#GameContent";
-    if(!$bLoggedIn)
-    {
-        $elementShownName = "#LoggedOutContent";
-    } else if(!$userOwnsCities) {
-        $elementShownName = "#NoCitiesContent";    
-    }
 ?>
 
 <div id = "LoggedOutContent" class = "hidden">
@@ -185,6 +197,7 @@ include "../scripts/header.php";
 
     // show correct div
     CityBuilder_makeUnhidden(visibleElement);
+    
 </script>
 <?php include '../scripts/footer.php'?>
 </body>
