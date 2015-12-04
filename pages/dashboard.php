@@ -100,12 +100,9 @@ if(!$bLoggedIn)
     if($currCity == null)
     {
         $currCity = 0;
-    } else {
-        
-        $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
-        
-        echo $currCityInfo->cityID;
     }
+        
+    $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
 }
 ?>
 <script>
@@ -153,9 +150,6 @@ function loadPage()
             {
                 selectedSector = i;
                 break;
-            } else {
-                // todo
-                console.log("'" + sectors[i] + "' does not match " + selectedSectorName);
             }
         }
         
