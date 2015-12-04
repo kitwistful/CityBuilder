@@ -96,13 +96,13 @@ if(!$bLoggedIn)
     }
     
     // retrieve current city info
-    
     if($currCity == null)
     {
         $currCity = 0;
     }
         
     $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
+    
 }
 ?>
 <script>
@@ -139,17 +139,32 @@ function loadPage()
         // currently selected city
         var selectedCity = <?php echo $currCity == null ? "\"\"" : $currCity?>;
         
-        // city name
+        // get description
+        var description = <?php echo "\"".CityData::getDescription($currCityInfo)."\""?>;
+       
+        // description updates largest sector value in session
+<?php        
+// figure out largest sector
+$largestSector = SECTOR_NONE;
+if(array_key_exists("CityBuilder_largestSector", $_SESSION))
+    $largestSector = $_SESSION["CityBuilder_largestSector"];
+?>
             
         // currently selected sector
         var selectedSectorName = <?php echo $currCityInfo && $currCityInfo->currSector ? "\"$currCityInfo->currSector\"" : sprintf("\"%s\"", SECTOR_NONE)?>;
         var selectedSector = 4;
+        var largestSectorName = <?php echo sprintf("\"%s\"", $largestSector == null ? SECTOR_NONE : $largestSector) ?>;
+        var largestSector = 4;
         for(var i = 0; i < sectors.length; i++)
         {
             if(sectors[i] == selectedSectorName)
             {
                 selectedSector = i;
-                break;
+            }
+            
+            if(sectors[i] == largestSectorName)
+            {
+                largestSector = i;
             }
         }
         
@@ -159,17 +174,20 @@ function loadPage()
         // figure out used blocks
         var unusedBlocks = nBlocks;
         
-        // get description
-        var description = <?php echo "\"".CityData::getDescription($currCityInfo)."\""?>;
-        
         // iterate over blocks
         for(var i = 0; i < 4; i++)
         {
-            // add sector info
+            // highlight largest
             var classname = "unselected_sector";
-            if(i == selectedSector)
+            if(i == largestSector)
                 classname = "selected_sector";
-            $("#CurrentCitySectors").append("<div class = '" + classname + "'>"+ sectors[i] + ": " + sectorBlocks[i] + "</div>");
+            
+            // point to selected
+            var sectorLabel = sectors[i];
+            if(i == selectedSector)
+                sectorLabel = "* " + sectorLabel;
+            
+            $("#CurrentCitySectors").append("<div class = '" + classname + "'>"+ sectorLabel + ": " + sectorBlocks[i] + "</div>");
             
             // calculate usedBlocks
             unusedBlocks -= sectorBlocks[i];
