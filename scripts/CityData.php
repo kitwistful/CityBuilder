@@ -370,39 +370,31 @@ class CityData
                     $stmt->execute();
                     $record = $stmt->fetch();
                     
-                    // only continue if the block rank is low enough
-                    if($blockRanks[$record["blockRank"]] >= $largestSectorSize)
+                    // don't continue if the sector doesn't match, unless this is the first run.
+                    if($record["sector"] == $largestSectorName || $currentDescriptionID == 1)
                     {
-                        // don't continue if the sector doesn't match, unless this is the first run.
-                        if($record["sector"] == $largestSectorName || $currentDescriptionID == 1)
-                        {
-                            // update description
-                            $description = $record["content"];
-                            
-                            // get next id
-                            if($largestSectorName == SECTOR_NONE) {
-                                // don't keep looking.
-                                break;
-                            } else if($currentDescriptionID == 1) {
-                                // query for first sector rank
-                                $stmt = $conn->prepare("SELECT descID FROM CityDescriptions WHERE sector='$largestSectorName' AND blockRank=2");
-                                $stmt->execute();
-                                $record = $stmt->fetch();
-                                
-                                // set desc id to this one
-                                $currentDescriptionID = $record["descID"];
-                            } else {
-                                // iterate to the next id
-                                $currentDescriptionID = $record["nextDescID"];
-                            }
-                        } else {
-                            // this is an error condition, by the way...
-                            $description = "btw";
+                        // update description
+                        $description = $record["content"];
+                        
+                        // get next id
+                        if($largestSectorSize < $blockRanks[$record["blockRank"]]) {
+                            // we've hit the ceiling.
                             break;
+                        } else if($currentDescriptionID == 1) {
+                            // query for first sector rank
+                            $stmt = $conn->prepare("SELECT descID FROM CityDescriptions WHERE sector='$largestSectorName' AND blockRank=2");
+                            $stmt->execute();
+                            $record = $stmt->fetch();
+                            
+                            // set desc id to this one
+                            $currentDescriptionID = $record["descID"];
+                        } else {
+                            // iterate to the next id
+                            $currentDescriptionID = $record["nextDescID"];
                         }
                     } else {
-                        // we are this kind of low
-                        $description = sprintf("$description ($largestSectorSize too low for rank %s == %s)", $record["blockRank"], $blockRanks[$record["blockRank"]]);
+                        // this is an error condition, by the way...
+                        $description = "btw";
                         break;
                     }
                 }
