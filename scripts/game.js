@@ -7,15 +7,14 @@
 * This file has the functions and such for running the game.
 *
 **/
-function gameLoop(name, number)
+function gameLoop(name)
 {
-    // if no number assume it's the first iteration
-    if(number == undefined)
-        number = 1;
+    // about to post
+    $(name).html("getting info from database....");
     
     // ask for data
     $.post("../scripts/game_update.php",
-        {testmessage: "this is iter " + number
+        {testmessage: "bread"
         },
         function(text){
         $(name).html("got: "+text+"<br />" );
@@ -24,6 +23,6 @@ function gameLoop(name, number)
         
     // wait and then go again
     setTimeout(function(){
-        gameLoop(name, number+1);
+        gameLoop(name);
         }, 1000);
 }
