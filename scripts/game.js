@@ -18,12 +18,15 @@ function CityBuilder_makeHidden(name)
     $(name).css("display", "none");
 }
 
-function CityBuilder_postForm(currcity, cityname)
-{    
+function CityBuilder_postForm(currcity, cityname, currsector, nBlocksToAdd)
+{
     // data for post
     var data = {
         cityIndex: currcity,
-        cityName: cityname
+        cityName: cityname,
+        currentSector: currsector,
+        growth: nBlocksToAdd
+        
         };
     $.post("../scripts/processGame.php",data, function(){location.reload();});
 }
