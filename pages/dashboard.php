@@ -121,7 +121,7 @@ function loadPage()
             cityIndex: <?php echo $currCity?>,
             cityName: <?php echo "\"$cities[$currCity]\""?>,
             currentSector: <?php echo sprintf("\"%s\"", $currCityInfo != null && $currCityInfo->currSector != null ? $currCityInfo->currSector : SECTOR_NONE) ?>,
-            growth: 1
+            growth: 0
             };
         $.post("../scripts/processGame.php", data);
         
