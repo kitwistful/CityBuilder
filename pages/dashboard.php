@@ -168,6 +168,20 @@ function loadPage()
         
         // populate sectors block
         CityBuilder_appendRadioInputs("#SectorsContent", "sector", selectedSector, sectors, sectors, selectedCity, citiesLabels, false, 1);
+        var currElement = $("#SectorsContent").find("input");
+<?php
+    for($i = 0; $i < 5; $i++)
+    {
+        // create onclick
+        echo "currElement.change(data$i = {message: sectors[$i]}, function()
+            {
+                console.log(data$i.message);
+            });";
+        
+        // iterate
+        echo "currElement = currElement.next();";
+    }
+?>
         
         // populate cities
         CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues, false, citiesLabels, selectedSector, 1);
