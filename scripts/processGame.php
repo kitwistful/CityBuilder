@@ -25,6 +25,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // lookup cityID
     $cityID = $cityInfo->cityID;
     
+    // record prev sector
+    $prevSector = $cityInfo->currSector;
+    
     // make database connection
     $conn = CityBuilder::getDatabaseConnection();
     
@@ -56,29 +59,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // get number of allocated blocks
         $nBlocks = $cityInfo->nBlocks;
         
+        // get number of used blocks
+        $nUsedBlocks = CityData::getUsedBlocksCount($cityInfo);
+        
         // proceed to calculate blocks if number of blocks allocated is less than
         // total number of blocks
-        if($cityInfo->currSector != SECTOR_NONE && $nBlocks > CityData::getUsedBlocksCount($cityInfo))
-        {
+        if($cityInfo->currSector != SECTOR_NONE && $nBlocks > $nUsedBlocks)
+        {   
             // get difference between timestamps
             $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $record = $stmt->fetch();
             $minutes_elapsed = $record[0];
-            echo "$minutes_elapsed min";
             
             // determine number of blocks grown
             if($growth == null)
-                $growth = 0;
-            $growth = $growth + $minutes_elapsed;
+                $growth = 1;
+            $growth = $cityInfo->sectorBlocks[$prevSector] + $growth + $minutes_elapsed;
             
             // cap value if it is larger than number of blocks
-            $growth = min($growth, $nBlocks);
+            $growth = min($growth, $nBlocks - $nUsedBlocks);
             
             // update blocks value
-            // todo
-            echo "=>+$growth blocks";
+            $sql = "UPDATE CityBlocks SET nBlocks=$growth WHERE cityID=$cityID AND sector='$prevSector'";
+            $conn->exec($sql);
         }
         
         // change current sector
