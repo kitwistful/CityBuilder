@@ -40,12 +40,20 @@ form >input, form > button
     display: inline;
 }
 
-#global_header
+#global_header, #global_footer
 {
     background: #DF8888;
     width: 100%;
     padding: 8px;
     margin-bottom: 16px;
+}
+
+#global_footer
+{
+    clear: left;
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: 700;
+    padding-bottom: 32px;
 }
 
 #global_header > content
