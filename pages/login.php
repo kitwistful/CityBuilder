@@ -130,13 +130,15 @@ function validateLogin($username, $password)
         echo "<content><div class = 'signup_error'><header>Information</header><content>$signup_message</content></div></content>";
     }
 ?>
-        <form id = "login_form" method = "POST" action = "login.php">
-            <label>Username:</label>
-            <input id = "username" type = "text" name = "username" value = <?php echo "\"$username\""?>></input>
-            <label>Password:</label>
-            <input id = "password" type = "password" name = "password"></input>
-            <button id = "login_button">Go</input>
-        </form>
+        <content>
+            <form id = "login_form" method = "POST" action = "login.php">
+                <label>Username:</label>
+                <input id = "username" type = "text" name = "username" value = <?php echo "\"$username\""?>></input>
+                <label>Password:</label>
+                <input id = "password" type = "password" name = "password"></input>
+                <button id = "login_button">Go</input>
+            </form>
+        </content>
     </article>
 </body>
 </html>

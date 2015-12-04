@@ -131,23 +131,25 @@ function addUser($username, $password)
 
     <article>
         <header>Sign up for City Builder</header>
+        <content>
 <?php
     if($signup_message != null)
     {
-        echo "<content><div class = 'signup_error'><header>Information</header><content>$signup_message</content></div></content>";
+        echo "<div class = 'signup_error'><header>Information</header><content>$signup_message</content></div>";
     } else {
-        echo "<content>To continue, choose your username and password.</content>";
+        echo "To continue, choose your username and password.";
     }
 ?>
-        <form id = "create_account_form" method = "POST" action = "signup.php">
-            <label>Username:</label>
-            <input id = "create_account_username" name = "username" type = "text" value = <?php echo "\"$username\"" ?>></input>
-            <label>Password:</label>
-            <input id = "create_account_password" name = "password" type = "password"></input>
-            <label>Re-enter your password:</label>
-            <input id = "create_account_password_again" name = "password_again" type = "password"></input>
-            <button id = "create_account_confirm">Signup</button>
-        </form>
+            <form id = "create_account_form" method = "POST" action = "signup.php">
+                <label>Username:</label>
+                <input id = "create_account_username" name = "username" type = "text" value = <?php echo "\"$username\"" ?>></input>
+                <label>Password:</label>
+                <input id = "create_account_password" name = "password" type = "password"></input>
+                <label>Re-enter your password:</label>
+                <input id = "create_account_password_again" name = "password_again" type = "password"></input>
+                <button id = "create_account_confirm">Signup</button>
+            </form>
+        </content>
     </article>
 </body>
 </html>
