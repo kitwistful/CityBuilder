@@ -60,6 +60,10 @@ function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, va
         
         // set onclick
         currElement.click(function(){
+            
+            
+            console.log("currindex:" + currValueIndex, "currcity:" + cityIndex, "currsector:" + currentSector, "growth:" + growth);
+            
             if(!cityIndex)
                 cityIndex = values[currValueIndex];
             if(!currentSector)
@@ -67,8 +71,6 @@ function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, va
             if(!growth)
                 growth = values[currValueIndex];
             
-            
-            console.log(currValueIndex, " currcity " + cityIndex + " currsector " + currSector + " growth " + growth);
             
             CityBuilder_postForm(cityIndex, cityNames[cityIndex], currentSector, growth);
             });
