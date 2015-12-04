@@ -188,11 +188,11 @@ function loadPage()
         var currElement = $("#SectorsContent").find("input");
 <?php
     for($i = 0; $i < 5; $i++)
-    {
-        
-        // create onclick
+    {   
+        // create onclick for sectors
         echo sprintf("$(currElement.get($i)).change(data$i = {index: $i}, function()
             {
+                console.log(\"sending value '\" + sectors[$i] + \"'\");
                 CityBuilder_postForm(selectedCity, \"%s\", sectors[$i], 1); 
             });", $cities[$currCity]);
     }
@@ -206,7 +206,7 @@ function loadPage()
     {
         for($i = 0; $i < count($cities); $i++)
         {
-            // create onclick
+            // create onclick for cities
             echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity}, function()
                 {
                     CityBuilder_postForm($i, \"%s\", sectors[%d], 1); 
@@ -226,7 +226,7 @@ function loadPage()
 </script>
 </head>
 <body onload = "loadPage()">
-
+<div id = "errorBro"></div>
 <?php
 // header
 define("CURRENT_PAGE", "../pages/dashboard.php");
