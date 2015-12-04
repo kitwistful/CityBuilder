@@ -171,5 +171,6 @@ include "../scripts/header.php";
     // show correct div
     CityBuilder_makeUnhidden(visibleElement);
 </script>
+<?php include '../scripts/footer.php'?>
 </body>
 </html>

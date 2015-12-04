@@ -60,5 +60,6 @@ include "../scripts/header.php";
             <button>Create a city</button><br />
         </form>
     </article>
+<?php include '../scripts/footer.php'?>
 </body>
 </html>

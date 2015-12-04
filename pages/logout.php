@@ -32,5 +32,6 @@
             Thank you for playing City Builder!
         </content>
     </article>
+<?php include '../scripts/footer.php'?>
 </body>
 </html>

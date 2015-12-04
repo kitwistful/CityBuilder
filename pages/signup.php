@@ -151,5 +151,6 @@ function addUser($username, $password)
             </form>
         </content>
     </article>
+<?php include '../scripts/footer.php'?>
 </body>
 </html>
