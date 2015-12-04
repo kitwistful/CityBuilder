@@ -172,21 +172,11 @@ function loadPage()
 <?php
     for($i = 0; $i < 5; $i++)
     {
-        // todo
-        echo "console.log($i, currElement.get($i));";
         
         // create onclick
-        echo "currElement.change(data$i = {index: $i, message: sectors[$i]}, function()
+        echo "$(currElement.get($i)).change(data$i = {index: $i, message: sectors[$i]}, function()
             {
-                
-                // todo
-                if(data$i.index != selectedSector)
-                {
-                    console.log(data$i.index, selectedSector, data$i.message);
-                } else {
-                    //todo
-                    console.log(\"clicked selected\");
-                }
+                console.log(data$i.index, selectedSector, data$i.message);
             });";
     }
 ?>
@@ -195,17 +185,14 @@ function loadPage()
         CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues, false, citiesLabels, selectedSector, 1);
         var currElement = $("#CitiesContent").find("input");
 <?php
-    /*for($i = 0; $i < count($cities); $i++)
+    for($i = 0; $i < count($cities); $i++)
     {
         // create onclick
-        echo sprintf("currElement.change(cityData$i = {index: $i, selected: selectedCity, message: \"%s\"}, function()
+        echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity, message: \"%s\"}, function()
             {
                 console.log(cityData$i.index, cityData$i.selected, cityData$i.message);
             });", $cities[$i]);
-        
-        // iterate
-        echo "currElement = currElement.next();";
-    }*/
+    }
 ?>        
         
         
