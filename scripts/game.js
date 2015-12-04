@@ -52,7 +52,7 @@ function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, va
     }
     
     // activate inputs
-    var currElement = $(name).find("input");
+    /*var currElement = $(name).find("input");
     for(var i = 0; i < values.length; i++)
     {
         // data for thing
@@ -77,5 +77,5 @@ function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, va
         
         // iterate
         currElement = $(currElement).next();
-    }
+    }*/
 }
