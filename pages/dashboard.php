@@ -263,7 +263,7 @@ include "../scripts/header.php";
     <article>
         <header>Welcome to City Builder!</header>
         <content>
-            To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. Have fun!
+            To get started, please <a href = 'signup.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. Have fun!
         </content>
     </article>
 </div>

@@ -25,7 +25,7 @@
 function addUser($username, $password)
 {
     // make connection
-    $conn = getDatabaseConnection();
+    $conn = CityBuilder::getDatabaseConnection();
     
     // message
     $message = "unknown error";
@@ -86,8 +86,8 @@ function addUser($username, $password)
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // get form info
-        $username = validateInput($_POST["username"], true);
-        $password = validateInput($_POST["password"], true);
+        $username = CityBuilder::validateInput($_POST["username"], true);
+        $password = CityBuilder::validateInput($_POST["password"], true);
         $password_again = $_POST["password_again"];
         
         // begin listing errors
