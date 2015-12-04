@@ -8,6 +8,12 @@
 * This contains the game view.
 *
 **/
+?>
+
+<!-- game script -->
+<script type="text/javascript" src="../scripts/game.js"></script>
+<?php
+    
 
 // sectors
 $sector_names = array(SECTOR_RESIDENTIAL=>"Residential", SECTOR_EDUCATIONAL=>"Educational", SECTOR_BUSINESS=>"Business", SECTOR_RECREATIONAL=>"Recreational", SECTOR_NONE=>"None");
