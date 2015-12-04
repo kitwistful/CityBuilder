@@ -50,6 +50,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // change current sector
         if($currentSector != $cityInfo->currSector)
         {
+            if($currentSector == SECTOR_NONE)
+                $currentSector = "NULL";
             $sql = sprintf("UPDATE Cities SET currSector='$currentSector' WHERE cityID=%d", $cityInfo->cityID);
             $conn->exec($sql);
         }
