@@ -17,15 +17,12 @@
         City Builder
     </header>
     <content>
-        What's your city?
-    </content>
-    <content>
 <?php
     if($_SESSION["citybuilder_bLoggedIn"])
     {
-        echo "Welcome, ".$_SESSION["citybuilder_username"].".";
+        echo "Welcome, ".$_SESSION["citybuilder_username"].". <a href = '../pages/logout.php'>Logout</a>";
     } else {
-        echo "You are logged out";
+        echo "Currently, you are not logged in. <a href = '../pages/login.php'>Login</a>";
     }
 ?>
     </content>
@@ -41,18 +38,6 @@
         }
         print_nav_link("Dashboard", "../pages/dashboard.php");
         print_nav_link("Signup", "../pages/signup.php");
-        /*print_nav_link("Recover Account", "recover_account.php");*/
-        
-        // change links depending on whether or not you're logged in
-        if($_SESSION["citybuilder_bLoggedIn"])
-        {
-            // you're logged in so maybe you wanna log out
-            print_nav_link("Logout", "../pages/logout.php");
-            
-        } else{
-            // you aren't login so...log in. 
-            print_nav_link("Login", "../pages/login.php");
-        }
         
     ?>
         </ul>
