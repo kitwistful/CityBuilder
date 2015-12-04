@@ -1,13 +1,4 @@
 TODO:
-- database
-    - update data through gameplay
-        - increase selected sector size
-        - increase size based on last refresh
-            - record timestamp
-            - compare timestamps
-        - pick out description
-            - assess which description to grab
-            - get description from database
 - improve production
     - Security
         - add measures to prevent injection of text fields
