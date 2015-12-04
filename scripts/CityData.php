@@ -369,11 +369,10 @@ class CityData
                    break; 
                 } else {
                     // add id to list
-                    //todo
+                    $alreadyRead[count($alreadyRead)] = $currRank;
                     
                     // iterate
                     // todo
-                    $currRank = null;
                 }
                 
                 
