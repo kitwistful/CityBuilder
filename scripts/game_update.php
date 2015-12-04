@@ -15,19 +15,19 @@ include "include.php";
 
 $message = "<no thing>";
 if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    //todo
-    $message = $_POST["testmessage"];
-    
+{   
+    // get username
+    $username = $_SESSION["citybuilder_username"];
+
     // get city name
     $currCity = $_POST["currcity"];
     
     // get city info
-    
+    //todo
     
 }
 
 //todo
-echo "$currCity";
+echo "'$currCity' owned by '$username'";
 
 ?>
