@@ -77,8 +77,6 @@ if(!$bLoggedIn)
 } else if(!$userOwnsCities) {
     $elementShownName = "#NoCitiesContent";    
 } else {
-    // here are some constants
-    
     // retrieve current city
     define("CURRCITY", "CityBuilder_currcity");
     $currcity = 0;
@@ -87,12 +85,6 @@ if(!$bLoggedIn)
         $_SESSION[CURRCITY] = $currcity;
     } else {
         $currcity = $_SESSION[CURRCITY];
-    }
-    
-    // update things
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        echo sprintf("current city '%s' current sector '%s'<br />", $_POST[CURRCITY], todo);
     }
     
     // retrieve current city info
