@@ -129,15 +129,24 @@ include "../scripts/header.php";
         
         // sectors list
         var sectors = ["Residential", "Educational", "Recreational", "Business"];
+
+        // cities list
+        var cities = [/*todo*/];
+        
+        // expansion options list
+        var expansions = [/*todo*/"none"];
         
         // populate Sectors block
         CityBuilder_appendRadioInputs("#SectorsContent", sectors);
         
-        // cities list
-        var cities = [/*todo*/];
-        
         // populate Cities
         CityBuilder_appendRadioInputs("#CitiesContent", cities);
+        
+        // populate City Expansion block
+        CityBuilder_appendRadioInputs("#CityExpansionContent", expansions);
+        
+        
+        
     }
 
     // show correct div
