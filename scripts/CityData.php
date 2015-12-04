@@ -65,7 +65,7 @@ class CityData
         $nBlocks = 0;
         $sectorBlocks = array(SECTOR_RESIDENTIAL=>0, SECTOR_EDUCATIONAL=>0,
             SECTOR_BUSINESS=>0, SECTOR_RECREATIONAL=>0);
-        $nCoins = 0;
+        $cityid = null;
         
         
         
@@ -79,7 +79,7 @@ class CityData
             
         // return blank city info if no params
         if($cityname == null && $username == null)
-            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
+            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $cityid);
             
         // have you found the city?
         $isCityFound = false;
@@ -164,7 +164,7 @@ class CityData
         
         // make the object if the search didn't fail
         if($isCityFound)
-            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
+            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins, $cityid);
         
         // return info
         return $cityInfo;

@@ -10,12 +10,12 @@
 **/
 class CityInfo
 {   
-    function CityInfo($p_currSector, $p_nBlocks, $p_sectorBlocks, $p_nCoins)
+    function CityInfo($currSector, $nBlocks, $sectorBlocks, $cityID)
     {
-        $this->currSector = $p_currSector;
-        $this->nBlocks = $p_nBlocks;
-        $this->sectorBlocks = $p_sectorBlocks;
-        $this->nCoins = $p_nCoins;
+        $this->currSector = $currSector;
+        $this->nBlocks = $nBlocks;
+        $this->sectorBlocks = $sectorBlocks;
+        $this->cityID = $cityID;
     }
 }
 
