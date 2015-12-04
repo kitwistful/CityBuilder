@@ -49,15 +49,35 @@ include "../scripts/header.php";
 ?>
 <?php
     // has different content depending on whether or not user is logged in
-    if(!$bLoggedIn)
+    /*if(!$bLoggedIn)
     {
         echo "<article><header>Welcome to City Builder!</header><content>To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. <!--You can also <a href = 'recover_account.php'>recover an account</a> if you have a code.--> Have fun!</content></article>";
     } else if(!$userOwnsCities) {
         echo "<article><header>No Cities Yet</header><content>It's time to make your first city! Click <a href = 'newcity.php'>here</a> to create your city.</content></article>";
     } else{
         include '../scripts/game.php';
-    }
+    }*/
 ?>
+
+<div id = "LoggedOutContent" class = "hidden">
+    <article>
+        <header>Welcome to City Builder!</header>
+        <content>
+            To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. Have fun!
+        </content>
+    </article>
+</div>
+<div id = "NoCitiesContent" class = "hidden">
+    <article>
+        <header>No Cities Yet</header>
+        <content>
+            It's time to make your first city! Click <a href = 'newcity.php'>here</a> to create your city.
+        </content>
+    </article>
+</div>
+<div id = "GameContent" class = "hidden">
+    todododo
+</div>
     
 </body>
 </html>

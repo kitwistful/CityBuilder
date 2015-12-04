@@ -37,7 +37,8 @@ function CityBuilder_gameLoop(currCity, currSector)
     $.post("../scripts/game_update.php",data, CityBuilder_gotResult,"text");
         
     // wait 1 minute and then go again
+    $n_seconds = 5;//60;
     setTimeout(function(){
         CityBuilder_gameLoop(currCity, currSector);
-        }, 1000*5/**60*/);
+        }, 1000*$n_seconds);
 }
