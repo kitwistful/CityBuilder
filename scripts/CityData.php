@@ -279,6 +279,7 @@ class CityData
         
         // return description
         // todo
+        return "uhhhh";
         
     }
     

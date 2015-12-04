@@ -185,7 +185,7 @@ include "../scripts/header.php";
         var unusedBlocks = nBlocks;
         
         // get description
-        var description = "todo";
+        var description = <?php echo "\"".CityData::getDescription($currCityInfo)."\""?>;
         
         // iterate over blocks
         for(var i = 0; i < 4; i++)
