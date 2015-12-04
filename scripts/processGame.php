@@ -42,13 +42,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $prev_timestamp = $record["created"];
         }
         
-        // update to current timestamp
-        // todo
+        // get current timestamp
         $sql = "SELECT NOW()";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $record = $stmt->fetch();
         $curr_timestamp = $record[0];
+        
+        // update to current timestamp
+        $sql = "UPDATE Cities SET timestamp='$curr_timestamp' WHERE cityID=$cityID";
+        $conn->exec($sql);
         
         // get number of allocated blocks
         $nBlocks = $cityInfo->nBlocks;
@@ -58,7 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($cityInfo->currSector != SECTOR_NONE && $nBlocks > CityData::getUsedBlocksCount($cityInfo))
         {
             // get difference between timestamps
-            $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";//todo
+            $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $record = $stmt->fetch();
