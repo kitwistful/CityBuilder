@@ -377,7 +377,7 @@ class CityData
                         $description = $record["content"];
                         
                         // get next id
-                        if($largestSectorSize < $blockRanks[$record["blockRank"]]) {
+                        if($largestSectorSize < $blockRanks[min($record["blockRank"] + 1, 4)]) {
                             // we've hit the ceiling.
                             break;
                         } else if($currentDescriptionID == 1) {
@@ -394,7 +394,7 @@ class CityData
                         }
                     } else {
                         // this is an error condition, by the way...
-                        $description = "btw";
+                        $description = "Error: this is a really strange error.";
                         break;
                     }
                 }
@@ -409,8 +409,7 @@ class CityData
         $conn = null;
         
         // return description
-        // todo
-        return "selected sector '$largestSectorName' with size $largestSectorSize '$description'";
+        return "$description";
         
     }
     
