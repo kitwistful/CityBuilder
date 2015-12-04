@@ -62,10 +62,10 @@ $username = $_SESSION["citybuilder_username"];
 $userOwnsCities = false;
 
 // current city in game
-$currCityInfo = null;
-$currCity = null;
+$currCityInfo = CityData::getCityInfo(null, null);
+$currCity = 0;
 
-$cities = CityData::getCityInfo(null, null);
+$cities = ["error"];
 
 
 // check user's cities
@@ -160,7 +160,7 @@ include "../scripts/header.php";
     {
         // todo
         $("#CurrentCityName").html(<?php echo "\"$currCity\""?>);
-        $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", $cities[$currCity])?>);
+        $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", !array_key_exists($currCity, $cities) ? "" : $cities[$currCity])?>);
         
         // sectors list
         var sectors = ["Residential", "Educational", "Recreational", "Business", "None"];
@@ -182,6 +182,8 @@ include "../scripts/header.php";
 
         // currently selected city
         var selectedCity = <?php echo $currCity == null ? "\"\"" : $currCity?>;
+        
+        // city name
             
         // currently selected sector
         var selectedSector = <?php echo 0?>; //todo
@@ -217,13 +219,10 @@ include "../scripts/header.php";
         $("#CurrentCityInfoCurrentSector").html(sectors[selectedSector]);
         
         // populate sectors block
-        CityBuilder_appendRadioInputs("#SectorsContent", "sector", selectedSector, sectors);
+        CityBuilder_appendRadioInputs("#SectorsContent", "sector", selectedSector, sectors, sectors, selectedCity, citiesLabels, false, 1);
         
         // populate cities
-        CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues);
-        
-        // populate city expansion block
-        CityBuilder_appendRadioInputs("#CityExpansionContent", "expansion", 3, expansionsLabels, expansionsValues);
+        CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues, false, citiesLabels, selectedSector, 1);
         
         
         
