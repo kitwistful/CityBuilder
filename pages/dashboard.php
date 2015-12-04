@@ -32,6 +32,7 @@ $userOwnsCities = false;
 
 // current city in game
 $currCityInfo = null;
+$currCity = null;
 
 // check user's cities
 if($bLoggedIn)
@@ -131,7 +132,7 @@ include "../scripts/header.php";
     if(visibleElement == "#GameContent")
     {
         // todo
-        $("#CurrentCityName").html("'Todo'");
+        $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", $cities[$currcity])?>);
         
         // sectors list
         var sectors = ["Residential", "Educational", "Recreational", "Business", "None"];
@@ -145,13 +146,20 @@ include "../scripts/header.php";
         var expansionsValues = [3000, 2000, 1000, 0];
         
         // sector blocks
-        var sectorBlocks = [0,0,0,0];//todo
+        var sectorBlocks = [<?php echo sprintf("%d, %d, %d, %d",
+            $currCityInfo->sectorBlocks[SECTOR_RESIDENTIAL],
+            $currCityInfo->sectorBlocks[SECTOR_EDUCATIONAL],
+            $currCityInfo->sectorBlocks[SECTOR_RECREATIONAL],
+            $currCityInfo->sectorBlocks[SECTOR_BUSINESS])?>];
 
+        // currently selected city
+        var selectedCity = <?php echo $currcity?>;
+            
         // currently selected sector
-        var selectedSector = 0; //todo
+        var selectedSector = <?php echo 0?>; //todo
         
         // number of blocks
-        var nBlocks = 2000; //todo
+        var nBlocks = <?php echo $currCityInfo->nBlocks ?>;
         
         // figure out used blocks
         var unusedBlocks = nBlocks;
@@ -183,10 +191,10 @@ include "../scripts/header.php";
         
         
         // populate sectors block
-        CityBuilder_appendRadioInputs("#SectorsContent", "sector", 0, sectors);
+        CityBuilder_appendRadioInputs("#SectorsContent", "sector", selectedSector, sectors);
         
         // populate cities
-        CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedSector, citiesLabels, citiesValues);
+        CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues);
         
         // populate city expansion block
         CityBuilder_appendRadioInputs("#CityExpansionContent", "expansion", 3, expansionsLabels, expansionsValues);
