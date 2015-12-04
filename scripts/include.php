@@ -27,23 +27,37 @@ function getDatabaseConnection()
     return $conn;    
 }
 
-    // session key list
-    $seshkeys = array(
-      "citybuilder_bLoggedIn",
-      "citybuilder_username"
-    );
+
+// validate form input
+function validateInput($input)
+{
+    // check input somehow
+    // --> if bad, clear input.
+    // todo
     
-    // init session keys
-    foreach($seshkeys as $keykey => $key)
+    // return culled input
+    return $input;
+}
+
+// session key list
+$seshkeys = array(
+  "citybuilder_bLoggedIn",
+  "citybuilder_username"
+);
+
+// init session keys
+foreach($seshkeys as $keykey => $key)
+{
+    if(!array_key_exists($key, $_SESSION))
     {
-        if(!array_key_exists($key, $_SESSION))
-        {
-            $_SESSION[$key] = null;
-        }
+        $_SESSION[$key] = null;
     }
+}
     
     
 ?>
+
+
     
 <!-- Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre:400,700' rel='stylesheet' type='text/css'>

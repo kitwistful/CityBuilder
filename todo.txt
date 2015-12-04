@@ -1,7 +1,0 @@
-TODO:
-- improve production
-    - Security
-        - add measures to prevent injection of text fields
-            - create_account.php
-            - login.php
-            - city creation dialog, whenever that comes up
