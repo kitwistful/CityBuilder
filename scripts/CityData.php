@@ -315,8 +315,25 @@ class CityData
         // connect to database
         $conn = CityBuilder::getDatabaseConnection();
         
+        //todo
+        $currID = null;
+        
         // do queries
         try {
+            // determine sector name
+            $sector = null;
+            if($largestSectorName == SECTOR_NONE)
+                $sector = "NULL";
+            else
+                $sector = "'$largestSectorName'";
+            
+            // get the base description
+            $sql = "SELECT descID, content, nextDescID FROM CityDescriptions WHERE sector=$sector AND blockRank<=2";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $record = $stmt->fetch();
+            $currID = $record["descID"];
+            
             // query selecting descriptions, ids, and next ids based on sector
             // todo
             
@@ -341,7 +358,7 @@ class CityData
         
         // return description
         // todo
-        return "selected sector '$largestSectorName' with size $largestSectorSize";
+        return "selected sector '$largestSectorName' with size $largestSectorSize descID $currID";
         
     }
     
