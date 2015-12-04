@@ -116,8 +116,16 @@ function loadPage()
     // load game stuff
     if(visibleElement == "#GameContent")
     {
-        // todo
-        $("#CurrentCityName").html(<?php echo "\"$currCity\""?>);
+        // update page
+        var data = {
+            cityIndex: <?php echo $currCity?>,
+            cityName: <?php echo "\"$cities[$currCity]\""?>,
+            currentSector: <?php echo sprintf("\"%s\"", $currCityInfo != null && $currCityInfo->currSector != null ? $currCityInfo->currSector : SECTOR_NONE) ?>,
+            growth: 1
+            };
+        $.post("../scripts/processGame.php", data);
+        
+        // insert city name
         $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", !array_key_exists($currCity, $cities) ? "" : $cities[$currCity])?>);
         
         // sectors list
