@@ -192,7 +192,6 @@ function loadPage()
         // create onclick for sectors
         echo sprintf("$(currElement.get($i)).change(data$i = {index: $i}, function()
             {
-                console.log(\"sending value '\" + sectors[$i] + \"'\");
                 CityBuilder_postForm(selectedCity, \"%s\", sectors[$i], 1); 
             });", $cities[$currCity]);
     }
