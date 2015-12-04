@@ -1,22 +1,14 @@
 TODO:
 - database
     - update data through gameplay
-- gameplay
-    - implement sector growth
-    - implement coin production
-    - implement page refresh
-    - implement descriptions based on sector composition
-        - (goes where 'What is there to say about this place?' currently is)
+        - increase selected sector size
+        - increase size based on last refresh
+            - record timestamp
+            - compare timestamps
+        - pick out description
+            - assess which description to grab
+            - get description from database
 - improve production
-    - CSS styling
-        - font choices
-        - colours
-        - sector display
-        - form display
-    - Images
-        - all kinds of images
-    - Dynamic content
-        - maybe some fades and stuff could look pretty?
     - Security
         - add measures to prevent injection of text fields
             - create_account.php
