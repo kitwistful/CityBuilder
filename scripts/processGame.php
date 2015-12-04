@@ -66,9 +66,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // get number of used blocks
         $nUsedBlocks = CityData::getUsedBlocksCount($cityInfo);
         
-        // proceed to calculate blocks if number of blocks allocated is less than
-        // total number of blocks
-        if($cityInfo->currSector != SECTOR_NONE && $nBlocks > $nUsedBlocks)
+        // update old sector with timestamp
+        if($prevSector != SECTOR_NONE && $nBlocks > $nUsedBlocks)
         {   
             // get difference between timestamps
             $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";
@@ -78,15 +77,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $minutes_elapsed = $record[0];
             
             // determine number of blocks grown
-            if($growth == null)
-                $growth = 1;
-            $growth = $cityInfo->sectorBlocks[$prevSector] + $growth + $minutes_elapsed;
+            $prevGrowth = $cityInfo->sectorBlocks[$prevSector] + $minutes_elapsed;
             
             // cap value if it is larger than number of blocks
-            $growth = min($growth, $nBlocks - $nUsedBlocks);
+            $prevGrowth = min($prevGrowth, $nBlocks - $nUsedBlocks);
             
             // update blocks value
-            $sql = "UPDATE CityBlocks SET nBlocks=$growth WHERE cityID=$cityID AND sector='$prevSector'";
+            $sql = "UPDATE CityBlocks SET nBlocks=$prevGrowth WHERE cityID=$cityID AND sector='$prevSector'";
+            $conn->exec($sql);
+        }
+        
+        // update stuff
+        $cityInfo = CityData::getCityInfo($cityName, $username);
+        $nUsedBlocks = CityData::getUsedBlocksCount($cityInfo);
+        
+        // update current with growth
+        if($currentSector != SECTOR_NONE && $nBlocks > $nUsedBlocks) {
+            // determine growth level
+            $nBlocks = min($cityInfo->sectorBlocks[$currentSector] + $growth, $nBlocks - $nUsedBlocks);
+            
+            // update blocks value
+            $sql = "UPDATE CityBlocks SET nBlocks=$nBlocks WHERE cityID=$cityID AND sector='$currentSector'";
             $conn->exec($sql);
         }
         
