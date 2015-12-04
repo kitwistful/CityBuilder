@@ -24,7 +24,7 @@ class CityData
         $cities = null;
         
         // connect to database
-        $conn = getDatabaseConnection();
+        $conn = CityBuilder::getDatabaseConnection();
         
         // here is query
         $sql = "SELECT Cities.name
@@ -85,7 +85,7 @@ class CityData
         $isCityFound = false;
         
         // make connection
-        $conn = getDatabaseConnection();
+        $conn = CityBuilder::getDatabaseConnection();
         
         // query to retrieve city info
         $sql_select_city = "SELECT cityID, currSector, nBlocks, Users.nCoins
@@ -177,7 +177,7 @@ class CityData
         $message = "unknown error";
         
         //make connection
-        $conn = getDatabaseConnection();
+        $conn = CityBuilder::getDatabaseConnection();
         
         // query that checks city's existence
         $sql_check = "SELECT Cities.name, Users.name

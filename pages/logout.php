@@ -9,15 +9,17 @@
 * This page causes the user to be logged out.
 *
 **/
-    // initialize session
-    session_start();
+// initialize session
+session_start();
+include "../scripts/include.php";
     
-    // clear all session data
-    session_unset();
+// clear all session data
+session_unset();
+CityBuilder::initSessionKeys();
 ?>
 <html>
 <head>
-<?php include "../scripts/include.php"; ?>
+<?php CityBuilder::printIncludes() ?>
     <title>Logged out of City Builder</title>
 </head>
 <body>

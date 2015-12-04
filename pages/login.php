@@ -9,12 +9,13 @@
 * This page has a form in it that enables a player to sign in.
 *
 **/
-    // initialize session
-    session_start();
+session_start();
+include "../scripts/include.php";
+CityBuilder::initSessionKeys();
 ?>
 <html>
 <head>
-<?php include "../scripts/include.php"; ?>
+<?php CityBuilder::printIncludes() ?>
     <title>Login to City Builder</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
 function validateLogin($username, $password)
 {
     // connect to database
-    $conn = getDatabaseConnection();
+    $conn = CityBuilder::getDatabaseConnection();
     
     // search for pair
     $sql = "SELECT * FROM Users WHERE name='$username' AND password='$password'";
@@ -63,8 +64,8 @@ function validateLogin($username, $password)
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // get form info
-        $username = validateInput($_POST["username"], true);
-        $password = validateInput($_POST["password"], true);
+        $username = CityBuilder::validateInput($_POST["username"], true);
+        $password = CityBuilder::validateInput($_POST["password"], true);
         
         // begin listing errors
         if($signup_message == null)

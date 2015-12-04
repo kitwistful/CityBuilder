@@ -9,15 +9,15 @@
 * Teaches players the rules of the game.
 *
 **/
-    // initialize session
-    session_start();
+// initialize session
+session_start();
+include "../scripts/include.php";
+CityBuilder::initSessionKeys();
 ?>
 <html>
 <head>
-<?php include "../scripts/include.php"; ?>
-    <!-- game script -->
-    <script type="text/javascript" src="../scripts/game.js"></script>
-    <title>Play City Builder</title>
+<?php CityBuilder::printIncludes() ?>
+    <title>How To Play City Builder</title>
 </head>
 <body>
 <?php

@@ -9,12 +9,14 @@
 * This page is where the game can be found, provided the player is logged in.
 *
 **/
-    // initialize session
-    session_start();
+// initialize session
+session_start();
+include "../scripts/include.php";
+CityBuilder::initSessionKeys();
 ?>
 <html>
 <head>
-<?php include "../scripts/include.php"; ?>
+<?php CityBuilder::printIncludes() ?>
     <!-- game script -->
     <script type="text/javascript" src="../scripts/game.js"></script>
     <title>Play City Builder</title>

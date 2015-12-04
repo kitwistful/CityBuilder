@@ -11,10 +11,12 @@
 **/
     // initialize session
     session_start();
+    include "../scripts/include.php";
+    CityBuilder::initSessionKeys();
 ?>
 <html>
 <head>
-<?php include "../scripts/include.php"; ?>
+    <?php CityBuilder::printIncludes()?>
     <title>Join City Builder</title>
 </head>
 <body>
@@ -86,7 +88,7 @@ function addUser($username, $password)
         // get form info
         $username = validateInput($_POST["username"], true);
         $password = validateInput($_POST["password"], true);
-        $password_again = $_POST["password_again"], true;
+        $password_again = $_POST["password_again"];
         
         // begin listing errors
         if($signup_message == null)
