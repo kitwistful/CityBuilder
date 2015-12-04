@@ -5,17 +5,29 @@ body
     font-size: 16px;
 }
 
+article
+{
+    margin-bottom: 32px;
+    width: 512px;
+}
+
 article > content
 {
     display: block;
     font-size: 16px;
     background: #FFFFFF;
+    padding: 16px;
+    padding-top: 8px;
+    padding-bottom: 32px;
 }
 
-article
+article > header
 {
-    margin-bottom: 32px;
-    width: 512px;
+    font-size: 32px;
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: 700;
+    background: #DF8888;
+    padding: 8px;
 }
 
 form >input, form > button
@@ -43,14 +55,6 @@ form >input, form > button
     font-size: 64px;
     font-family: 'Averia Sans Libre', cursive;
     font-weight: 700;
-}
-
-article > header
-{
-    font-size: 32px;
-    font-family: 'Averia Sans Libre', cursive;
-    font-weight: 700;
-    background: #DF8888;
 }
 
 nav > ul > li
@@ -101,7 +105,8 @@ nav > ul > li
 
 #CitiesBlock, #SectorsBlock, #CityExpansionBlock, #CreateNewCityBlock
 {
-    width: 256px;
+    width: 252px;
+    margin-right: 8px;
     display: inline;
-    float: left
+    float: left;
 }
