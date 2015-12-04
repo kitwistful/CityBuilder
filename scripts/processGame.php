@@ -22,32 +22,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // make database connection
     $conn = CityData::getDatabaseConnection();
     
-    // get last timestamp
-    // todo
+    try {
+        // get last timestamp
+        // todo
+        
+        // update to current timestamp
+        //todo
+        
+        // get number of allocated blocks
+        // todo
+        
+        // proceed to calculate blocks if number of blocks allocated is less than
+        // total number of blocks
+        
+        // -->get difference between timestamps
+        // todo
+        
+        // -->determine number of blocks grown
+        // todo
+        
+        // -->cap value if it is larger than number of blocks
+        // todo
+        
+        // --> update blocks value
+        // todo
+        
+        // change current sector
+        // todo  
+    } catch (PDOException $e) {
+        echo "<table><tr><th>SQL</th><td>$sql</td></tr><tr><th>Error</th><td>".$e->getMessage()."</td></tr><tr><th>Line</th><td>". $e->getLine()."</td></tr></table><br />";
+    }
     
-    // update to current timestamp
-    //todo
     
-    // get number of allocated blocks
-    // todo
-    
-    // proceed to calculate blocks if number of blocks allocated is less than
-    // total number of blocks
-    
-    // -->get difference between timestamps
-    // todo
-    
-    // -->determine number of blocks grown
-    // todo
-    
-    // -->cap value if it is larger than number of blocks
-    // todo
-    
-    // --> update blocks value
-    // todo
-    
-    // change current sector
-    // todo
     
     // disconnect from database
     $conn = null;
