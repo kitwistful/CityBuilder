@@ -27,6 +27,3 @@ function gameLoop(name, niters)
         $(name).append("maxed out<br/>");
     }
 }
-
-gameLoop("#testReload", 10);
-$(name).append("but does it block?");
