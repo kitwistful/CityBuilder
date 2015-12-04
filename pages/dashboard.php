@@ -175,6 +175,7 @@ function loadPage()
         // create onclick
         echo "currElement.change(data$i = {index: $i, selected: selectedSector, message: sectors[$i]}, function()
             {
+                
                 console.log(data$i.index, data$i.selected, data$i.message);
             });";
         
@@ -185,7 +186,20 @@ function loadPage()
         
         // populate cities
         CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues, false, citiesLabels, selectedSector, 1);
+        var currElement = $("#CitiesContent").find("input");
+<?php
+    for($i = 0; $i < count($cities); $i++)
+    {
+        // create onclick
+        echo sprintf("currElement.change(cityData$i = {index: $i, selected: selectedCity, message: \"%s\"}, function()
+            {
+                console.log(cityData$i.index, cityData$i.selected, cityData$i.message);
+            });", $cities[$i]);
         
+        // iterate
+        echo "currElement = currElement.next();";
+    }
+?>        
         
         
     }
