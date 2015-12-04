@@ -1,5 +1,5 @@
 <?php
-
+session_start();
     
 // update things
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -10,6 +10,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $currentSector = $_POST["currentSector"];
     $growth = $_POST["growth"];
     
-    // update database
+    // update city index in session
+    //todo
+    
+    // lookup city info
+    // todo
+    
+    // make database connection
+    // todo
+    
+    // get last timestamp
+    // todo
+    
+    // update to current timestamp
+    //todo
+    
+    // get number of allocated blocks
+    // todo
+    
+    // proceed to calculate blocks if number of blocks allocated is less than
+    // total number of blocks
+    
+    // -->get difference between timestamps
+    // todo
+    
+    // -->determine number of blocks grown
+    // todo
+    
+    // -->cap value if it is larger than number of blocks
+    // todo
+    
+    // --> update blocks value
+    // todo
+    
+    // change current sector
+    // todo
+    
 }
 ?>
