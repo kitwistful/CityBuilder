@@ -18,9 +18,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     //todo
     $message = $_POST["testmessage"];
+    
+    // get city name
+    $currCity = $_POST["currcity"];
+    
+    // get city info
+    
+    
 }
 
 //todo
-echo "'$message'???";
+echo "$currCity";
 
 ?>

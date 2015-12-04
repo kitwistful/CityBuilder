@@ -15,11 +15,12 @@ function CityBuilder_gotResult(text)
     $(CityBuilder_outputDivName).html("got: "+text+"<br />" );
 }
 
-function CityBuilder_gameLoop()
+function CityBuilder_gameLoop(currCity)
 {
     // data to give database
     var data = {
-        testmessage: "bread"
+        testmessage: "bread",
+        currcity: currCity
         };
     
     // about to post
@@ -30,6 +31,6 @@ function CityBuilder_gameLoop()
         
     // wait 1 minute and then go again
     setTimeout(function(){
-        CityBuilder_gameLoop();
+        CityBuilder_gameLoop(currCity);
         }, 1000*60);
 }
