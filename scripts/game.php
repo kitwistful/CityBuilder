@@ -68,13 +68,12 @@ if($currCityInfo == null)
 <script>
     function gameLoop(name, niters)
     {
-        $(name).show(0).delay(1000);
-        $(name).append("reloaded<br />");
+        $(name).append("reloaded ("+niters+" left)<br />");
         if(niters > 0)
         {
-            $(name).hide(1000, function(){
+            setTimeout(function(){
                 gameLoop(name, niters-1);
-            });
+                }, 1000);
             
         } else {
             $(name).append("maxed out<br/>");
