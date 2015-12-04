@@ -124,8 +124,20 @@ include "../scripts/header.php";
     // load game stuff
     if(<?php echo $bLoggedIn && $userOwnsCities?>)
     {
-        //todo
+        // todo
         $("#CurrentCityName").html("'Todo'");
+        
+        // sectors list
+        var sectors = ["Residential", "Educational", "Recreational", "Business"];
+        
+        // populate Sectors block
+        CityBuilder_appendRadioInputs("#SectorsContent", sectors);
+        
+        // cities list
+        var cities = [/*todo*/];
+        
+        // populate Cities
+        CityBuilder_appendRadioInputs("#CitiesContent", cities);
     }
 
     // show correct div

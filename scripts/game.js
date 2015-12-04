@@ -42,3 +42,9 @@ function CityBuilder_gameLoop(currCity, currSector)
         CityBuilder_gameLoop(currCity, currSector);
         }, 1000*$n_seconds);
 }
+
+function CityBuilder_appendRadioInputs(name, values)
+{
+    //todo
+    $(name).append("hi");
+}
