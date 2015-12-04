@@ -28,7 +28,7 @@ function CityBuilder_postForm(currcity, cityname, currsector, nBlocksToAdd)
         growth: nBlocksToAdd
         
         };
-    $.post("../scripts/processGame.php",data, function(){location.reload();});
+    $.post("../scripts/processGame.php",data, function(ret){console.log(ret);/*location.reload();*/});
 }
 
 function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, values, cityIndex, cityNames, currentSector, growth)
@@ -50,32 +50,4 @@ function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, va
         $(name).append(html);
         
     }
-    
-    // activate inputs
-    /*var currElement = $(name).find("input");
-    for(var i = 0; i < values.length; i++)
-    {
-        // data for thing
-        var data = {currValueIndex: i};
-        
-        // set onclick
-        currElement.change(data, function(data){
-            
-            var currValueIndex = data.currValueIndex;
-            console.log("currindex:" + currValueIndex, "currcity:" + cityIndex, "currsector:" + currentSector, "growth:" + growth);
-            
-            if(!cityIndex)
-                cityIndex = values[currValueIndex];
-            if(!currentSector)
-                currentSector = values[currValueIndex];
-            if(!growth)
-                growth = values[currValueIndex];
-            
-            
-            CityBuilder_postForm(cityIndex, cityNames[cityIndex], currentSector, growth);
-            });
-        
-        // iterate
-        currElement = $(currElement).next();
-    }*/
 }

@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+include "include.php";
     
 // update things
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -11,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $growth = $_POST["growth"];
     
     // get username
-    $username = $SESSION["CityBuilder_username"];
+    $username = $_SESSION["CityBuilder_username"];
     
     // update city index in session
     $_SESSION["CityBuilder_currCity"] = $cityIndex;
