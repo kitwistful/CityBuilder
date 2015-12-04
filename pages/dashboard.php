@@ -149,9 +149,9 @@ include "../scripts/header.php";
         $("#CurrentCityDescription").html("Description: todo");
         
         // put in stats
-        $("#CurrentCityInfoBlocks").html("<todo1>");
-        $("#CurrentCityInfoUnusedBlocks").html("<todo2>");
-        $("#CurrentCityInfoCurrentSector").html("<todo3>");
+        $("#CurrentCityInfoBlocks").html("todo1");
+        $("#CurrentCityInfoUnusedBlocks").html("todo2");
+        $("#CurrentCityInfoCurrentSector").html("todo3");
         
         
         // populate sectors block

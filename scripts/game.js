@@ -20,7 +20,7 @@ function CityBuilder_makeUnhidden(name)
     $(name).css("display", "initial");
 }
 
-function GityBuilder_makeHidden(name)
+function CityBuilder_makeHidden(name)
 {
     $(name).css("display", "none");
 }
