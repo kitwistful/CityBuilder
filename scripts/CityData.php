@@ -250,14 +250,55 @@ class CityData
         
     }
     
+    function getBiggestSectors($cityInfo)
+    {
+        // results
+        $result = array("sectors"=>array(SECTOR_NONE), "size"=>0);
+        
+        //todo
+        
+        // return results
+        return $result;
+    }
+    
+    function pickSector($cityInfo, $sectors)
+    {
+        // return null if sector length isn't there
+        if(count($sectors) == 0)
+            return null;
+        
+        // look at each sector
+        $selectSectorWithKey = null;
+        foreach($sectors as $k=>$sector)
+        {
+            // consider sector
+            if($sector == $cityInfo->currSector)
+            {
+                // prefer selected sector
+                $selectSectorWithKey = $k;
+                break;
+            } else if($selectSectorWithKey == null) {
+                // initialize sector to this
+                $selectSectorWithKey = $k;
+            } else {
+                // ehh that's probably good enough
+            }
+        }
+        
+        // return selected sector
+        return $sectors[$selectSectorWithKey];
+        
+    }
+    
     function getDescription($cityInfo)
     {
         // find highest sector size
-        // todo
+        $largest = CityData::getBiggestSectors($cityInfo);
+        $largestSectorSize = $largest["size"];
         
-        // determine sector size
-        // --->pick between equal sector sizes
-        // todo
+        // determine sector
+        $largestSectorName = CityData::pickSector($cityInfo, $largest["sectors"]);
+        
         
         // connect to database
         // todo
@@ -283,7 +324,7 @@ class CityData
         
         // return description
         // todo
-        return "uhhhh";
+        return "selected sector '$largestSectorName' with size $largestSectorSize";
         
     }
     
