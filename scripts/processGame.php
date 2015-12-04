@@ -42,9 +42,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $prev_timestamp = $record["created"];
         }
         
-        // todo
-        echo $prev_timestamp;
-        
         // update to current timestamp
         // todo
         $sql = "SELECT NOW()";
@@ -52,7 +49,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $stmt->execute();
         $record = $stmt->fetch();
         $curr_timestamp = $record[0];
-        echo $curr_timestamp; 
         
         // get number of allocated blocks
         // todo
@@ -61,11 +57,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // total number of blocks
         
         // -->get difference between timestamps
-        $sql = "SELECT TIMESTAMPDIFF($prev_timestamp, $curr_timestamp)";//todo
+        $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";//todo
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $record = $stmt->fetch();
-        $seconds_elapsed = $record[0];
+        $minutes_elapsed = $record[0];
+        echo $minutes_elapsed;
         
         // -->determine number of blocks grown
         // todo
