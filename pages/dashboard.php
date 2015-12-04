@@ -187,15 +187,12 @@ if(array_key_exists("CityBuilder_largestSector", $_SESSION))
         // iterate over blocks
         for(var i = 0; i < 4; i++)
         {
-            // highlight largest
+            // highlight selected
             var classname = "unselected_sector";
-            if(i == largestSector)
+            if(i == selectedSector)
                 classname = "selected_sector";
             
-            // point to selected
-            var sectorLabel = sectors[i];
-            if(i == selectedSector)
-                sectorLabel = "* " + sectorLabel;
+            sectorLabel = sectors[i];
             
             $("#CurrentCitySectors").append("<div class = '" + classname + "'>"+ sectorLabel + ": " + sectorBlocks[i] + "</div>");
             
