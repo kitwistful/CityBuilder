@@ -48,7 +48,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // todo
         
         // change current sector
-        // todo  
+        if($currentSector != $cityInfo->currSector)
+        {
+            $sql = sprintf("UPDATE Cities SET currSector='$currentSector' WHERE cityID=%d", $cityInfo->cityID);
+            $conn->exec($sql);
+        }
     } catch (PDOException $e) {
         echo "<table><tr><th>SQL</th><td>$sql</td></tr><tr><th>Error</th><td>".$e->getMessage()."</td></tr><tr><th>Line</th><td>". $e->getLine()."</td></tr></table><br />";
     }
