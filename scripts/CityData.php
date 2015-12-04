@@ -315,8 +315,8 @@ class CityData
         // connect to database
         $conn = CityBuilder::getDatabaseConnection();
         
-        //todo
-        $currID = null;
+        // description found
+        $description = "error";
         
         // do queries
         try {
@@ -333,6 +333,7 @@ class CityData
             $stmt->execute();
             $record = $stmt->fetch();
             $currID = $record["descID"];
+            $description = $record["content"];
             
             // query selecting descriptions, ids, and next ids based on sector
             // todo
@@ -340,15 +341,12 @@ class CityData
             // array of already read values
             // todo
             
-            // description string
-            // todo
-            
             // start at 0 and keep going "next" until it's null OR the size is
             // too big.
             // --> check id hasn't already been selected
             // --> add id to list
             // --> iterate
-            // todo   
+            // todo
         } catch (PDOException $e) {
             $message = $e->getLine().": ".$e->getMessage();
         }
@@ -358,7 +356,7 @@ class CityData
         
         // return description
         // todo
-        return "selected sector '$largestSectorName' with size $largestSectorSize descID $currID";
+        return "selected sector '$largestSectorName' with size $largestSectorSize '$description'";
         
     }
     
