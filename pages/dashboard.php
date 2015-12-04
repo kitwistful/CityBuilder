@@ -15,6 +15,8 @@
 <html>
 <head>
 <?php include "../scripts/include.php"; ?>
+    <!-- game script -->
+    <script type="text/javascript" src="../scripts/game.js"></script>
     <title>Play City Builder</title>
 </head>
 <body>
@@ -48,15 +50,14 @@ include "../scripts/header.php";
     
 ?>
 <?php
-    // has different content depending on whether or not user is logged in
-    /*if(!$bLoggedIn)
+    // select which content to show
+    $elementShownName = "#GameContent";
+    if(!$bLoggedIn)
     {
-        echo "<article><header>Welcome to City Builder!</header><content>To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. <!--You can also <a href = 'recover_account.php'>recover an account</a> if you have a code.--> Have fun!</content></article>";
+        $elementShownName = "#LoggedOutContent";
     } else if(!$userOwnsCities) {
-        echo "<article><header>No Cities Yet</header><content>It's time to make your first city! Click <a href = 'newcity.php'>here</a> to create your city.</content></article>";
-    } else{
-        include '../scripts/game.php';
-    }*/
+        $elementShownName = "#NoCitiesContent";    
+    }
 ?>
 
 <div id = "LoggedOutContent" class = "hidden">
@@ -78,6 +79,9 @@ include "../scripts/header.php";
 <div id = "GameContent" class = "hidden">
     todododo
 </div>
-    
+<script>
+    // show correct div
+    CityBuilder_makeUnhidden(<?php echo "\"$elementShownName\"" ?>);
+</script>
 </body>
 </html>
