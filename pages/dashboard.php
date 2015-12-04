@@ -23,9 +23,6 @@
 <?php
 include "../scripts/CityData.php";
 
-
-define("CITY_NAMES", "citybuilder_citynames");
-
 // get session values
 $bLoggedIn = $_SESSION["citybuilder_bLoggedIn"];
 $username = $_SESSION["citybuilder_username"];
@@ -37,8 +34,7 @@ $userOwnsCities = false;
 if($bLoggedIn)
 {
     
-    $_SESSION[CITY_NAMES] = CityData::getUserCities($username);
-    $cities = $_SESSION[CITY_NAMES];
+    $cities = CityData::getUserCities($username);
     $userOwnsCities = count($cities) > 0;
     
     
