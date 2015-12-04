@@ -53,12 +53,12 @@ include "../scripts/header.php";
         <header>Create City</header>
         <content>
             Let's make a city!
+            <form action = "newcity.php" method = "POST">
+                Name:
+                <input type = "text" name = "cityname"></input><br />
+                <button>Create a city</button><br />
+            </form>
         </content>
-        <form action = "newcity.php" method = "POST">
-            Name:
-            <input type = "text" name = "cityname"></input><br />
-            <button>Create a city</button><br />
-        </form>
     </article>
 <?php include '../scripts/footer.php'?>
 </body>
