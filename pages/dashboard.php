@@ -78,44 +78,51 @@ include "../scripts/header.php";
 </div>
 <div id = "GameContent" class = "hidden">
     <article id = "CurrentCityBlock">
-        <header><div id = "CityName"></div></header>
+        <header><div id = "CurrentCityName"></div></header>
         <content>
-            todo
+            <div id = "CurrentCityContent"></div>
         </content>
     </article>
     <article id = "HowToPlayBlock">
         <header>How To Play</header>
         <content>
-            todo
+            <div id = "HowToPlayContent"></div>
         </content>
     </article>
     <article id = "SectorsBlock">
         <header>Sectors</header>
         <content>
-            todo
+            <div id = "SectorsContent"></div>
         </content>
     </article>
     <article id = "CitiesBlock">
         <header>Cities</header>
         <content>
-            todo
+            <div id = "CitiesContent"></div>
         </content>
     </article>
     <article id = "CityExpansionBlock">
         <header>City Expansion</header>
         <content>
-            todo
+            <div id = "CityExpansionContent"></div>
         </content>
     </article>
     <!-- wait, where's the build button? -->
     <article id = "CreateNewCityBlock">
-        <header>CreateNewCity</header>
+        <header>Create New City</header>
         <content>
-            todo
+            <div id = "CreateNewCityContent"></div>
         </content>
     </article>
 </div>
 <script>
+    // load game stuff
+    if(<?php echo $bLoggedIn && $userOwnsCities?>)
+    {
+        //todo
+        $("#CurrentCityName").html("'Todo'");
+    }
+
     // show correct div
     CityBuilder_makeUnhidden(<?php echo "\"$elementShownName\"" ?>);
 </script>
