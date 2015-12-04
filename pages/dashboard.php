@@ -100,16 +100,16 @@ include "../scripts/header.php";
             </p>
         </content>
     </article>
-    <article id = "SectorsBlock">
-        <header>Sectors</header>
-        <content>
-            <div id = "SectorsContent"></div>
-        </content>
-    </article>
     <article id = "CitiesBlock">
         <header>Cities</header>
         <content>
             <div id = "CitiesContent"></div>
+        </content>
+    </article>
+    <article id = "SectorsBlock">
+        <header>Sectors</header>
+        <content>
+            <div id = "SectorsContent"></div>
         </content>
     </article>
     <article id = "CityExpansionBlock">

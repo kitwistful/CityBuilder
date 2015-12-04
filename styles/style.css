@@ -75,3 +75,10 @@ nav > ul > li
 {
     display: inline;
 }
+
+#CitiesBlock, #SectorsBlock, #CityExpansionBlock, #CreateNewCityBlock
+{
+    width: 256px;
+    display: inline;
+    float: left
+}
