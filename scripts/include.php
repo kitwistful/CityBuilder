@@ -47,7 +47,7 @@ function getDatabaseConnection()
     
 <!-- Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre:400,700' rel='stylesheet' type='text/css'>
-
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <!-- Stylesheet-->
 <link rel = "stylesheet" type = "text/css" href = "../styles/style.css" />
 
