@@ -134,7 +134,19 @@ function loadPage()
         // city name
             
         // currently selected sector
-        var selectedSector = <?php echo 0?>; //todo
+        var selectedSectorName = <?php echo $currCityInfo ? "\"$currCityInfo->currSector\"" : ""?>;
+        var selectedSector = 4;
+        for(var i = 0; i < sectors.length; i++)
+        {
+            if(sectors[i] == selectedSectorName)
+            {
+                selectedSector = i;
+                break;
+            } else {
+                // todo
+                console.log("'" + sectors[i] + "' does not match " + selectedSectorName);
+            }
+        }
         
         // number of blocks
         var nBlocks = <?php echo $currCityInfo && $currCityInfo->nBlocks ? $currCityInfo->nBlocks : "\"\""?>;
