@@ -15,12 +15,12 @@ function CityBuilder_gotResult(text)
     $(CityBuilder_outputDivName).html("got: "+text+"<br />" );
 }
 
-function CityBuilder_gameLoop(currCity)
+function CityBuilder_gameLoop(currCity, currSector)
 {
     // data to give database
     var data = {
-        testmessage: "bread",
-        currcity: currCity
+        currcity: currCity,
+        currsector: currSector
         };
     
     // about to post

@@ -72,7 +72,7 @@ if($currCityInfo == null)
 ?>
 <div id = "testReload"></div>
 <script>
-CityBuilder_gameLoop(<?php echo "\"$cities[$curr_city]\""?>);
+CityBuilder_gameLoop(<?php echo "\"$cities[$curr_city]\""?>, <?php echo "\"$currCityInfo->currSector\""?>);
 $(name).append("but does it block?");
 </script>
 <article id = "curr_city">
