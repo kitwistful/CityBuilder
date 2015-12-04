@@ -385,7 +385,7 @@ class CityData
                                 break;
                             } else if($currentDescriptionID == 1) {
                                 // query for first sector rank
-                                $stmt = $conn->prepare("SELECT descID FROM CityDescriptions WHERE sector=$largestSectorName AND blockRank=2");
+                                $stmt = $conn->prepare("SELECT descID FROM CityDescriptions WHERE sector='$largestSectorName' AND blockRank=2");
                                 $stmt->execute();
                                 $record = $stmt->fetch();
                                 
@@ -397,10 +397,12 @@ class CityData
                             }
                         } else {
                             // this is an error condition, by the way...
+                            $description = "btw";
                             break;
                         }
                     } else {
                         // we are this kind of low
+                        $description = sprintf("$description ($largestSectorSize too low for rank %s == %s)", $record["blockRank"], $blockRanks[$record["blockRank"]]);
                         break;
                     }
                 }
