@@ -173,9 +173,9 @@ function loadPage()
     for($i = 0; $i < 5; $i++)
     {
         // create onclick
-        echo "currElement.change(data$i = {message: sectors[$i]}, function()
+        echo "currElement.change(data$i = {index: $i, selected: selectedSector, message: sectors[$i]}, function()
             {
-                console.log(data$i.message);
+                console.log(data$i.index, data$i.selected, data$i.message);
             });";
         
         // iterate
