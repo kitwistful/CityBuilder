@@ -63,16 +63,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $stmt->execute();
             $record = $stmt->fetch();
             $minutes_elapsed = $record[0];
-            echo $minutes_elapsed;
+            echo "$minutes_elapsed min";
             
             // determine number of blocks grown
-            // todo
+            if($growth == null)
+                $growth = 0;
+            $growth = $growth + $minutes_elapsed;
             
             // cap value if it is larger than number of blocks
-            // todo
+            $growth = min($growth, $nBlocks);
             
             // update blocks value
             // todo
+            echo "=>+$growth blocks";
         }
         
         // change current sector
