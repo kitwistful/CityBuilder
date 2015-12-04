@@ -270,6 +270,10 @@ class CityData
             }
         }
         
+        // set sector to none if no sectors have developed
+        if($result["size"] == 0)
+            $result["sectors"] = array(SECTOR_NONE);
+        
         // return results
         return $result;
     }
