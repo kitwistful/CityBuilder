@@ -324,39 +324,20 @@ class CityData
         
         // do queries
         try {
-            // determine sector name
-            $condition = null;
-            if($largestSectorName == SECTOR_NONE)
-                $condition = "ISNULL(sector)";
-            else
-                $condition = "sector='$largestSectorName'";
-            
-            // get the base description
-            $sql = "SELECT descID, content, nextDescID FROM CityDescriptions WHERE $condition";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute();
-            $record = $stmt->fetch();
-            $currID = $record["descID"];
-            $description = $record["content"];
-            
-            // query selecting descriptions, ids, and next ids based on sector
-            $sql_fmt = "SELECT descID, content, nextDescID FROM CityDescriptions WHERE sector='%s'";
-            
             // array of already read values
-            $alreadyRead = array($currID);
+            $alreadyRead = array();
             
-            // current rank
-            $currRank = 1;
+            // lookup values based on this id
+            $currentDescriptionID = 1;
             
-            // start at 0 and keep going "next" until it's null OR the size is
-            // too big.
-            while($currRank != null && $currRank < 5)
+            // start at 1 and keep going "next" until it's null
+            while($currentDescriptionID != null)
             {
                 // check id hasn't already been selected
                 $stillOkay = true;
-                foreach($alreadyRead as $i=>$rank)
+                foreach($alreadyRead as $i=>$id)
                 {
-                    if($currRank == $rank)
+                    if($currentDescriptionID == $id)
                     {
                         $stillOkay = false;
                         break;
@@ -369,7 +350,9 @@ class CityData
                    break; 
                 } else {
                     // add id to list
-                    $alreadyRead[count($alreadyRead)] = $currRank;
+                    $alreadyRead[count($alreadyRead)] = $currentDescriptionID;
+                    
+                    //todo
                     
                     // iterate
                     // todo
