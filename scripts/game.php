@@ -81,6 +81,7 @@ if($currCityInfo == null)
     }
     
     gameLoop("#testReload", 10);
+    $(name).append("but does it block?");
     
 </script>
 <article id = "curr_city">
