@@ -21,8 +21,8 @@ function gameLoop(name)
         },
         "text");
         
-    // wait and then go again
+    // wait 1 minute and then go again
     setTimeout(function(){
         gameLoop(name);
-        }, 1000);
+        }, 1000*60);
 }
