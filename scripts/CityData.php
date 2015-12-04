@@ -246,6 +246,42 @@ class CityData
         
     }
     
+    function getDescription($cityInfo)
+    {
+        // find highest sector size
+        // todo
+        
+        // determine sector size
+        // --->pick between equal sector sizes
+        // todo
+        
+        // connect to database
+        // todo
+        
+        // query selecting descriptions, ids, and next ids based on sector
+        // todo
+        
+        // array of already read values
+        // todo
+        
+        // description string
+        // todo
+        
+        // start at 0 and keep going "next" until it's null OR the size is
+        // too big.
+        // --> check id hasn't already been selected
+        // --> add id to list
+        // --> iterate
+        // todo
+        
+        // disconnect from database
+        // todo
+        
+        // return description
+        // todo
+        
+    }
+    
     
     
 }
