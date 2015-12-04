@@ -18,9 +18,8 @@
     <!-- game script -->
     <script type="text/javascript" src="../scripts/game.js"></script>
     <title>Play City Builder</title>
-</head>
-<body>
-<?php
+    
+    <?php
 include "../scripts/CityData.php";
 function cityLabels($cities)
 {
@@ -97,61 +96,10 @@ if(!$bLoggedIn)
     // retrieve current city info
     $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
 }
-
-// header
-define("CURRENT_PAGE", "../pages/dashboard.php");
-include "../scripts/header.php";
 ?>
-
-<div id = "LoggedOutContent" class = "hidden">
-    <article>
-        <header>Welcome to City Builder!</header>
-        <content>
-            To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. Have fun!
-        </content>
-    </article>
-</div>
-<div id = "NoCitiesContent" class = "hidden">
-    <article>
-        <header>No Cities Yet</header>
-        <content>
-            It's time to make your first city! Click <a href = 'newcity.php'>here</a> to create your city.
-        </content>
-    </article>
-</div>
-<div id = "GameContent" class = "hidden">
-    <article id = "CurrentCityBlock">
-        <header><div id = "CurrentCityName"></div></header>
-        <content>
-            <div id = "CurrentCitySectors"></div>
-            <div id = "CurrentCityDescription"></div>
-            <ul id = "CurrentCityInfo">
-                <li>Blocks:  <div id = "CurrentCityInfoBlocks"></div></li>
-                <li>Unused Blocks: <div id = "CurrentCityInfoUnusedBlocks"></div></li>
-                <li>Current Sector: <div id = "CurrentCityInfoCurrentSector"></div></li>
-            </ul>
-        </content>
-    </article>
-    <article id = "CitiesBlock">
-        <header>Cities</header>
-        <content>
-            <div id = "CitiesContent"></div>
-        </content>
-    </article>
-    <article id = "SectorsBlock">
-        <header>Sectors</header>
-        <content>
-            <div id = "SectorsContent"></div>
-        </content>
-    </article>
-    <article id = "CreateNewCityBlock">
-        <header>Create New City</header>
-        <content>
-            Go <a href = "../pages/newcity.php">here</a> to create a new city.
-        </content>
-    </article>
-</div>
 <script>
+function loadPage()
+{
     // get name of element to show
     var visibleElement = <?php echo "\"$elementShownName\"" ?>;
 
@@ -230,8 +178,67 @@ include "../scripts/header.php";
 
     // show correct div
     CityBuilder_makeUnhidden(visibleElement);
+}
     
 </script>
+</head>
+<body onload = "loadPage()">
+
+<?php
+// header
+define("CURRENT_PAGE", "../pages/dashboard.php");
+include "../scripts/header.php";
+?>
+
+
+<div id = "LoggedOutContent" class = "hidden">
+    <article>
+        <header>Welcome to City Builder!</header>
+        <content>
+            To get started, please <a href = 'create_account.php'>create a player account</a> or <a href = 'login.php'>login to an existing one</a>. Have fun!
+        </content>
+    </article>
+</div>
+<div id = "NoCitiesContent" class = "hidden">
+    <article>
+        <header>No Cities Yet</header>
+        <content>
+            It's time to make your first city! Click <a href = 'newcity.php'>here</a> to create your city.
+        </content>
+    </article>
+</div>
+<div id = "GameContent" class = "hidden">
+    <article id = "CurrentCityBlock">
+        <header><div id = "CurrentCityName"></div></header>
+        <content>
+            <div id = "CurrentCitySectors"></div>
+            <div id = "CurrentCityDescription"></div>
+            <ul id = "CurrentCityInfo">
+                <li>Blocks:  <div id = "CurrentCityInfoBlocks"></div></li>
+                <li>Unused Blocks: <div id = "CurrentCityInfoUnusedBlocks"></div></li>
+                <li>Current Sector: <div id = "CurrentCityInfoCurrentSector"></div></li>
+            </ul>
+        </content>
+    </article>
+    <article id = "CitiesBlock">
+        <header>Cities</header>
+        <content>
+            <div id = "CitiesContent"></div>
+        </content>
+    </article>
+    <article id = "SectorsBlock">
+        <header>Sectors</header>
+        <content>
+            <div id = "SectorsContent"></div>
+        </content>
+    </article>
+    <article id = "CreateNewCityBlock">
+        <header>Create New City</header>
+        <content>
+            Go <a href = "../pages/newcity.php">here</a> to create a new city.
+        </content>
+    </article>
+</div>
 <?php include '../scripts/footer.php'?>
 </body>
 </html>
