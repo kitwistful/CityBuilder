@@ -164,7 +164,7 @@ class CityData
         
         // make the object if the search didn't fail
         if($isCityFound)
-            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins, $cityid);
+            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $cityid);
         
         // return info
         return $cityInfo;

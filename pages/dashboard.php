@@ -95,6 +95,8 @@ if(!$bLoggedIn)
     
     // retrieve current city info
     $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
+
+    echo $currCityInfo->cityID;
 }
 ?>
 <script>
