@@ -316,6 +316,9 @@ class CityData
         // determine sector
         $largestSectorName = CityData::pickSector($cityInfo, $largest["sectors"]);
         
+        // update session value.
+        $_SESSION["CityBuilder_largestSector"] = $largestSectorName;
+        
         // connect to database
         $conn = CityBuilder::getDatabaseConnection();
         
