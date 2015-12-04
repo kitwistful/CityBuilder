@@ -30,16 +30,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     try {
         // get last timestamp
-        $sql = "SELECT timestamp FROM Cities WHERE cityID = $cityID";
+        $sql = "SELECT timestamp, created FROM Cities WHERE cityID = $cityID";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $record= $stmt->fetch();
         $prev_timestamp = $record["timestamp"];
-        echo $prev_timestamp; //todo
         
-        // update timestamp if it's a bad value
+        // use created timestamp if prev_timestamp is strange
         if($prev_timestamp == "0000-00-00 00:00:00")
-            echo "who knew";
+        {
+            $prev_timestamp = $record["created"];
+        }
+        
+        // todo
+        echo $prev_timestamp;
         
         // update to current timestamp
         // todo
