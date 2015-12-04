@@ -13,14 +13,11 @@ session_start();
 include "include.php";
 
 
-function updateGame()
+$message = "<no thing>";
+if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-    
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        //todo
-        $message = $_POST["testmessage"];
-    }
+    //todo
+    $message = $_POST["testmessage"];
 }
 
 //todo

@@ -69,9 +69,13 @@ if($currCityInfo == null)
     function gameLoop(name, niters)
     {
         $(name).append("prepost for iter " + niters + "<br />");
-        $.post("../scripts/game_update.php", function(text){
-           $(name).append("got: "+text+"<br />" );
-        });
+        $.post("../scripts/game_update.php",
+            {testmessage: "this is iter " + niters
+            },
+            function(text){
+            $(name).append("got: "+text+"<br />" );
+            },
+            "text");
         if(niters > 0)
         {
             setTimeout(function(){
