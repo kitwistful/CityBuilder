@@ -324,6 +324,20 @@ class CityData
         
         // do queries
         try {
+            // query for block rank values
+            $stmt = $conn->prepare("SELECT rankID, nBlocks FROM SectorBlockRanks");
+            $stmt->execute();
+            $records = $stmt->fetchAll();
+            
+            // record block rank values
+            $blockRanks = array();
+            foreach($records as $i=>$record)
+            {
+                // add to array
+                // todo
+            }
+            
+            
             // array of already read values
             $alreadyRead = array();
             
