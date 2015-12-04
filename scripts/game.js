@@ -28,7 +28,7 @@ function CityBuilder_postForm(currcity, cityname, currsector, nBlocksToAdd)
         growth: nBlocksToAdd
         
         };
-    $.post("../scripts/processGame.php",data, function(){/*location.reload();*/});//todo
+    $.post("../scripts/processGame.php",data, function(){location.reload();});
 }
 
 function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, values, cityIndex, cityNames, currentSector, growth)

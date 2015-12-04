@@ -174,10 +174,10 @@ function loadPage()
     {
         
         // create onclick
-        echo "$(currElement.get($i)).change(data$i = {index: $i, message: sectors[$i]}, function()
+        echo sprintf("$(currElement.get($i)).change(data$i = {index: $i}, function()
             {
-                console.log(data$i.index, selectedSector, data$i.message);
-            });";
+                CityBuilder_postForm(selectedCity, \"%s\", sectors[$i], 1); 
+            });", $cities[$currCity]);
     }
 ?>
         
@@ -188,10 +188,10 @@ function loadPage()
     for($i = 0; $i < count($cities); $i++)
     {
         // create onclick
-        echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity, message: \"%s\"}, function()
+        echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity}, function()
             {
-                console.log(cityData$i.index, cityData$i.selected, cityData$i.message);
-            });", $cities[$i]);
+                CityBuilder_postForm($i, \"%s\", sectors[%d], 1); 
+            });", $cities[$i], $currCityInfo->currSector);
     }
 ?>        
         
