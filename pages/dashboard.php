@@ -22,6 +22,33 @@
 <body>
 <?php
 include "../scripts/CityData.php";
+function cityLabels($cities)
+{
+    $labels = "";
+    foreach($cities as $i=>$city)
+    {
+        if($i == 0)
+            $labels = "'$city'";
+        else
+            $labels = "$labels, '$city'";
+    }
+    
+    echo $labels;
+}
+
+function cityValues($cities)
+{
+    $len = count($cities);
+    $values = "0";
+    for($i = 1; $i < $len; $i++)
+    for($i = 1; $i < $len; $i++)
+    {
+        $values = $values.", $i";
+    }
+    
+    echo $values;
+    
+}
 
 // get session values
 $bLoggedIn = $_SESSION["citybuilder_bLoggedIn"];
@@ -131,8 +158,8 @@ include "../scripts/header.php";
         var sectors = ["Residential", "Educational", "Recreational", "Business", "None"];
         
         // cities list
-        var citiesLabels = [/*todo*/];
-        var citiesValues = [/*todo*/];
+        var citiesLabels = [<?php cityLabels($cities)?>];
+        var citiesValues = [<?php cityValues($cities)?>];
         
         // expansion options list
         var expansionsLabels = ["3000 coins->blocks", "2000 coins->blocks", "1000 coins->blocks", "none"];
@@ -180,8 +207,6 @@ include "../scripts/header.php";
         $("#CurrentCityInfoBlocks").html(nBlocks);
         $("#CurrentCityInfoUnusedBlocks").html(unusedBlocks);
         $("#CurrentCityInfoCurrentSector").html(sectors[selectedSector]);
-        
-        
         
         // populate sectors block
         CityBuilder_appendRadioInputs("#SectorsContent", "sector", selectedSector, sectors);
