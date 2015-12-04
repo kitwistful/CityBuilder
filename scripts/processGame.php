@@ -51,27 +51,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $curr_timestamp = $record[0];
         
         // get number of allocated blocks
-        // todo
+        $nBlocks = $cityInfo->nBlocks;
         
         // proceed to calculate blocks if number of blocks allocated is less than
         // total number of blocks
-        
-        // -->get difference between timestamps
-        $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";//todo
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $record = $stmt->fetch();
-        $minutes_elapsed = $record[0];
-        echo $minutes_elapsed;
-        
-        // -->determine number of blocks grown
-        // todo
-        
-        // -->cap value if it is larger than number of blocks
-        // todo
-        
-        // --> update blocks value
-        // todo
+        if($nBlocks > CityData::getUsedBlocksCount($cityInfo))
+        {
+            // get difference between timestamps
+            $sql = "SELECT TIMESTAMPDIFF(MINUTE, '$prev_timestamp', '$curr_timestamp')";//todo
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $record = $stmt->fetch();
+            $minutes_elapsed = $record[0];
+            echo $minutes_elapsed;
+            
+            // determine number of blocks grown
+            // todo
+            
+            // cap value if it is larger than number of blocks
+            // todo
+            
+            // update blocks value
+            // todo
+        }
         
         // change current sector
         if($currentSector != $cityInfo->currSector)

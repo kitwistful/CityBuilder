@@ -287,6 +287,12 @@ class CityData
         
     }
     
+    function getUsedBlocksCount($cityInfo)
+    {
+        //todo
+        return $cityInfo->nBlocks;
+    }
+    
     
     
 }
