@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 include "include.php";
+CityBuilder::initSessionKeys();
     
 // update things
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $growth = $_POST["growth"];
     
     // get username
-    $username = $_SESSION["CityBuilder_username"];
+    $username = $_SESSION["citybuilder_username"];
     
     // update city index in session
     $_SESSION["CityBuilder_currCity"] = $cityIndex;

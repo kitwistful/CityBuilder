@@ -96,9 +96,16 @@ if(!$bLoggedIn)
     }
     
     // retrieve current city info
-    $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
-
-    echo $currCityInfo->cityID;
+    
+    if($currCity == null)
+    {
+        $currCity = 0;
+    } else {
+        
+        $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
+        
+        echo $currCityInfo->cityID;
+    }
 }
 ?>
 <script>
@@ -138,7 +145,7 @@ function loadPage()
         // city name
             
         // currently selected sector
-        var selectedSectorName = <?php echo $currCityInfo ? "\"$currCityInfo->currSector\"" : ""?>;
+        var selectedSectorName = <?php echo $currCityInfo && $currCityInfo->currSector ? "\"$currCityInfo->currSector\"" : sprintf("\"%s\"", SECTOR_NONE)?>;
         var selectedSector = 4;
         for(var i = 0; i < sectors.length; i++)
         {
@@ -201,13 +208,17 @@ function loadPage()
         CityBuilder_appendRadioInputs("#CitiesContent", "city", selectedCity, citiesLabels, citiesValues, false, citiesLabels, selectedSector, 1);
         var currElement = $("#CitiesContent").find("input");
 <?php
-    for($i = 0; $i < count($cities); $i++)
+    if($currCityInfo)
     {
-        // create onclick
-        echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity}, function()
-            {
-                CityBuilder_postForm($i, \"%s\", sectors[%d], 1); 
-            });", $cities[$i], $currCityInfo->currSector);
+        for($i = 0; $i < count($cities); $i++)
+        {
+            // create onclick
+            echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity}, function()
+                {
+                    CityBuilder_postForm($i, \"%s\", sectors[%d], 1); 
+                });", $cities[$i], $currCityInfo->currSector);
+        }
+        
     }
 ?>        
         
