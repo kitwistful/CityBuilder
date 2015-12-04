@@ -7,23 +7,23 @@
 * This file has the functions and such for running the game.
 *
 **/
-function gameLoop(name, niters)
+function gameLoop(name, number)
 {
-    $(name).append("prepost for iter " + niters + "<br />");
+    // if no number assume it's the first iteration
+    if(number == undefined)
+        number = 1;
+    
+    // ask for data
     $.post("../scripts/game_update.php",
-        {testmessage: "this is iter " + niters
+        {testmessage: "this is iter " + number
         },
         function(text){
-        $(name).append("got: "+text+"<br />" );
+        $(name).html("got: "+text+"<br />" );
         },
         "text");
-    if(niters > 0)
-    {
-        setTimeout(function(){
-            gameLoop(name, niters-1);
-            }, 1000);
         
-    } else {
-        $(name).append("maxed out<br/>");
-    }
+    // wait and then go again
+    setTimeout(function(){
+        gameLoop(name, number+1);
+        }, 1000);
 }
