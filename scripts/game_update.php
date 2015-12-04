@@ -10,9 +10,17 @@
 **/
 session_start();
 
+header('Content-type: application/xml');
+
 include "include.php";
 include "CityData.php";
 
+function printCity($name)
+{
+    echo "<city>$name</city>";
+}
+
+$cities = array();
 
 $message = "<no thing>";
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -28,6 +36,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     // get city info
     $cityInfo = CityData::getCityInfo($currCity, $username);
+    
+    // nblocks
+    $nBlocks = 0;//todo
+    
+    // description
+    $description = "ummm";
     
     // grow current sector
     // todo
@@ -45,3 +59,21 @@ echo "'$currCity' owned by '$username'<br />";
 echo sprintf("change current sector from '%s' to '$currSector'<br />", $cityInfo->currSector);
 
 ?>
+<result>
+    <cities>
+<?php
+    foreach($cities as $k=>$city)
+        printCity($city);
+?>
+    </cities>
+    <currCity name = <?php echo $currCity?> nBlocks = <?php echo $nBlocks?>>
+        <description>
+            <?php echo $description?>
+        </description>
+        <sectors>
+<?php
+    //todo
+?>
+        </sectors>
+    </currCity>
+</result>
