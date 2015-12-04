@@ -10,14 +10,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $currentSector = $_POST["currentSector"];
     $growth = $_POST["growth"];
     
+    // get username
+    $username = $SESSION["CityBuilder_username"];
+    
     // update city index in session
     $_SESSION["CityBuilder_currCity"] = $cityIndex;
     
     // lookup city info
-    // todo
+    $cityInfo = CityData::getCityInfo($cityName, $username);
     
     // make database connection
-    // todo
+    $conn = CityData::getDatabaseConnection();
     
     // get last timestamp
     // todo
@@ -45,6 +48,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     
     // change current sector
     // todo
+    
+    // disconnect from database
+    $conn = null;
     
 }
 ?>
