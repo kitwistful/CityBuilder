@@ -11,11 +11,12 @@
 **/
 // initialize session
 session_start();
-
+include "../scripts/include.php";
+CityBuilder::initSessionKeys();
 ?>
 <html>
 <head>
-<?php include "../scripts/include.php"; ?>
+<?php  CityBuilder::printIncludes()?>
     <title>Create City in City Builder</title>
 </head>
 <body>
