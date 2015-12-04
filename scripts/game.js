@@ -25,24 +25,6 @@ function CityBuilder_makeHidden(name)
     $(name).css("display", "none");
 }
 
-function CityBuilder_gameLoop(currCity, currSector)
-{
-    // data to give database
-    var data = {
-        currcity: currCity,
-        currsector: currSector
-        };
-    
-    // ask for data
-    $.post("../scripts/game_update.php",data, CityBuilder_gotResult,"text");
-        
-    // wait 1 minute and then go again
-    $n_seconds = 5;//60;
-    setTimeout(function(){
-        CityBuilder_gameLoop(currCity, currSector);
-        }, 1000*$n_seconds);
-}
-
 function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, values)
 {   
     if(labels == undefined)
