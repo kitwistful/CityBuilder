@@ -55,13 +55,13 @@ function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, va
     var currElement = $(name).find("input");
     for(var i = 0; i < values.length; i++)
     {
-        // value of i
-        var currValueIndex = i;
+        // data for thing
+        var data = {currValueIndex: i};
         
         // set onclick
-        currElement.click(function(){
+        currElement.change(data, function(data){
             
-            
+            var currValueIndex = data.currValueIndex;
             console.log("currindex:" + currValueIndex, "currcity:" + cityIndex, "currsector:" + currentSector, "growth:" + growth);
             
             if(!cityIndex)
