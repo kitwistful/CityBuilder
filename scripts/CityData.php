@@ -325,14 +325,14 @@ class CityData
         // do queries
         try {
             // determine sector name
-            $sector = null;
+            $condition = null;
             if($largestSectorName == SECTOR_NONE)
-                $sector = "NULL";
+                $condition = "ISNULL(sector)";
             else
-                $sector = "'$largestSectorName'";
+                $condition = "sector='$largestSectorName'";
             
             // get the base description
-            $sql = "SELECT descID, content, nextDescID FROM CityDescriptions WHERE sector=$sector AND blockRank<=2";
+            $sql = "SELECT descID, content, nextDescID FROM CityDescriptions WHERE $condition";
             $stmt = $conn->prepare($sql);
             $stmt->execute();
             $record = $stmt->fetch();
@@ -352,7 +352,7 @@ class CityData
             // --> iterate
             // todo
         } catch (PDOException $e) {
-            $message = $e->getLine().": ".$e->getMessage();
+            return $e->getLine().": ".$e->getMessage();
         }
         
         // disconnect from database
