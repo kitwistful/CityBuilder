@@ -200,6 +200,7 @@ if(array_key_exists("CityBuilder_largestSector", $_SESSION))
         $("#CurrentCityInfoBlocks").html(nBlocks);
         $("#CurrentCityInfoUnusedBlocks").html(unusedBlocks);
         $("#CurrentCityInfoCurrentSector").html(sectors[selectedSector]);
+        $("#CurrentCityInfoLargestSector").html(largestSectorName);
         
         // populate sectors block
         CityBuilder_appendRadioInputs("#SectorsContent", "sector", selectedSector, sectors, sectors, selectedCity, citiesLabels, false, 1);
@@ -277,6 +278,7 @@ include "../scripts/header.php";
                 <li>Blocks:  <div id = "CurrentCityInfoBlocks"></div></li>
                 <li>Unused Blocks: <div id = "CurrentCityInfoUnusedBlocks"></div></li>
                 <li>Current Sector: <div id = "CurrentCityInfoCurrentSector"></div></li>
+                <li>Largest Sector: <div id = "CurrentCityInfoLargestSector"></div></li>
             </ul>
         </content>
     </article>
