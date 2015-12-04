@@ -10,11 +10,11 @@
 **/
 include "CityInfo.php";
 
-define("SECTOR_RESIDENTIAL", "residential");
-define("SECTOR_EDUCATIONAL", "educational");
-define("SECTOR_BUSINESS", "business");
-define("SECTOR_RECREATIONAL", "recreational");
-define("SECTOR_NONE", "none");
+define("SECTOR_RESIDENTIAL", "Residential");
+define("SECTOR_EDUCATIONAL", "Educational");
+define("SECTOR_BUSINESS", "Business");
+define("SECTOR_RECREATIONAL", "Recreational");
+define("SECTOR_NONE", "None");
 
 class CityData
 {   
