@@ -64,6 +64,24 @@ if($currCityInfo == null)
     
     
 ?>
+<div id = "testReload"></div>
+<script>
+    function gameLoop(name, niters)
+    {
+        
+        $(name).append("reloaded<br />");
+        if(niters > 0)
+        {
+            $(name).delay(1000, gameLoop(name,niters-1));
+            
+        } else {
+            $(name).append("maxed out<br/>");
+        }
+    }
+    
+    gameLoop("#testReload", 10);
+    
+</script>
 <article id = "curr_city">
     <header>'<?php echo $cities[$curr_city] ?>'</header>
     <div id = "game_sector_display">
