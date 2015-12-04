@@ -340,17 +340,28 @@ class CityData
             $description = $record["content"];
             
             // query selecting descriptions, ids, and next ids based on sector
-            // todo
+            $sql_fmt = "SELECT descID, content, nextDescID FROM CityDescriptions WHERE sector='%s'";
             
             // array of already read values
-            // todo
+            $alreadyRead = array($currID);
+            
+            // current rank
+            $currRank = 1;
             
             // start at 0 and keep going "next" until it's null OR the size is
             // too big.
-            // --> check id hasn't already been selected
-            // --> add id to list
-            // --> iterate
-            // todo
+            while($currRank != null && $currRank < 5)
+            {
+                // check id hasn't already been selected
+                //todo
+                
+                // add id to list
+                //todo
+                
+                // iterate
+                // todo
+                $currRank = null;
+            }
         } catch (PDOException $e) {
             return $e->getLine().": ".$e->getMessage();
         }
