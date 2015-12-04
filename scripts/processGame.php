@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $growth = $_POST["growth"];
     
     // update city index in session
-    //todo
+    $_SESSION["CityBuilder_currCity"] = $cityIndex;
     
     // lookup city info
     // todo

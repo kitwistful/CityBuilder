@@ -159,6 +159,7 @@ include "../scripts/header.php";
     if(visibleElement == "#GameContent")
     {
         // todo
+        $("#CurrentCityName").html(<?php echo "\"$currCity\""?>);
         $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", $cities[$currCity])?>);
         
         // sectors list
