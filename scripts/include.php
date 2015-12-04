@@ -44,11 +44,13 @@ function getDatabaseConnection()
     
     
 ?>
+    
+<!-- Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Averia+Sans+Libre:400,700' rel='stylesheet' type='text/css'>
 
 <!-- Stylesheet-->
 <link rel = "stylesheet" type = "text/css" href = "../styles/style.css" />
 
 <!-- JQuery -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-    
     

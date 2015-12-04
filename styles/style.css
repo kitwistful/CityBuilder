@@ -1,3 +1,8 @@
+body
+{
+    background: #CCCCCC;
+}
+
 content
 {
     display: block;
@@ -23,11 +28,15 @@ form >input, form > button
 #global_header > header
 {
     font-size: 64px;
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: 700;
 }
 
 article > header
 {
     font-size: 32px;
+    font-family: 'Averia Sans Libre', cursive;
+    font-weight: 700;
 }
 
 nav > ul > li
