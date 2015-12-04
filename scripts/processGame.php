@@ -55,7 +55,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             if($currentSector == SECTOR_NONE)
                 $currentSector = "NULL";
-            $sql = sprintf("UPDATE Cities SET currSector='$currentSector' WHERE cityID=%d", $cityInfo->cityID);
+            else
+                $currentSector = "'$currentSector'";
+            $sql = sprintf("UPDATE Cities SET currSector=$currentSector WHERE cityID=%d", $cityInfo->cityID);
             $conn->exec($sql);
         }
     } catch (PDOException $e) {
