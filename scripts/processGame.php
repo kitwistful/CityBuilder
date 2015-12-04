@@ -22,15 +22,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // lookup city info
     $cityInfo = CityData::getCityInfo($cityName, $username);
     
+    // lookup cityID
+    $cityID = $cityInfo->cityID;
+    
     // make database connection
     $conn = CityBuilder::getDatabaseConnection();
     
     try {
         // get last timestamp
-        // todo
+        $sql = "SELECT timestamp FROM Cities WHERE cityID = $cityID";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $record= $stmt->fetch();
+        $prev_timestamp = $record["timestamp"];
+        echo $prev_timestamp; //todo
         
         // update to current timestamp
-        //todo
+        // todo
+        $sql = "SELECT NOW()";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $record = $stmt->fetch();
+        $curr_timestamp = $record[0];
+        echo $curr_timestamp; 
         
         // get number of allocated blocks
         // todo
@@ -39,7 +53,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         // total number of blocks
         
         // -->get difference between timestamps
-        // todo
+        $sql = "SELECT TIMESTAMPDIFF($prev_timestamp, $curr_timestamp)";//todo
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $record = $stmt->fetch();
+        $seconds_elapsed = $record[0];
         
         // -->determine number of blocks grown
         // todo
