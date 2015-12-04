@@ -2,7 +2,8 @@
 session_start();
 include "include.php";
 CityBuilder::initSessionKeys();
-    
+include "CityData.php";
+
 // update things
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -22,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $cityInfo = CityData::getCityInfo($cityName, $username);
     
     // make database connection
-    $conn = CityData::getDatabaseConnection();
+    $conn = CityBuilder::getDatabaseConnection();
     
     try {
         // get last timestamp
