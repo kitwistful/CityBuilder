@@ -313,26 +313,31 @@ class CityData
         $largestSectorName = CityData::pickSector($cityInfo, $largest["sectors"]);
         
         // connect to database
-        // todo
+        $conn = CityBuilder::getDatabaseConnection();
         
-        // query selecting descriptions, ids, and next ids based on sector
-        // todo
-        
-        // array of already read values
-        // todo
-        
-        // description string
-        // todo
-        
-        // start at 0 and keep going "next" until it's null OR the size is
-        // too big.
-        // --> check id hasn't already been selected
-        // --> add id to list
-        // --> iterate
-        // todo
+        // do queries
+        try {
+            // query selecting descriptions, ids, and next ids based on sector
+            // todo
+            
+            // array of already read values
+            // todo
+            
+            // description string
+            // todo
+            
+            // start at 0 and keep going "next" until it's null OR the size is
+            // too big.
+            // --> check id hasn't already been selected
+            // --> add id to list
+            // --> iterate
+            // todo   
+        } catch (PDOException $e) {
+            $message = $e->getLine().": ".$e->getMessage();
+        }
         
         // disconnect from database
-        // todo
+        $conn = null;
         
         // return description
         // todo
