@@ -77,6 +77,10 @@ class CityData
             SECTOR_RECREATIONAL=>"Recreational"
             );
             
+        // return blank city info if no params
+        if($cityname == null && $username == null)
+            $cityInfo = new CityInfo($currSector, $nBlocks, $sectorBlocks, $nCoins);
+            
         // have you found the city?
         $isCityFound = false;
         

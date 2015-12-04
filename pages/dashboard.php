@@ -24,16 +24,20 @@
 include "../scripts/CityData.php";
 function cityLabels($cities)
 {
-    $labels = "";
-    foreach($cities as $i=>$city)
+    if($cities != null)
     {
-        if($i == 0)
-            $labels = "'$city'";
-        else
-            $labels = "$labels, '$city'";
+        $labels = "";
+        foreach($cities as $i=>$city)
+        {
+            if($i == 0)
+                $labels = "'$city'";
+            else
+                $labels = "$labels, '$city'";
+        }
+        
+        echo $labels;
+        
     }
-    
-    echo $labels;
 }
 
 function cityValues($cities)
@@ -61,6 +65,9 @@ $userOwnsCities = false;
 $currCityInfo = null;
 $currCity = null;
 
+$cities = CityData::getCityInfo(null, null);
+
+
 // check user's cities
 if($bLoggedIn)
 {
@@ -78,17 +85,17 @@ if(!$bLoggedIn)
     $elementShownName = "#NoCitiesContent";    
 } else {
     // retrieve current city
-    define("CURRCITY", "CityBuilder_currcity");
-    $currcity = 0;
+    define("CURRCITY", "CityBuilder_currCity");
+    $currCity = 0;
     if(!array_key_exists(CURRCITY, $_SESSION))
     {
-        $_SESSION[CURRCITY] = $currcity;
+        $_SESSION[CURRCITY] = $currCity;
     } else {
-        $currcity = $_SESSION[CURRCITY];
+        $currCity = $_SESSION[CURRCITY];
     }
     
     // retrieve current city info
-    $currCityInfo = CityData::getCityInfo($cities[$currcity], $username);
+    $currCityInfo = CityData::getCityInfo($cities[$currCity], $username);
 }
 
 // header
@@ -152,7 +159,7 @@ include "../scripts/header.php";
     if(visibleElement == "#GameContent")
     {
         // todo
-        $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", $cities[$currcity])?>);
+        $("#CurrentCityName").html(<?php echo sprintf("\"'%s'\"", $cities[$currCity])?>);
         
         // sectors list
         var sectors = ["Residential", "Educational", "Recreational", "Business", "None"];
@@ -166,20 +173,20 @@ include "../scripts/header.php";
         var expansionsValues = [3000, 2000, 1000, 0];
         
         // sector blocks
-        var sectorBlocks = [<?php echo sprintf("%d, %d, %d, %d",
+        var sectorBlocks = [<?php if($currCityInfo != null && $currCityInfo->sectorBlocks != null) echo sprintf("%d, %d, %d, %d",
             $currCityInfo->sectorBlocks[SECTOR_RESIDENTIAL],
             $currCityInfo->sectorBlocks[SECTOR_EDUCATIONAL],
             $currCityInfo->sectorBlocks[SECTOR_RECREATIONAL],
             $currCityInfo->sectorBlocks[SECTOR_BUSINESS])?>];
 
         // currently selected city
-        var selectedCity = <?php echo $currcity?>;
+        var selectedCity = <?php echo $currCity == null ? "\"\"" : $currCity?>;
             
         // currently selected sector
         var selectedSector = <?php echo 0?>; //todo
         
         // number of blocks
-        var nBlocks = <?php echo $currCityInfo->nBlocks ?>;
+        var nBlocks = <?php echo $currCityInfo && $currCityInfo->nBlocks ? $currCityInfo->nBlocks : "\"\""?>;
         
         // figure out used blocks
         var unusedBlocks = nBlocks;
