@@ -253,9 +253,22 @@ class CityData
     function getBiggestSectors($cityInfo)
     {
         // results
-        $result = array("sectors"=>array(SECTOR_NONE), "size"=>0);
+        $result = array("sectors"=>array(), "size"=>0);
         
-        //todo
+        // look at each sector
+        foreach($cityInfo->sectorBlocks as $sector=>$size)
+        {
+            // compare size
+            if($result["size"] < $size)
+            {
+                // set as new biggest sector
+                $result["sectors"] = array($sector);
+                $result["size"] = $size;
+            } else if ($result["size"] == $size) {
+                // push sector on
+                $result["sectors"][count($result["sectors"])] = $sector;
+            }
+        }
         
         // return results
         return $result;
@@ -298,7 +311,6 @@ class CityData
         
         // determine sector
         $largestSectorName = CityData::pickSector($cityInfo, $largest["sectors"]);
-        
         
         // connect to database
         // todo
