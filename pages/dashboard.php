@@ -208,8 +208,8 @@ function loadPage()
             // create onclick for cities
             echo sprintf("$(currElement.get($i)).change(cityData$i = {index: $i, selected: selectedCity}, function()
                 {
-                    CityBuilder_postForm($i, \"%s\", sectors[%d], 1); 
-                });", $cities[$i], $currCityInfo->currSector);
+                    CityBuilder_postForm($i, \"%s\", null, 1); 
+                });", $cities[$i]);
         }
         
     }

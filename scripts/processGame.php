@@ -22,6 +22,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // lookup city info
     $cityInfo = CityData::getCityInfo($cityName, $username);
     
+    // don't change the current sector of this if the sector is null
+    if($currentSector == null)
+        $currentSector = $cityInfo->currSector;
+    
     // lookup cityID
     $cityID = $cityInfo->cityID;
     
@@ -86,16 +90,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $conn->exec($sql);
         }
         
-        // change current sector
-        if($currentSector != $cityInfo->currSector)
-        {
-            if($currentSector == SECTOR_NONE)
-                $currentSector = "NULL";
-            else
-                $currentSector = "'$currentSector'";
-            $sql = sprintf("UPDATE Cities SET currSector=$currentSector WHERE cityID=%d", $cityInfo->cityID);
-            $conn->exec($sql);
-        }
+        // make current sector name into mysql form
+        if($currentSector == SECTOR_NONE)
+            $currentSector = "NULL";
+        else
+            $currentSector = "'$currentSector'";
+        
+        // update sector
+        $sql = sprintf("UPDATE Cities SET currSector=$currentSector WHERE cityID=%d", $cityInfo->cityID);
+        $conn->exec($sql);
+        
+        
     } catch (PDOException $e) {
         echo "<table><tr><th>SQL</th><td>$sql</td></tr><tr><th>Error</th><td>".$e->getMessage()."</td></tr><tr><th>Line</th><td>". $e->getLine()."</td></tr></table><br />";
     }
