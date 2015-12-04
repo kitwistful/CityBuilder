@@ -142,11 +142,11 @@ function addUser($username, $password)
 ?>
             <form id = "create_account_form" method = "POST" action = "signup.php">
                 <label>Username:</label>
-                <input id = "create_account_username" name = "username" type = "text" value = <?php echo "\"$username\"" ?>></input>
+                <input id = "create_account_username" name = "username" type = "text" maxlength = 40 value = <?php echo "\"$username\"" ?>></input>
                 <label>Password:</label>
-                <input id = "create_account_password" name = "password" type = "password"></input>
+                <input id = "create_account_password" name = "password" type = "password" maxlength = 40></input>
                 <label>Re-enter your password:</label>
-                <input id = "create_account_password_again" name = "password_again" type = "password"></input>
+                <input id = "create_account_password_again" name = "password_again" type = "password" maxlength = 40></input>
                 <button id = "create_account_confirm">Signup</button>
             </form>
         </content>

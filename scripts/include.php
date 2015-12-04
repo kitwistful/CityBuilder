@@ -32,6 +32,7 @@ function getDatabaseConnection()
 function validateInput($input)
 {
     // check input somehow
+    // --> check length < 40
     // --> if bad, clear input.
     // todo
     

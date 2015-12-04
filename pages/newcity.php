@@ -55,7 +55,7 @@ include "../scripts/header.php";
             Let's make a city!
             <form action = "newcity.php" method = "POST">
                 Name:
-                <input type = "text" name = "cityname"></input><br />
+                <input type = "text" name = "cityname" maxlength = 40></input><br />
                 <button>Create a city</button><br />
             </form>
         </content>

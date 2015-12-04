@@ -133,9 +133,9 @@ function validateLogin($username, $password)
         <content>
             <form id = "login_form" method = "POST" action = "login.php">
                 <label>Username:</label>
-                <input id = "username" type = "text" name = "username" value = <?php echo "\"$username\""?>></input>
+                <input id = "username" type = "text" name = "username" maxlength = 40 value = <?php echo "\"$username\""?>></input>
                 <label>Password:</label>
-                <input id = "password" type = "password" name = "password"></input>
+                <input id = "password" type = "password" name = "password" maxlength = 40></input>
                 <button id = "login_button">Go</input>
             </form>
         </content>
