@@ -77,7 +77,43 @@ include "../scripts/header.php";
     </article>
 </div>
 <div id = "GameContent" class = "hidden">
-    todododo
+    <article id = "CurrentCityBlock">
+        <header><div id = "CityName"></div></header>
+        <content>
+            todo
+        </content>
+    </article>
+    <article id = "HowToPlayBlock">
+        <header>How To Play</header>
+        <content>
+            todo
+        </content>
+    </article>
+    <article id = "SectorsBlock">
+        <header>Sectors</header>
+        <content>
+            todo
+        </content>
+    </article>
+    <article id = "CitiesBlock">
+        <header>Cities</header>
+        <content>
+            todo
+        </content>
+    </article>
+    <article id = "CityExpansionBlock">
+        <header>City Expansion</header>
+        <content>
+            todo
+        </content>
+    </article>
+    <!-- wait, where's the build button? -->
+    <article id = "CreateNewCityBlock">
+        <header>CreateNewCity</header>
+        <content>
+            todo
+        </content>
+    </article>
 </div>
 <script>
     // show correct div
