@@ -23,14 +23,11 @@ function CityBuilder_gameLoop(currCity, currSector)
         currsector: currSector
         };
     
-    // about to post
-    $(CityBuilder_outputDivName).html("getting info from database....");
-    
     // ask for data
     $.post("../scripts/game_update.php",data, CityBuilder_gotResult,"text");
         
     // wait 1 minute and then go again
     setTimeout(function(){
         CityBuilder_gameLoop(currCity);
-        }, 1000*60);
+        }, 1000/**60*/);
 }
