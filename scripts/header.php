@@ -37,6 +37,7 @@
                 echo "<li><a href = '$url'>$name</a></li>";
         }
         print_nav_link("Dashboard", "../pages/dashboard.php");
+        print_nav_link("How to Play", "../pages/howtoplay.php");
         print_nav_link("Signup", "../pages/signup.php");
         
     ?>
