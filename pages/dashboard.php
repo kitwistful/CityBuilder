@@ -86,7 +86,12 @@ include "../scripts/header.php";
     <article id = "HowToPlayBlock">
         <header>How To Play</header>
         <content>
-            <div id = "HowToPlayContent"></div>
+            <p>
+                To start construction, select a sector to focus on. It'll grow by one block right away, and keep growing in size as long as it is selected. You can make it grow faster by pressing the "build" button. Be careful, though! If your sector takes up too many blocks, all construction will cease. Your city has only so much space!
+            </p>
+            <p>
+                If you want to make your city even bigger, you're going to need coins. You can purchase more blocks under 'City Expansion'.
+            </p>
         </content>
     </article>
     <article id = "SectorsBlock">
@@ -111,7 +116,7 @@ include "../scripts/header.php";
     <article id = "CreateNewCityBlock">
         <header>Create New City</header>
         <content>
-            <div id = "CreateNewCityContent"></div>
+            Go <a href = "../pages/newcity.php">here</a> to create a new city.
         </content>
     </article>
 </div>
