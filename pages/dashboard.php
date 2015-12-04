@@ -80,7 +80,13 @@ include "../scripts/header.php";
     <article id = "CurrentCityBlock">
         <header><div id = "CurrentCityName"></div></header>
         <content>
-            <div id = "CurrentCityContent"></div>
+            <div id = "CurrentCitySectors"></div>
+            <div id = "CurrentCityDescription"></div>
+            <ul id = "CurrentCityInfo">
+                <li>Blocks:  <div id = "CurrentCityInfoBlocks"></div></li>
+                <li>Unused Blocks: <div id = "CurrentCityInfoUnusedBlocks"></div></li>
+                <li>Current Sector: <div id = "CurrentCityInfoCurrentSector"></div></li>
+            </ul>
         </content>
     </article>
     <article id = "HowToPlayBlock">
@@ -136,13 +142,25 @@ include "../scripts/header.php";
         // expansion options list
         var expansions = [/*todo*/"none"];
         
-        // populate Sectors block
+        // fill out current city sectors
+        $("#CurrentCitySectors").html("Sectors: todo");
+        
+        // put in description
+        $("#CurrentCityDescription").html("Description: todo");
+        
+        // put in stats
+        $("#CurrentCityInfoBlocks").html("<todo1>");
+        $("#CurrentCityInfoUnusedBlocks").html("<todo2>");
+        $("#CurrentCityInfoCurrentSector").html("<todo3>");
+        
+        
+        // populate sectors block
         CityBuilder_appendRadioInputs("#SectorsContent", sectors);
         
-        // populate Cities
+        // populate cities
         CityBuilder_appendRadioInputs("#CitiesContent", cities);
         
-        // populate City Expansion block
+        // populate city expansion block
         CityBuilder_appendRadioInputs("#CityExpansionContent", expansions);
         
         
