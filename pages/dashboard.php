@@ -138,10 +138,12 @@ include "../scripts/header.php";
         var sectors = ["Residential", "Educational", "Recreational", "Business"];
 
         // cities list
-        var cities = [/*todo*/];
+        var citiesLabels = [/*todo*/];
+        var citiesValues = [/*todo*/];
         
         // expansion options list
-        var expansions = [/*todo*/"none"];
+        var expansionsLabels = [/*todo*/"none"];
+        var expansionsValues = [/*todo*/"none"];
         
         // fill out current city sectors
         $("#CurrentCitySectors").html("Sectors: todo");
@@ -156,13 +158,13 @@ include "../scripts/header.php";
         
         
         // populate sectors block
-        CityBuilder_appendRadioInputs("#SectorsContent", sectors);
+        CityBuilder_appendRadioInputs("#SectorsContent", "sector", 0, sectors);
         
         // populate cities
-        CityBuilder_appendRadioInputs("#CitiesContent", cities);
+        CityBuilder_appendRadioInputs("#CitiesContent", "city", 0, citiesLabels, citiesValues);
         
         // populate city expansion block
-        CityBuilder_appendRadioInputs("#CityExpansionContent", expansions);
+        CityBuilder_appendRadioInputs("#CityExpansionContent", "expansion", 0, expansionsLabels, expansionsValues);
         
         
         

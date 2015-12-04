@@ -43,8 +43,22 @@ function CityBuilder_gameLoop(currCity, currSector)
         }, 1000*$n_seconds);
 }
 
-function CityBuilder_appendRadioInputs(name, values)
-{
-    //todo
-    $(name).append("hi");
+function CityBuilder_appendRadioInputs(name, inputname, checkedindex, labels, values)
+{   
+    if(labels == undefined)
+        return;
+
+    if(values == undefined)
+        values = labels;
+    
+    for(var i = 0; i < values.length; i++)
+    {
+        var html = "<input class = 'radio_input' type = 'radio' name = '" + inputname + "' value = '" + labels[i] + "'";
+        if(i == checkedindex)
+            html = html + "checked";
+        html = html + "></input>" + labels[i] + "<br />";
+        
+        $(name).append(html);
+        
+    }
 }
