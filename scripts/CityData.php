@@ -371,7 +371,7 @@ class CityData
                     $record = $stmt->fetch();
                     
                     // only continue if the block rank is low enough
-                    if($blockRanks[$record["blockRank"]] > $largestSectorSize)
+                    if($blockRanks[$record["blockRank"]] >= $largestSectorSize)
                     {
                         // don't continue if the sector doesn't match, unless this is the first run.
                         if($record["sector"] == $largestSectorName || $currentDescriptionID == 1)
